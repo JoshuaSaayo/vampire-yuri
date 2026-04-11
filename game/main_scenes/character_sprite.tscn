@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d231j1fagav8b"]
+
+[ext_resource type="Script" uid="uid://c57lwkc3yo3ny" path="res://character_sprite.gd" id="1_h0t1k"]
+[ext_resource type="Texture2D" uid="uid://7okp468mc2tu" path="res://assets/sprites/elara_default.png" id="2_dpp36"]
+
+[node name="character_sprite" type="Node2D"]
+script = ExtResource("1_h0t1k")
+
+[node name="Sprite" type="TextureRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_dpp36")
+stretch_mode = 5

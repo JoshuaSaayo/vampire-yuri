@@ -1,0 +1,113 @@
+[gd_scene load_steps=12 format=3 uid="uid://6t8ccom52iy0"]
+
+[ext_resource type="Script" uid="uid://dqn1burabunfd" path="res://main_scenes/cutscenes.gd" id="1_g3r3r"]
+[ext_resource type="Texture2D" uid="uid://yaeeifgdi2sc" path="res://assets/cutscenes/cutscene_1.png" id="1_pltv3"]
+[ext_resource type="Texture2D" uid="uid://cooq15dc2xmx1" path="res://UI/assets/dialogue box.png" id="3_rt255"]
+[ext_resource type="FontFile" uid="uid://c56hxw3q7m0jq" path="res://UI/fonts/CrimsonText-Regular.ttf" id="4_jai1j"]
+[ext_resource type="PackedScene" uid="uid://d231j1fagav8b" path="res://main_scenes/character_sprite.tscn" id="5_jai1j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4esm6"]
+texture = ExtResource("3_rt255")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3r3r"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_snyxg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rt255"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jai1j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4esm6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="cutscenes" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g3r3r")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_pltv3")
+
+[node name="DialogueLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" type="Panel" parent="DialogueLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -192.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4esm6")
+
+[node name="SpeakerName" type="Label" parent="DialogueLayer/DialogueBox"]
+layout_mode = 1
+offset_left = 61.0
+offset_top = 28.0
+offset_right = 130.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("4_jai1j")
+theme_override_font_sizes/font_size = 30
+text = "lorem"
+
+[node name="DialogueText" type="RichTextLabel" parent="DialogueLayer/DialogueBox"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 55.0
+offset_top = -115.0
+offset_right = -124.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("4_jai1j")
+theme_override_font_sizes/normal_font_size = 25
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_g3r3r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_snyxg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rt255")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_jai1j")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4esm6")
+
+[node name="LeftCharacter" parent="." instance=ExtResource("5_jai1j")]
+position = Vector2(200, 720)
+
+[node name="CenterCharacter" parent="." instance=ExtResource("5_jai1j")]
+position = Vector2(640, 720)
+
+[node name="RightCharacter" parent="." instance=ExtResource("5_jai1j")]
+position = Vector2(1000, 721)
+
+[node name="FadeRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

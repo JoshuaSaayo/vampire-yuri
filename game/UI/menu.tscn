@@ -1,15 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbgkrnpa2ypg8"]
+[gd_scene load_steps=12 format=3 uid="uid://cbgkrnpa2ypg8"]
 
-[ext_resource type="Texture2D" uid="uid://c04aktf1pn2tl" path="res://UI/assets/menu_bg.png" id="1_0h2wq"]
 [ext_resource type="Script" uid="uid://db1dmqu8a4aoq" path="res://UI/menu.gd" id="1_wfiwe"]
+[ext_resource type="Texture2D" uid="uid://bf1dpkowvy7cm" path="res://assets/cutscenes/cutscene_4.png" id="2_kfjwn"]
+[ext_resource type="FontFile" uid="uid://c56hxw3q7m0jq" path="res://UI/fonts/CrimsonText-Regular.ttf" id="3_dte3n"]
+[ext_resource type="Texture2D" uid="uid://b5i3pf8w4fy0m" path="res://UI/assets/button.png" id="4_dhncy"]
+[ext_resource type="Texture2D" uid="uid://c3qo5ocntnem1" path="res://UI/assets/button hover.png" id="5_cvc1e"]
+[ext_resource type="Texture2D" uid="uid://c5satnltac5ks" path="res://UI/assets/logo.png" id="6_re817"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6w8i2"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_size = 5
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1qvof"]
+texture = ExtResource("4_dhncy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wcfn6"]
+texture = ExtResource("5_cvc1e")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vso1l"]
+texture = ExtResource("5_cvc1e")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_22gd7"]
+texture = ExtResource("4_dhncy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_60j7a"]
+texture = ExtResource("4_dhncy")
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -22,116 +33,164 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_wfiwe")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -15.0
-offset_right = 1265.0
-offset_bottom = 720.0
-scale = Vector2(0.927128, 0.927128)
-texture = ExtResource("1_0h2wq")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_kfjwn")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="StartBtn" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 52.0
-offset_right = 20.0
-offset_bottom = 92.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(10.3903, 6.99025)
-pivot_offset = Vector2(19.7191, 20.4536)
-color = Color(0, 0, 0, 0.380392)
-
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -82.0
-offset_top = -40.0
-offset_right = 27.0
-offset_bottom = -12.0
+offset_left = -559.1786
+offset_top = -130.0
+offset_right = -379.1786
+offset_bottom = -75.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.47649, 1.47649)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 15
-theme_override_styles/normal = SubResource("StyleBoxFlat_6w8i2")
+theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_dte3n")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_1qvof")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wcfn6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vso1l")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_22gd7")
+theme_override_styles/focus = SubResource("StyleBoxTexture_60j7a")
 text = "Start Game"
 
-[node name="Button2" type="Button" parent="."]
+[node name="SettingsBtn" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -82.0
-offset_top = 21.0
-offset_right = 27.0
-offset_bottom = 49.0
+offset_left = -559.0
+offset_top = -57.0
+offset_right = -379.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.47649, 1.47649)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 15
-theme_override_styles/normal = SubResource("StyleBoxFlat_6w8i2")
-text = "Load Game"
+theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_dte3n")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_1qvof")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wcfn6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vso1l")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_22gd7")
+theme_override_styles/focus = SubResource("StyleBoxTexture_60j7a")
+text = "Settings"
 
-[node name="Button3" type="Button" parent="."]
+[node name="Credits" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -82.0
-offset_top = 80.0
-offset_right = 27.0
-offset_bottom = 108.0
+offset_left = -559.0
+offset_top = 16.0
+offset_right = -379.0
+offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.47649, 1.47649)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 15
-theme_override_styles/normal = SubResource("StyleBoxFlat_6w8i2")
-text = "Settings
-"
+theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_dte3n")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_1qvof")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wcfn6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vso1l")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_22gd7")
+theme_override_styles/focus = SubResource("StyleBoxTexture_60j7a")
+text = "Credits"
 
-[node name="Button4" type="Button" parent="."]
+[node name="Exit" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -82.0
-offset_top = 140.0
-offset_right = 27.0
-offset_bottom = 168.0
+offset_left = -559.0
+offset_top = 88.99994
+offset_right = -379.0
+offset_bottom = 143.99994
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.47649, 1.47649)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 15
-theme_override_styles/normal = SubResource("StyleBoxFlat_6w8i2")
-text = "Quit
-"
+theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_dte3n")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_1qvof")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wcfn6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vso1l")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_22gd7")
+theme_override_styles/focus = SubResource("StyleBoxTexture_60j7a")
+text = "Exit"
 
-[node name="Title" type="Label" parent="."]
-layout_mode = 0
-offset_left = 421.0
-offset_top = 131.0
-offset_right = 704.0
-offset_bottom = 200.0
-theme_override_font_sizes/font_size = 50
-text = "GAME TITLE"
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(227, 132)
+texture = ExtResource("6_re817")
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="Version" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -53.0
+offset_right = 101.0
+offset_bottom = -30.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_dte3n")
+theme_override_font_sizes/font_size = 30
+text = "v 1.0 Demo"
+
+[node name="Copyright" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -173.0
+offset_top = -53.0
+offset_right = -30.0
+offset_bottom = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_dte3n")
+theme_override_font_sizes/font_size = 30
+text = "© Fleurdelis the Witch"
+
+[connection signal="pressed" from="StartBtn" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="SettingsBtn" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_button_pressed"]
