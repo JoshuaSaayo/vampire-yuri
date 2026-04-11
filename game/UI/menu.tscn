@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbgkrnpa2ypg8"]
+[gd_scene load_steps=13 format=3 uid="uid://cbgkrnpa2ypg8"]
 
 [ext_resource type="Script" uid="uid://db1dmqu8a4aoq" path="res://UI/menu.gd" id="1_wfiwe"]
 [ext_resource type="Texture2D" uid="uid://bf1dpkowvy7cm" path="res://assets/cutscenes/cutscene_4.png" id="2_kfjwn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b5i3pf8w4fy0m" path="res://UI/assets/button.png" id="4_dhncy"]
 [ext_resource type="Texture2D" uid="uid://c3qo5ocntnem1" path="res://UI/assets/button hover.png" id="5_cvc1e"]
 [ext_resource type="Texture2D" uid="uid://c5satnltac5ks" path="res://UI/assets/logo.png" id="6_re817"]
+[ext_resource type="AudioStream" uid="uid://rbps32677btp" path="res://UI/sounds/main_menu_ost.mp3" id="7_dte3n"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1qvof"]
 texture = ExtResource("4_dhncy")
@@ -189,6 +190,10 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_dte3n")
 theme_override_font_sizes/font_size = 30
 text = "© Fleurdelis the Witch"
+
+[node name="MainMenuSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_dte3n")
+autoplay = true
 
 [connection signal="pressed" from="StartBtn" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="SettingsBtn" to="." method="_on_button_pressed"]

@@ -124,6 +124,7 @@
     {
       "id": "sensual_bite",
       "background": "res://assets/cutscenes/cutscene_4.png",
+      "ost": "res://UI/sounds/main_menu_ost.mp3",
       "lines": [
         { "speaker": "", "text": "Her fangs sank into the soft skin of Elara’s neck with deliberate, sensual care — a deep, lingering bite." },
         { "speaker": "Elara", "text": "Nngh…! Ahh…" },
