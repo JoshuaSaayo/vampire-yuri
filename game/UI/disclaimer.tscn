@@ -1,0 +1,162 @@
+[gd_scene load_steps=15 format=3 uid="uid://bfeuis2hv6tkt"]
+
+[ext_resource type="Script" uid="uid://ef613ss0strn" path="res://UI/disclaimer.gd" id="1_u2nuy"]
+[ext_resource type="Texture2D" uid="uid://daanxjul3tr60" path="res://assets/backgrounds/background_1.png" id="2_s7s41"]
+[ext_resource type="Texture2D" uid="uid://tiasu4ffgoja" path="res://UI/assets/disclaimer box.png" id="3_itv7h"]
+[ext_resource type="FontFile" uid="uid://b0pktas5ei7r6" path="res://UI/fonts/Cinzel-Bold.ttf" id="4_rrma0"]
+[ext_resource type="FontFile" uid="uid://c56hxw3q7m0jq" path="res://UI/fonts/CrimsonText-Regular.ttf" id="5_mdqkj"]
+[ext_resource type="Texture2D" uid="uid://b5i3pf8w4fy0m" path="res://UI/assets/button.png" id="6_ix3xv"]
+[ext_resource type="Texture2D" uid="uid://c3qo5ocntnem1" path="res://UI/assets/button hover.png" id="7_ahxgf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rrma0"]
+texture = ExtResource("3_itv7h")
+
+[sub_resource type="LabelSettings" id="LabelSettings_mdqkj"]
+font = ExtResource("4_rrma0")
+font_size = 50
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x4wum"]
+texture = ExtResource("6_ix3xv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qk1lu"]
+texture = ExtResource("7_ahxgf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pfsbg"]
+texture = ExtResource("7_ahxgf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uh2ao"]
+texture = ExtResource("6_ix3xv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uucu3"]
+texture = ExtResource("6_ix3xv")
+
+[node name="disclaimer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u2nuy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0.23753911, 0.23753914, 0.23753911, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_s7s41")
+
+[node name="DisclaimerPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -550.0
+offset_top = -300.0
+offset_right = 550.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_rrma0")
+
+[node name="DisclaimerLabel" type="Label" parent="DisclaimerPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -165.0
+offset_top = 34.0
+offset_right = 165.0
+offset_bottom = 102.0
+grow_horizontal = 2
+text = "DISCLAIMER"
+label_settings = SubResource("LabelSettings_mdqkj")
+
+[node name="Label" type="Label" parent="DisclaimerPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -164.0
+offset_right = 420.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_mdqkj")
+theme_override_font_sizes/font_size = 35
+text = "This title features mature themes, nudity, and sexual content. 
+Players must be 18+ to access or download this game.
+All characters are fictional adults and no minors are depicted."
+autowrap_mode = 2
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 268.0
+offset_top = -280.0
+offset_right = 468.0
+offset_bottom = -210.0
+grow_vertical = 0
+scale = Vector2(1.47649, 1.47649)
+theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_mdqkj")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_x4wum")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qk1lu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pfsbg")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_uh2ao")
+theme_override_styles/focus = SubResource("StyleBoxTexture_uucu3")
+text = "Exit"
+
+[node name="Proceed" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -562.00006
+offset_top = -280.0
+offset_right = -362.00006
+offset_bottom = -210.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.47649, 1.47649)
+theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_mdqkj")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_x4wum")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qk1lu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pfsbg")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_uh2ao")
+theme_override_styles/focus = SubResource("StyleBoxTexture_uucu3")
+text = "Proceed"
+
+[node name="TransitionRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

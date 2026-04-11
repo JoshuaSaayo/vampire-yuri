@@ -1,12 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://cbgkrnpa2ypg8"]
+[gd_scene load_steps=27 format=3 uid="uid://cbgkrnpa2ypg8"]
 
 [ext_resource type="Script" uid="uid://db1dmqu8a4aoq" path="res://UI/menu.gd" id="1_wfiwe"]
 [ext_resource type="Texture2D" uid="uid://bf1dpkowvy7cm" path="res://assets/cutscenes/cutscene_4.png" id="2_kfjwn"]
 [ext_resource type="FontFile" uid="uid://c56hxw3q7m0jq" path="res://UI/fonts/CrimsonText-Regular.ttf" id="3_dte3n"]
+[ext_resource type="Texture2D" uid="uid://lx542obkab8k" path="res://UI/assets/pause button.png" id="4_1qvof"]
 [ext_resource type="Texture2D" uid="uid://b5i3pf8w4fy0m" path="res://UI/assets/button.png" id="4_dhncy"]
 [ext_resource type="Texture2D" uid="uid://c3qo5ocntnem1" path="res://UI/assets/button hover.png" id="5_cvc1e"]
+[ext_resource type="Texture2D" uid="uid://tiasu4ffgoja" path="res://UI/assets/disclaimer box.png" id="6_1qvof"]
+[ext_resource type="Texture2D" uid="uid://qismjhcq5tk4" path="res://UI/assets/pause box.png" id="6_cvc1e"]
 [ext_resource type="Texture2D" uid="uid://c5satnltac5ks" path="res://UI/assets/logo.png" id="6_re817"]
+[ext_resource type="Texture2D" uid="uid://5q7u21vhh3uy" path="res://UI/assets/pause button hover.png" id="6_wcfn6"]
 [ext_resource type="AudioStream" uid="uid://rbps32677btp" path="res://UI/sounds/main_menu_ost.mp3" id="7_dte3n"]
+[ext_resource type="FontFile" uid="uid://b0pktas5ei7r6" path="res://UI/fonts/Cinzel-Bold.ttf" id="7_re817"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1qvof"]
 texture = ExtResource("4_dhncy")
@@ -22,6 +27,35 @@ texture = ExtResource("4_dhncy")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_60j7a"]
 texture = ExtResource("4_dhncy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xbecv"]
+texture = ExtResource("6_1qvof")
+
+[sub_resource type="LabelSettings" id="LabelSettings_emkvv"]
+font = ExtResource("7_re817")
+font_size = 50
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_emkvv"]
+texture = ExtResource("4_1qvof")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l308b"]
+texture = ExtResource("6_wcfn6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e3ygf"]
+texture = ExtResource("6_wcfn6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yecwb"]
+texture = ExtResource("4_1qvof")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qoksu"]
+texture = ExtResource("4_1qvof")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k0tp0"]
+texture = ExtResource("6_cvc1e")
+
+[sub_resource type="LabelSettings" id="LabelSettings_xbecv"]
+font = ExtResource("7_re817")
+font_size = 50
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -98,7 +132,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_22gd7")
 theme_override_styles/focus = SubResource("StyleBoxTexture_60j7a")
 text = "Settings"
 
-[node name="Credits" type="Button" parent="."]
+[node name="CreditsBtn" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -127,7 +161,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_22gd7")
 theme_override_styles/focus = SubResource("StyleBoxTexture_60j7a")
 text = "Credits"
 
-[node name="Exit" type="Button" parent="."]
+[node name="ExitBtn" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -159,6 +193,180 @@ text = "Exit"
 [node name="Logo" type="Sprite2D" parent="."]
 position = Vector2(227, 132)
 texture = ExtResource("6_re817")
+
+[node name="Credits" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreditsPanel" type="Panel" parent="Credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -550.0
+offset_top = -300.0
+offset_right = 550.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xbecv")
+
+[node name="CreditsLabel" type="Label" parent="Credits/CreditsPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -114.0
+offset_top = 35.0
+offset_right = 115.0
+offset_bottom = 103.0
+grow_horizontal = 2
+text = "CREDITS"
+label_settings = SubResource("LabelSettings_emkvv")
+
+[node name="Label" type="Label" parent="Credits/CreditsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -164.0
+offset_right = 420.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_dte3n")
+theme_override_font_sizes/font_size = 35
+text = "Artist, Developer, Sound designer, Graphics designer,  Animator
+
+Fleurdelis the Witch"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="CloseBtn" type="Button" parent="Credits/CreditsPanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 120.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("7_re817")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_emkvv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_l308b")
+theme_override_styles/hover = SubResource("StyleBoxTexture_e3ygf")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_yecwb")
+theme_override_styles/focus = SubResource("StyleBoxTexture_qoksu")
+text = "X"
+
+[node name="Exit" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExitPanel" type="Panel" parent="Exit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -112.5
+offset_right = 300.0
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_k0tp0")
+
+[node name="Label" type="Label" parent="Exit/ExitPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = 40.5
+offset_right = 61.0
+offset_bottom = 108.5
+grow_horizontal = 2
+text = "EXIT"
+label_settings = SubResource("LabelSettings_xbecv")
+
+[node name="YesBtn" type="Button" parent="Exit/ExitPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 67.00001
+offset_top = 13.0
+offset_right = 187.0
+offset_bottom = 63.0
+grow_vertical = 2
+scale = Vector2(1.47649, 1.47649)
+theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_dte3n")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_1qvof")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wcfn6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vso1l")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_22gd7")
+theme_override_styles/focus = SubResource("StyleBoxTexture_60j7a")
+text = "Yes"
+
+[node name="NoBtn" type="Button" parent="Exit/ExitPanel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = 13.0
+offset_right = -125.0
+offset_bottom = 63.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(1.47649, 1.47649)
+theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_dte3n")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_1qvof")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wcfn6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vso1l")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_22gd7")
+theme_override_styles/focus = SubResource("StyleBoxTexture_60j7a")
+text = "No"
 
 [node name="Version" type="Label" parent="."]
 layout_mode = 1
@@ -196,3 +404,8 @@ stream = ExtResource("7_dte3n")
 autoplay = true
 
 [connection signal="pressed" from="StartBtn" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CreditsBtn" to="." method="_on_credits_btn_pressed"]
+[connection signal="pressed" from="ExitBtn" to="." method="_on_exit_btn_pressed"]
+[connection signal="pressed" from="Credits/CreditsPanel/CloseBtn" to="." method="_on_close_btn_pressed"]
+[connection signal="pressed" from="Exit/ExitPanel/YesBtn" to="." method="_on_yes_btn_pressed"]
+[connection signal="pressed" from="Exit/ExitPanel/NoBtn" to="." method="_on_no_btn_pressed"]

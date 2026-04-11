@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Vampire Yuri"
-run/main_scene="uid://cbgkrnpa2ypg8"
+run/main_scene="uid://bfeuis2hv6tkt"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
