@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://mlcbelq27nrh"]
+
+[ext_resource type="Script" uid="uid://cq15kh4j3jgnx" path="res://UI/game_over.gd" id="1_jawqf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ua2x"]
+font_size = 50
+
+[node name="game_over" type="CanvasLayer"]
+script = ExtResource("1_jawqf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ReasonLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.0
+offset_top = -34.5
+offset_right = 143.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2485704, 1.2485704)
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_5ua2x")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 620.0
+offset_top = 454.0
+offset_right = 733.0
+offset_bottom = 504.0
+theme_override_font_sizes/font_size = 30
+text = "Restart"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
