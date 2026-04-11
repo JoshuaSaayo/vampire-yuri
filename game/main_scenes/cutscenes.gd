@@ -4,24 +4,38 @@ extends Control
 @onready var fade_rect: ColorRect = $FadeRect
 @onready var dialogue_text: RichTextLabel = $DialogueLayer/DialogueBox/DialogueText
 @onready var speaker_name: Label = $DialogueLayer/DialogueBox/SpeakerName
+@onready var bgm_player: AudioStreamPlayer = $BGMPlayer
 
-@onready var left_character: Node2D = $LeftCharacter
-@onready var center_character: Node2D = $CenterCharacter
-@onready var right_character: Node2D = $RightCharacter
+
+# Dictionary to store character nodes by position
+var character_positions = {
+	"left": null,
+	"center": null,
+	"right": null
+}
+
+# Dictionary to store active characters and their expressions
+var active_characters = {}
 
 var intro_data: Dictionary = {}
 var scene_idx: int = 0
 var line_idx: int = 0
 var is_typing: bool = false
-var is_transitioning: bool = false  # NEW: blocks input during fades
+var is_transitioning: bool = false
 var current_text: String = ""
 
 @export var typing_speed: float = 0.03
 @export var fade_duration: float = 0.7
+@export var dim_brightness: float = 0.5
 
 var tween: Tween
 
 func _ready():
+	# Map positions to actual nodes
+	character_positions["left"] = $LeftCharacter
+	character_positions["center"] = $CenterCharacter
+	character_positions["right"] = $RightCharacter
+	
 	fade_rect.modulate.a = 0.0
 	load_dialogue_json()
 	show_current_scene()
@@ -43,17 +57,42 @@ func show_current_scene():
 		get_tree().change_scene_to_file("res://interactive_maps/bedroom_interactive.tscn")
 		return
 	
+	var scene = intro_data.scenes[scene_idx]
+	
+	# Check if we need to change music (only if it's a different track)
+	var needs_music_change = false
+	if scene.has("ost") and scene.ost != "":
+		var current_music = bgm_player.stream.resource_path if bgm_player.stream else ""
+		if current_music != scene.ost:
+			needs_music_change = true
+	
 	if scene_idx > 0:
-		fade_out_and_change_scene()
+		fade_out_and_change_scene(needs_music_change)
 	else:
-		background.texture = load(intro_data.scenes[0].background)
+		background.texture = load(scene.background)
+		if needs_music_change:
+			change_bgm(scene.ost)
 		show_current_line()
 
-func fade_out_and_change_scene():
-	is_transitioning = true  # Block input
+func change_bgm(music_path: String):
+	if not bgm_player:
+		return
+	
+	var new_stream = load(music_path)
+	if new_stream:
+		bgm_player.stream = new_stream
+		bgm_player.play()
+
+func fade_out_and_change_scene(needs_music_change: bool = false):
+	is_transitioning = true
 	
 	if tween:
 		tween.kill()
+	
+	# Only fade out music if we're actually changing tracks
+	if needs_music_change and bgm_player:
+		var music_tween = create_tween()
+		music_tween.tween_property(bgm_player, "volume_db", -80, fade_duration / 2)
 	
 	tween = create_tween()
 	tween.tween_property(fade_rect, "modulate:a", 1.0, fade_duration / 2.0)
@@ -61,11 +100,22 @@ func fade_out_and_change_scene():
 	
 	background.texture = load(intro_data.scenes[scene_idx].background)
 	
+	# Change music during black screen if needed
+	if needs_music_change:
+		var scene = intro_data.scenes[scene_idx]
+		if scene.has("ost") and scene.ost != "":
+			change_bgm(scene.ost)
+	
 	tween = create_tween()
 	tween.tween_property(fade_rect, "modulate:a", 0.0, fade_duration / 2.0)
 	await tween.finished
 	
-	is_transitioning = false  # Unblock input
+	# Only fade music back in if we changed it
+	if needs_music_change and bgm_player:
+		var music_tween = create_tween()
+		music_tween.tween_property(bgm_player, "volume_db", 0, fade_duration / 2)
+	
+	is_transitioning = false
 	line_idx = 0
 	show_current_line()
 
@@ -77,19 +127,95 @@ func show_current_line():
 	dialogue_text.text = ""
 	dialogue_text.visible_characters = 0
 	
-	# === SPRITE HANDLING ===
-	update_character_sprite(left_character, line.get("left"))
-	update_character_sprite(center_character, line.get("center"))
-	update_character_sprite(right_character, line.get("right"))
+	# Clear all characters first
+	clear_all_characters()
+	
+	# Setup characters based on JSON positions
+	setup_character("left", line.get("left"))
+	setup_character("center", line.get("center"))
+	setup_character("right", line.get("right"))
+	
+	# Apply brightness highlighting based on who's speaking
+	highlight_speaker(line.speaker)
 	
 	start_typing()
 
-func update_character_sprite(char_node: Node2D, expression: Variant):
-	if expression == null or expression == "":
-		char_node.hide_sprite()
-	else:
+func clear_all_characters():
+	for position in character_positions:
+		var char_node = character_positions[position]
+		if char_node:
+			char_node.hide_sprite()
+			active_characters.erase(position)
+
+func setup_character(position: String, expression_data):
+	if expression_data == null:
+		return
+	
+	# Check if it's an empty string (for string type)
+	if expression_data is String and expression_data == "":
+		return
+	
+	var char_node = character_positions[position]
+	if not char_node:
+		return
+	
+	# Parse expression data (can be string or dictionary for more complex data)
+	var character_name = ""
+	var expression = ""
+	
+	if expression_data is String:
+		# Simple format: just the expression, character name from metadata
+		expression = expression_data
+		if char_node.has_meta("character_name"):
+			character_name = char_node.get_meta("character_name")
+	elif expression_data is Dictionary:
+		# Advanced format: {"character": "Elara", "expression": "sad"}
+		character_name = expression_data.get("character", "")
+		expression = expression_data.get("expression", "")
+	
+	# Store which character is in this position
+	active_characters[position] = {
+		"node": char_node,
+		"name": character_name,
+		"expression": expression
+	}
+	
+	# Apply the expression
+	if expression != "":
 		char_node.set_expression(expression)
-		char_node.show_sprite()
+	char_node.show_sprite()
+
+func highlight_speaker(speaker: String):
+	if speaker == "":
+		# No speaker (narrative text) - dim all characters
+		for position in active_characters:
+			var char_data = active_characters[position]
+			dim_character(char_data.node)
+		return
+	
+	# Find which position has the speaking character
+	var speaking_position = null
+	for position in active_characters:
+		var char_data = active_characters[position]
+		if char_data.name == speaker:
+			speaking_position = position
+			break
+	
+	# Highlight speaking character, dim others
+	for position in active_characters:
+		var char_data = active_characters[position]
+		if position == speaking_position:
+			brighten_character(char_data.node)
+		else:
+			dim_character(char_data.node)
+
+func brighten_character(char_node: Node2D):
+	var brightness_tween = create_tween()
+	brightness_tween.tween_property(char_node, "modulate:a", 1.0, 0.1)
+
+func dim_character(char_node: Node2D):
+	var brightness_tween = create_tween()
+	brightness_tween.tween_property(char_node, "modulate:a", dim_brightness, 0.1)
 
 func start_typing():
 	is_typing = true
@@ -109,7 +235,6 @@ func _on_typing_finished():
 	dialogue_text.visible_characters = -1
 
 func _input(event):
-	# Ignore input during fade transitions
 	if is_transitioning:
 		return
 	

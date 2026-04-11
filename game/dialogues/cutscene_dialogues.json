@@ -3,6 +3,7 @@
     {
       "id": "throne_room",
       "background": "res://assets/cutscenes/cutscene_1.png",
+      "ost": "res://UI/sounds/cutscene_sound_1.mp3",
       "lines": [
         { "speaker": "", "text": "The ancient Vampire Queen’s voice was ice-cold over the enchanted mirror." },
         { "speaker": "Queen Charlotte", "text": "Lead the raid on Meadowbrook tonight. The court is starving." },
@@ -46,25 +47,78 @@
           "text": "Look at this soft one… so full of warm blood.",
           "left": "elara_sad",
           "center": null,
-          "right": "lesser_vampire"
+          "right": {"character": "Lesser Vampire 1", "expression": "lesser_vampire"}
         },
         {
           "speaker": "Lesser Vampire 2",
           "text": "She’s mine! I get the first taste!",
           "left": "elara_sad",
+          "center": {"character": "Lesser Vampire 2", "expression": "lesser_vampire"},
+          "right": "lesser_vampire"
+        },
+        {
+          "speaker": "Elara",
+          "text": "Please… I don’t want to die…",
+          "left": {"character": "Elara", "expression": "elara_sad"},
           "center": "lesser_vampire",
           "right": "lesser_vampire"
         },
-        { "speaker": "Lesser Vampire 2", "text": "She’s mine! I get the first taste!" },
-        { "speaker": "Elara", "text": "Please… I don’t want to die…" },
-        { "speaker": "", "text": "Suddenly, a strong voice cuts through the night." },
-        { "speaker": "Lilith", "text": "HALT!" },
-        { "speaker": "", "text": "The lesser vampires froze instantly. Lilith descended gracefully, her goth-lolita dress fluttering in the night wind, crimson ribbons trailing behind her." },
-        { "speaker": "", "text": "She stepped between her minions and the trembling human." },
-        { "speaker": "", "text": "Elara pressed herself against the cold stone, tears streaking her cheeks, already accepting death." },
-        { "speaker": "", "text": "Yet when Lilith approached, there was no violence in her steps — only intent." },
-        { "speaker": "", "text": "Lilith gently tilted Elara’s chin upward with a gloved hand. Their eyes met." },
-        { "speaker": "", "text": "Then Lilith leaned in slowly." }
+         {
+          "speaker": "",
+          "text": "Suddenly, a strong voice cuts through the night.",
+          "left": "elara_sad",
+          "center": "lesser_vampire",
+          "right": "lesser_vampire"
+        },
+        {
+          "speaker": "Lilith",
+          "text": "HALT!",
+          "left": "elara_sad",
+          "center": "lesser_vampire",
+          "right": {"character": "Lilith", "expression": "lilith_unamused"}
+        },
+        {
+          "speaker": "",
+          "text": "The lesser vampires froze instantly. Lilith descended gracefully, her goth-lolita dress fluttering in the night wind, crimson ribbons trailing behind her.",
+          "left": "elara_sad",
+          "center": "lesser_vampire",
+          "right": "lilith_unamused"
+        },
+        {
+          "speaker": "",
+          "text": "She stepped between her minions and the trembling human.",
+          "left": "elara_sad",
+          "center": "lilith_unamused",
+          "right": "lesser_vampire"
+        },
+        {
+          "speaker": "",
+          "text": "Elara pressed herself against the cold stone, tears streaking her cheeks, already accepting death.",
+          "left": "elara_sad",
+          "center": "lilith_default",
+          "right": null
+        },
+        {
+          "speaker": "",
+          "text": "Yet when Lilith approached, there was no violence in her steps — only intent.",
+          "left": "elara_sad",
+          "center": "lilith_happy",
+          "right": null
+        },
+        {
+          "speaker": "",
+          "text": "Lilith gently tilted Elara’s chin upward with a gloved hand. Their eyes met.",
+          "left": "elara_sad",
+          "center": "lilith_happy",
+          "right": null
+        },
+        {
+          "speaker": "",
+          "text": "Then Lilith leaned in slowly.",
+          "left": "elara_sad",
+          "center": "lilith_happy",
+          "right": null
+        }
       ]
     },
     {
