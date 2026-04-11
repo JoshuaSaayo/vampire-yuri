@@ -1,7 +1,7 @@
 {
   "scenes": [
     {
-      "id": "throne_room",
+      "id": "1",
       "background": "res://assets/cutscenes/cutscene_1.png",
       "ost": "res://UI/sounds/cutscene_sound_1.mp3",
       "lines": [
@@ -13,7 +13,7 @@
       ]
     },
     {
-      "id": "raid",
+      "id": "2",
       "background": "res://assets/cutscenes/cutscene_2.png",
       "lines": [
         { "speaker": "", "text": "The night air reeked of smoke and blood. Lesser vampires swarmed the once-peaceful village of Meadowbrook like locusts." },
@@ -23,7 +23,7 @@
       ]
     },
     {
-      "id": "elara_devastation",
+      "id": "3",
       "background": "res://assets/cutscenes/cutscene_3.png",
       "lines": [
         { "speaker": "", "text": "In the chaos, a young woman with flower ribbons in her braided hair stumbled out of her small bakery, eyes wide with terror." },
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "id": "cornered",
+      "id": "4",
       "background": "res://assets/backgrounds/background_1.png",
       "lines": [
         {
@@ -122,7 +122,7 @@
       ]
     },
     {
-      "id": "sensual_bite",
+      "id": "5",
       "background": "res://assets/cutscenes/cutscene_4.png",
       "ost": "res://UI/sounds/main_menu_ost.mp3",
       "lines": [
@@ -137,7 +137,7 @@
       ]
     },
     {
-      "id": "faint",
+      "id": "6",
       "background": "res://assets/cutscenes/blackscreen.png",
       "lines": [
         { "speaker": "", "text": "Elara’s vision blurred. Her body went limp in Lilith’s arms as consciousness slipped away." }

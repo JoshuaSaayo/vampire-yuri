@@ -57,6 +57,8 @@ func show_current_scene():
 		get_tree().change_scene_to_file("res://interactive_maps/bedroom_interactive.tscn")
 		return
 	
+	clear_all_characters()
+	
 	var scene = intro_data.scenes[scene_idx]
 	
 	# Check if we need to change music (only if it's a different track)

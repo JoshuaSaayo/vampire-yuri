@@ -196,6 +196,3 @@ stream = ExtResource("7_dte3n")
 autoplay = true
 
 [connection signal="pressed" from="StartBtn" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="SettingsBtn" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Credits" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Exit" to="." method="_on_button_pressed"]
