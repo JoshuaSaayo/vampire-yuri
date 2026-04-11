@@ -1,4 +1,15 @@
-[gd_scene format=3 uid="uid://6dpvd5cs8a5y"]
+[gd_scene load_steps=7 format=3 uid="uid://6dpvd5cs8a5y"]
+
+[ext_resource type="Texture2D" uid="uid://b70ddf4q7ws8l" path="res://assets/interactive_bg/interactive_background.jpg" id="1_djmdq"]
+[ext_resource type="Script" uid="uid://cy2u1pjvvq3gm" path="res://interactive_maps/bedroom_interactive.gd" id="1_in3xp"]
+[ext_resource type="Texture2D" uid="uid://cooq15dc2xmx1" path="res://UI/assets/dialogue box.png" id="3_q30bh"]
+[ext_resource type="FontFile" uid="uid://c56hxw3q7m0jq" path="res://UI/fonts/CrimsonText-Regular.ttf" id="4_xquf0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djmdq"]
+size = Vector2(146, 119)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ny8mw"]
+texture = ExtResource("3_q30bh")
 
 [node name="bedroom_interactive" type="Control"]
 layout_mode = 3
@@ -7,3 +18,69 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_in3xp")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1291.0
+offset_bottom = 741.0
+texture = ExtResource("1_djmdq")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="DiaryArea" type="Area2D" parent="InteractiveAreas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/DiaryArea"]
+position = Vector2(132, 462)
+shape = SubResource("RectangleShape2D_djmdq")
+
+[node name="WardrobeArea" type="Area2D" parent="InteractiveAreas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/WardrobeArea"]
+position = Vector2(756, 314)
+shape = SubResource("RectangleShape2D_djmdq")
+
+[node name="DoorArea" type="Area2D" parent="InteractiveAreas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/DoorArea"]
+position = Vector2(1043, 329)
+shape = SubResource("RectangleShape2D_djmdq")
+
+[node name="DialogueBox" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -192.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ny8mw")
+
+[node name="SpeakerName" type="Label" parent="DialogueBox"]
+layout_mode = 1
+offset_left = 61.0
+offset_top = 28.0
+offset_right = 130.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("4_xquf0")
+theme_override_font_sizes/font_size = 30
+text = "lorem"
+
+[node name="DialogueText" type="RichTextLabel" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 55.0
+offset_top = -115.0
+offset_right = -124.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("4_xquf0")
+theme_override_font_sizes/normal_font_size = 25
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]

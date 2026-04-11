@@ -1,13 +1,34 @@
-[gd_scene load_steps=12 format=3 uid="uid://6t8ccom52iy0"]
+[gd_scene load_steps=30 format=3 uid="uid://6t8ccom52iy0"]
 
 [ext_resource type="Script" uid="uid://dqn1burabunfd" path="res://main_scenes/cutscenes.gd" id="1_g3r3r"]
 [ext_resource type="Texture2D" uid="uid://yaeeifgdi2sc" path="res://assets/cutscenes/cutscene_1.png" id="1_pltv3"]
 [ext_resource type="Texture2D" uid="uid://cooq15dc2xmx1" path="res://UI/assets/dialogue box.png" id="3_rt255"]
 [ext_resource type="FontFile" uid="uid://c56hxw3q7m0jq" path="res://UI/fonts/CrimsonText-Regular.ttf" id="4_jai1j"]
 [ext_resource type="PackedScene" uid="uid://d231j1fagav8b" path="res://main_scenes/character_sprite.tscn" id="5_jai1j"]
+[ext_resource type="FontFile" uid="uid://b0pktas5ei7r6" path="res://UI/fonts/Cinzel-Bold.ttf" id="6_ilbjc"]
+[ext_resource type="Texture2D" uid="uid://lx542obkab8k" path="res://UI/assets/pause button.png" id="7_tr6ym"]
+[ext_resource type="Texture2D" uid="uid://5q7u21vhh3uy" path="res://UI/assets/pause button hover.png" id="8_bsxc4"]
+[ext_resource type="Texture2D" uid="uid://qismjhcq5tk4" path="res://UI/assets/pause box.png" id="9_j2sw2"]
+[ext_resource type="Texture2D" uid="uid://b5i3pf8w4fy0m" path="res://UI/assets/button.png" id="10_cel7j"]
+[ext_resource type="Texture2D" uid="uid://c3qo5ocntnem1" path="res://UI/assets/button hover.png" id="11_m6jpr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4esm6"]
 texture = ExtResource("3_rt255")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pxjrb"]
+texture = ExtResource("10_cel7j")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j2mdw"]
+texture = ExtResource("11_m6jpr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ddh0q"]
+texture = ExtResource("11_m6jpr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wr63o"]
+texture = ExtResource("10_cel7j")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rprrl"]
+texture = ExtResource("10_cel7j")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3r3r"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -23,6 +44,28 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4esm6"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j2sw2"]
+texture = ExtResource("7_tr6ym")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cel7j"]
+texture = ExtResource("8_bsxc4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m6jpr"]
+texture = ExtResource("8_bsxc4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t2wnu"]
+texture = ExtResource("7_tr6ym")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_va0re"]
+texture = ExtResource("7_tr6ym")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nr0kv"]
+texture = ExtResource("9_j2sw2")
+
+[sub_resource type="LabelSettings" id="LabelSettings_tvpc4"]
+font = ExtResource("6_ilbjc")
+font_size = 50
 
 [node name="cutscenes" type="Control"]
 layout_mode = 3
@@ -80,6 +123,59 @@ theme_override_fonts/normal_font = ExtResource("4_jai1j")
 theme_override_font_sizes/normal_font_size = 25
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
 
+[node name="SkipBtn" type="Button" parent="DialogueLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 727.99994
+offset_top = -321.0
+offset_right = 847.99994
+offset_bottom = -271.0
+grow_vertical = 2
+scale = Vector2(1.47649, 1.47649)
+theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_jai1j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_pxjrb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_j2mdw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ddh0q")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_wr63o")
+theme_override_styles/focus = SubResource("StyleBoxTexture_rprrl")
+text = "Skip"
+
+[node name="HideBtn" type="Button" parent="DialogueLayer"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -278.0
+offset_top = -326.0
+offset_right = -158.0
+offset_bottom = -276.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(1.47649, 1.47649)
+theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_jai1j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_pxjrb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_j2mdw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ddh0q")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_wr63o")
+theme_override_styles/focus = SubResource("StyleBoxTexture_rprrl")
+text = "Hide"
+
 [node name="NextButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -113,3 +209,194 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="PauseBtn" type="Button" parent="."]
+layout_mode = 1
+offset_left = 23.0
+offset_top = 27.0
+offset_right = 123.0
+offset_bottom = 127.0
+theme_override_fonts/font = ExtResource("6_ilbjc")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_j2sw2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cel7j")
+theme_override_styles/hover = SubResource("StyleBoxTexture_m6jpr")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_t2wnu")
+theme_override_styles/focus = SubResource("StyleBoxTexture_va0re")
+text = "X"
+
+[node name="PauseUI" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PausePanel" type="Panel" parent="PauseUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -112.5
+offset_right = 300.0
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_nr0kv")
+
+[node name="Label" type="Label" parent="PauseUI/PausePanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = 40.5
+offset_right = 61.0
+offset_bottom = 108.5
+grow_horizontal = 2
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_tvpc4")
+
+[node name="ResumeBtn" type="Button" parent="PauseUI/PausePanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 67.00001
+offset_top = 13.0
+offset_right = 187.0
+offset_bottom = 63.0
+grow_vertical = 2
+scale = Vector2(1.47649, 1.47649)
+theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_jai1j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_pxjrb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_j2mdw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ddh0q")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_wr63o")
+theme_override_styles/focus = SubResource("StyleBoxTexture_rprrl")
+text = "Resume"
+
+[node name="MainMenuBtn" type="Button" parent="PauseUI/PausePanel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = 13.0
+offset_right = -125.0
+offset_bottom = 63.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(1.47649, 1.47649)
+theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_jai1j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_pxjrb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_j2mdw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ddh0q")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_wr63o")
+theme_override_styles/focus = SubResource("StyleBoxTexture_rprrl")
+text = "No"
+
+[node name="ReturnPanel" type="Panel" parent="PauseUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -112.5
+offset_right = 300.0
+offset_bottom = 112.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_nr0kv")
+
+[node name="Label" type="Label" parent="PauseUI/ReturnPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -157.0
+offset_top = 35.5
+offset_right = 157.0
+offset_bottom = 103.5
+grow_horizontal = 2
+text = "main menu?"
+label_settings = SubResource("LabelSettings_tvpc4")
+
+[node name="YesBtn" type="Button" parent="PauseUI/ReturnPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 67.00001
+offset_top = 13.0
+offset_right = 187.0
+offset_bottom = 63.0
+grow_vertical = 2
+scale = Vector2(1.47649, 1.47649)
+theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_jai1j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_pxjrb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_j2mdw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ddh0q")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_wr63o")
+theme_override_styles/focus = SubResource("StyleBoxTexture_rprrl")
+text = "Yes"
+
+[node name="NoBtn" type="Button" parent="PauseUI/ReturnPanel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = 13.0
+offset_right = -125.0
+offset_bottom = 63.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(1.47649, 1.47649)
+theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_jai1j")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_pxjrb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_j2mdw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ddh0q")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_wr63o")
+theme_override_styles/focus = SubResource("StyleBoxTexture_rprrl")
+text = "No"

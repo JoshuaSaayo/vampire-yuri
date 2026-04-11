@@ -1,0 +1,33 @@
+{
+  "intro": [
+    { "text": "Elara's head throbbed as she opened her eyes..." },
+    { "text": "Where... where am I? This looks like someone's bedroom." },
+    { "text": "The last thing I remember was the vampires cornering me..." },
+    { "text": "How did I escape? And who brought me here?" },
+    { "text": "I should look around for clues." }
+  ],
+  "diary": {
+    "dialogues": [
+      { "text": "Elara opens the worn leather diary." },
+      { "text": "\"Day 47: I saw her again today. The raven-haired beauty with sad eyes.\"" },
+      { "text": "\"She doesn't know I watch her from the shadows. I must protect her.\"" },
+      { "text": "Elara's hands tremble. Someone has been watching her..." }
+    ]
+  },
+  "wardrobe": {
+    "dialogues": [
+      { "text": "Elara opens the creaking wardrobe." },
+      { "text": "Inside hangs Victorian-style dresses, all in shades of black and deep crimson." },
+      { "text": "A faint scent of roses and... blood?" },
+      { "text": "These clothes don't belong to any human." }
+    ]
+  },
+  "door": {
+    "dialogues": [
+      { "text": "Elara approaches the heavy oak door." },
+      { "text": "It's locked from the outside. She's trapped." },
+      { "text": "A note slides under the door: 'Stay here. You're safe. I'll return at dusk.'" },
+      { "text": "The handwriting is elegant, old-fashioned..." }
+    ]
+  }
+}
