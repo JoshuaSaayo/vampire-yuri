@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c54j3ctgpg0ol"]
+[gd_scene load_steps=4 format=3 uid="uid://c54j3ctgpg0ol"]
 
 [ext_resource type="FontFile" uid="uid://b0pktas5ei7r6" path="res://UI/fonts/Cinzel-Bold.ttf" id="1_5p6jd"]
+[ext_resource type="Script" uid="uid://dasqj8bgg3k0j" path="res://UI/end_transition.gd" id="1_2616d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2616d"]
 font = ExtResource("1_5p6jd")
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_2616d")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -35,3 +37,7 @@ offset_bottom = 34.0
 grow_vertical = 2
 text = "TO BE CONTINUED"
 label_settings = SubResource("LabelSettings_2616d")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
