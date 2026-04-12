@@ -13,7 +13,7 @@
       "affection": 2,
       "repeatable": false,
       "dialogues": [
-        { "speaker": "Elara", "text": "lorem ipsunm" },
+        { "speaker": "Elara", "text": "Hmm? There is a diary book? I am curious what's inside... Maybe I'll take a peek." },
       ]
     },
 
@@ -21,7 +21,11 @@
       "affection": 1,
       "repeatable": true,
       "dialogues": [
-        { "speaker": "Elara", "text": "lorem ipsunm" },
+        { "speaker": "Elara", "text": "These are… so beautiful. I’ve never seen dresses like this before. They look like something from a dark fairy tale…" },
+        { "speaker": "", "text": "She reached out and gently touched the fabric. It felt incredibly soft despite its dramatic appearance." },
+        { "speaker": "", "text": "For a brief moment, she forgot the danger she was in." },
+        { "speaker": "Elara", "text": "(talking to herself, flustered) I wonder if this would even fit me… Wait—no! What am I thinking? There’s no time for this. I need to find a way out!" },
+        { "speaker": "", "text": "Still, her fingers lingered on one particularly elegant black-and-crimson dress with delicate lace trims and soft velvet accents." }
       ]
     },
 
@@ -29,7 +33,7 @@
       "affection": 0,
       "repeatable": true,
       "dialogues": [
-        { "speaker": "Elara", "text": "lorem ipsunm" }
+        { "speaker": "Elara", "text": "The door is unlocked. The one who captured me didn't bother to keep me here... I wonder why?" }
       ]
   }
 }
