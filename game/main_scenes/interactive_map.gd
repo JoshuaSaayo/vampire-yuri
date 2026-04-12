@@ -8,6 +8,7 @@ extends Control
 @onready var choice_container: VBoxContainer = $DialogueBox/ChoiceContainer
 
 @onready var interactive_areas = $InteractiveAreas.get_children()
+@export var button_theme: Theme
 
 var bedroom_data: Dictionary = {}
 var dialogue_queue: Array = []
@@ -161,6 +162,7 @@ func show_choices(choices: Array):
 	for choice in choices:
 		var button = Button.new()
 		button.text = choice.text
+		button.theme = button_theme
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		button.pressed.connect(_on_choice_selected.bind(choice.next))
 		choice_container.add_child(button)
@@ -235,3 +237,13 @@ func _unhandled_input(event):
 	if is_hidden and event is InputEventMouseButton and event.pressed:
 		is_hidden = false
 		dialogue_box.visible = true
+
+
+func _on_pause_btn_pressed() -> void:
+	if PauseManager.is_paused:
+		return
+	
+	PauseManager.toggle_pause()
+	
+	var pause_scene = load("res://UI/pause_menu.tscn").instantiate()
+	add_child(pause_scene)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://d2kmi6wsycxkx"]
+[gd_scene load_steps=29 format=3 uid="uid://d2kmi6wsycxkx"]
 
 [ext_resource type="Script" uid="uid://cy2u1pjvvq3gm" path="res://main_scenes/interactive_map.gd" id="1_0ugao"]
+[ext_resource type="Theme" uid="uid://qovicfi2fibs" path="res://UI/button_theme.tres" id="2_lfluy"]
 [ext_resource type="Texture2D" uid="uid://b70ddf4q7ws8l" path="res://assets/interactive_bg/interactive_background.jpg" id="2_qk8mf"]
 [ext_resource type="Texture2D" uid="uid://cooq15dc2xmx1" path="res://UI/assets/dialogue box.png" id="2_tw5dm"]
 [ext_resource type="FontFile" uid="uid://c56hxw3q7m0jq" path="res://UI/fonts/CrimsonText-Regular.ttf" id="3_qk8mf"]
@@ -71,6 +72,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_0ugao")
+button_theme = ExtResource("2_lfluy")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
@@ -148,7 +150,6 @@ offset_top = 27.04071
 offset_right = 986.0
 offset_bottom = 54.04071
 grow_vertical = 2
-scale = Vector2(1.47649, 1.47649)
 theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
@@ -156,7 +157,7 @@ theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_qk8mf")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_vri5k")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_acqrm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6nbi2")
@@ -177,7 +178,6 @@ offset_right = -222.92773
 offset_bottom = 54.0
 grow_horizontal = 0
 grow_vertical = 2
-scale = Vector2(1.47649, 1.47649)
 theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
@@ -185,7 +185,7 @@ theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_qk8mf")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_vri5k")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_acqrm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6nbi2")
@@ -258,12 +258,12 @@ offset_right = 1088.0
 offset_bottom = -25.0
 mouse_filter = 0
 
-[node name="PauseBtn" type="Button" parent="DialogueBox"]
+[node name="PauseBtn" type="Button" parent="."]
 layout_mode = 0
 offset_left = 23.0
-offset_top = -501.0
+offset_top = 27.0
 offset_right = 123.0
-offset_bottom = -401.0
+offset_bottom = 127.0
 theme_override_fonts/font = ExtResource("6_bb4a0")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_60t6y")
@@ -276,3 +276,7 @@ text = "X"
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_qk8mf")
 autoplay = true
+
+[connection signal="pressed" from="DialogueBox/SkipBtn" to="." method="_on_skip_btn_pressed"]
+[connection signal="pressed" from="DialogueBox/HideBtn" to="." method="_on_hide_btn_pressed"]
+[connection signal="pressed" from="PauseBtn" to="." method="_on_pause_btn_pressed"]

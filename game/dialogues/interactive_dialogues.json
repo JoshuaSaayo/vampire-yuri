@@ -11,7 +11,7 @@
   ],
   "diary": {
       "affection": 0,
-      "repeatable": false,
+      "repeatable": true,
       "dialogues": [
         {
           "speaker": "Elara",
@@ -25,7 +25,7 @@
     },
     "diary_open": {
         "affection": 0,
-        "repeatable": false,
+        "repeatable": true,
         "dialogues": [
           { "speaker": "", "text": "Elara carefully opened the diary." },
           { "speaker": "", "text": "The handwriting was elegant and flowing, with occasional small doodles of flowers and desserts in the margins. As she read, her eyes widened little by little." },
@@ -78,11 +78,12 @@
       ]
     },
     "take_dress": {
-        "affection": 2,
+        "affection": 1,
         "repeatable": false,
         "dialogues": [
-          { "speaker": "Elara", "text": "lorem ipsum" },
-          { "speaker": "Elara", "text": "lorem ipsum the dress is good" }
+          { "speaker": "", "text": "She turned toward the tall mirror and stared at her reflection, cheeks turning pink." },
+          { "speaker": "Elara", "text": "(softly, amazed) This is… very beautiful. I look so different… almost like I belong here." },
+          { "speaker": "Affection increased +1", "text": "" }
         ]
       },
 
