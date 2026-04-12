@@ -252,17 +252,18 @@ text = "No"
 
 [node name="ChoiceContainer" type="VBoxContainer" parent="DialogueBox"]
 layout_mode = 0
-offset_left = 1190.0
-offset_top = -71.0
-offset_right = 1230.0
-offset_bottom = -31.0
+offset_left = 1048.0
+offset_top = -65.0
+offset_right = 1088.0
+offset_bottom = -25.0
+mouse_filter = 0
 
-[node name="PauseBtn" type="Button" parent="."]
+[node name="PauseBtn" type="Button" parent="DialogueBox"]
 layout_mode = 0
 offset_left = 23.0
-offset_top = 27.0
+offset_top = -501.0
 offset_right = 123.0
-offset_bottom = 127.0
+offset_bottom = -401.0
 theme_override_fonts/font = ExtResource("6_bb4a0")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_60t6y")

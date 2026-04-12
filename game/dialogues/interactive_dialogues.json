@@ -10,22 +10,36 @@
     { "speaker": "", "text": "Heart pounding, she sat up. Escape was her only thought. She scanned the dimly lit chamber." }
   ],
   "diary": {
-      "affection": 2,
+      "affection": 0,
       "repeatable": false,
       "dialogues": [
-        { "speaker": "Elara", "text": "Hmm? There is a diary book? I am curious what's inside... Maybe I'll take a peek." },
+        {
+          "speaker": "Elara",
+          "text": "Hmm? There is a diary book? I am curious what's inside... Maybe I'll take a peek.",
+          "choices": [
+            { "text": "Open the diary", "next": "diary_open" },
+            { "text": "Close the book", "next": "diary_close" }
+          ]
+        }
       ]
     },
 
     "wardrobe": {
-      "affection": 1,
+      "affection": 0,
       "repeatable": true,
       "dialogues": [
         { "speaker": "Elara", "text": "These are… so beautiful. I’ve never seen dresses like this before. They look like something from a dark fairy tale…" },
         { "speaker": "", "text": "She reached out and gently touched the fabric. It felt incredibly soft despite its dramatic appearance." },
         { "speaker": "", "text": "For a brief moment, she forgot the danger she was in." },
         { "speaker": "Elara", "text": "(talking to herself, flustered) I wonder if this would even fit me… Wait—no! What am I thinking? There’s no time for this. I need to find a way out!" },
-        { "speaker": "", "text": "Still, her fingers lingered on one particularly elegant black-and-crimson dress with delicate lace trims and soft velvet accents." }
+        {
+          "speaker": "",
+          "text": "Still, her fingers lingered on one particularly elegant black-and-crimson dress with delicate lace trims and soft velvet accents.",
+          "choices": [
+            { "text": "Open the diary", "next": "diary_open" },
+            { "text": "Close the book", "next": "diary_close" }
+          ]
+        }
       ]
     },
 

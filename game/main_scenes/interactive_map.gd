@@ -5,11 +5,10 @@ extends Control
 @onready var dialogue_box: Panel = $DialogueBox
 @onready var speaker_name: Label = $DialogueBox/SpeakerName
 @onready var dialogue_text: RichTextLabel = $DialogueBox/DialogueText
+@onready var choice_container: VBoxContainer = $DialogueBox/ChoiceContainer
 
-# Interactive areas container
 @onready var interactive_areas = $InteractiveAreas.get_children()
 
-# Dialogue system
 var bedroom_data: Dictionary = {}
 var dialogue_queue: Array = []
 var current_full_text: String = ""
@@ -18,6 +17,7 @@ var is_showing_dialogue: bool = false
 var is_typing: bool = false
 var is_hidden: bool = false
 var intro_dialogue_shown: bool = false
+var waiting_for_choice: bool = false
 
 @export var typing_speed: float = 0.03
 
@@ -25,10 +25,11 @@ var tween: Tween
 
 func _ready():
 	dialogue_box.visible = false
+	choice_container.visible = false
+	print("=== INTERACTIVE MAP READY ===")
+	
 	load_bedroom_dialogue()
 	setup_interactive_areas()
-	
-	# Show intro dialogue automatically when scene starts
 	show_intro_dialogue()
 
 func load_bedroom_dialogue():
@@ -36,26 +37,20 @@ func load_bedroom_dialogue():
 	if not file:
 		push_error("Bedroom dialogue JSON not found")
 		return
-	
 	var json = JSON.new()
 	if json.parse(file.get_as_text()) == OK:
 		bedroom_data = json.data
-		print("✅ Bedroom dialogue JSON loaded successfully!")
+		print("✅ JSON loaded successfully!")
 	else:
-		push_error("JSON Parse Error: " + json.get_error_message())
+		push_error("JSON Parse Error")
 
 func setup_interactive_areas():
 	for area in interactive_areas:
-		if not area is Area2D:
-			continue
-			
+		if not area is Area2D: continue
 		area.mouse_entered.connect(func(): Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND))
 		area.mouse_exited.connect(func(): Input.set_default_cursor_shape(Input.CURSOR_ARROW))
-		
-		# Connect input event with area reference
 		area.input_event.connect(_on_area_clicked.bind(area))
-		
-	# Disable interaction until intro is finished
+	
 	set_interactive_enabled(false)
 
 func set_interactive_enabled(enabled: bool):
@@ -66,7 +61,7 @@ func set_interactive_enabled(enabled: bool):
 
 # ====================== AREA CLICKED ======================
 func _on_area_clicked(_viewport, event, _shape_idx, area):
-	if is_showing_dialogue or is_hidden:
+	if is_showing_dialogue or waiting_for_choice or is_hidden:
 		return
 	
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -74,13 +69,12 @@ func _on_area_clicked(_viewport, event, _shape_idx, area):
 		if id != "":
 			show_item_dialogue(id)
 
-# ====================== DIALOGUE SYSTEM ======================
+# ====================== DIALOGUE ======================
 func show_intro_dialogue():
 	var intro_lines = bedroom_data.get("intro", [])
 	if intro_lines.is_empty():
 		set_interactive_enabled(true)
 		return
-	
 	dialogue_queue = intro_lines.duplicate()
 	is_showing_dialogue = true
 	dialogue_box.visible = true
@@ -89,7 +83,6 @@ func show_intro_dialogue():
 func show_item_dialogue(item_id: String):
 	var item_data = bedroom_data.get(item_id, {})
 	var dialogues = item_data.get("dialogues", [])
-	
 	if dialogues.is_empty():
 		return
 	
@@ -101,11 +94,7 @@ func show_item_dialogue(item_id: String):
 
 func show_next_dialogue():
 	if dialogue_queue.is_empty():
-		dialogue_box.visible = false
-		is_showing_dialogue = false
-		if not intro_dialogue_shown:
-			intro_dialogue_shown = true
-			set_interactive_enabled(true)
+		end_dialogue()
 		return
 	
 	var line = dialogue_queue.pop_front()
@@ -117,7 +106,16 @@ func show_next_dialogue():
 	dialogue_text.text = ""
 	dialogue_text.visible_characters = 0
 	
+	clear_choices()
+	waiting_for_choice = false
+	
 	start_typing()
+	
+	# Show choices only after typing is done
+	if line.has("choices") and line.choices.size() > 0:
+		await get_tree().create_timer(current_full_text.length() * typing_speed + 0.5).timeout
+		if dialogue_queue.size() > 0:   # safety
+			show_choices(line.choices)
 
 func start_typing():
 	is_typing = true
@@ -143,33 +141,66 @@ func skip_typing():
 	dialogue_text.visible_characters = -1
 	is_typing = false
 
+# ====================== CHOICES ======================
+func show_choices(choices: Array):
+	waiting_for_choice = true
+	choice_container.visible = true
+	
+	for choice in choices:
+		var button = Button.new()
+		button.text = choice.text
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		button.pressed.connect(_on_choice_selected.bind(choice.next))
+		choice_container.add_child(button)
+
+func _on_choice_selected(next_key: String):
+	waiting_for_choice = false
+	clear_choices()
+	choice_container.visible = false
+	
+	if bedroom_data.has(next_key):
+		dialogue_queue = bedroom_data[next_key].get("dialogues", []).duplicate()
+		show_next_dialogue()
+	else:
+		end_dialogue()
+
+func clear_choices():
+	for child in choice_container.get_children():
+		child.queue_free()
+
+func end_dialogue():
+	dialogue_box.visible = false
+	choice_container.visible = false
+	is_showing_dialogue = false
+	is_typing = false
+	waiting_for_choice = false
+	
+	if not intro_dialogue_shown:
+		intro_dialogue_shown = true
+		set_interactive_enabled(true)
+
 # ====================== INPUT ======================
 func _input(event):
-	if not is_showing_dialogue:
+	if is_hidden or waiting_for_choice:
 		return
 	
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if is_typing:
-			skip_typing()
-		else:
-			show_next_dialogue()
+		if is_showing_dialogue:
+			if is_typing:
+				skip_typing()
+			else:
+				show_next_dialogue()
 
 # ====================== BUTTONS ======================
-func _on_skip_btn_pressed() -> void:
-	if is_typing:
-		skip_typing()
+func _on_skip_btn_pressed():
 	dialogue_queue.clear()
-	dialogue_box.visible = false
-	is_showing_dialogue = false
-	is_typing = false
-	intro_dialogue_shown = true
-	set_interactive_enabled(true)
+	clear_choices()
+	end_dialogue()
 
-func _on_hide_btn_pressed() -> void:
+func _on_hide_btn_pressed():
 	is_hidden = not is_hidden
 	dialogue_box.visible = not is_hidden
 
-# Optional: Click anywhere to show dialogue again when hidden
 func _unhandled_input(event):
 	if is_hidden and event is InputEventMouseButton and event.pressed:
 		is_hidden = false
