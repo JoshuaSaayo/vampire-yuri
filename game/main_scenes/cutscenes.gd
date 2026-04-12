@@ -50,7 +50,7 @@ func load_dialogue_json():
 		push_error("JSON file not found")
 		return
 	
-	var json = JSON.new()
+	var json = JSON.new() 
 	if json.parse(file.get_as_text()) == OK:
 		intro_data = json.data
 	else:
@@ -58,7 +58,7 @@ func load_dialogue_json():
 
 func show_current_scene():
 	if scene_idx >= intro_data.scenes.size():
-		get_tree().change_scene_to_file("res://main_scenes/interactive_map.tscn")
+		await FadeTransition.fade_to_scene("res://main_scenes/interactive_map.tscn")
 		return
 	
 	clear_all_characters()
@@ -261,13 +261,15 @@ func _input(event):
 			dialogue_text.visible_characters = -1
 			is_typing = false
 		else:
-			line_idx += 1
+			var current_scene = intro_data.scenes[scene_idx]
 			
-			if line_idx >= intro_data.scenes[scene_idx].lines.size():
+			# Check BEFORE incrementing
+			if line_idx + 1 >= current_scene.lines.size():
 				scene_idx += 1
 				line_idx = 0
 				show_current_scene()
 			else:
+				line_idx += 1
 				show_current_line()
 
 

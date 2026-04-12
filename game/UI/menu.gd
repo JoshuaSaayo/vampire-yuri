@@ -14,7 +14,7 @@ func _ready() -> void:
 	_set_ui_visible(true, [start_btn, settings_btn, credits_btn, exit_btn, logo])
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://main_scenes/cutscenes.tscn")
+	await FadeTransition.fade_to_scene("res://main_scenes/cutscenes.tscn")
 
 func _on_exit_btn_pressed() -> void:
 	exit.visible = true

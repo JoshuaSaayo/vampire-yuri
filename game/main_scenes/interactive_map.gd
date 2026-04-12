@@ -217,7 +217,7 @@ func end_dialogue():
 	waiting_for_choice = false
 	
 	if current_full_text == "[DEMO ENDS HERE]":
-		get_tree().change_scene_to_file("res://UI/end_transition.tscn")
+		await FadeTransition.fade_to_scene("res://UI/end_transition.tscn")
 		return
 		
 	if not intro_dialogue_shown:
