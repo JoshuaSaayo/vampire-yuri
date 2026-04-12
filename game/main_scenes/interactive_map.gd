@@ -237,10 +237,10 @@ func _input(event):
 				show_next_dialogue()
 
 # ====================== BUTTONS ======================
-func _on_skip_btn_pressed():
-	dialogue_queue.clear()
-	clear_choices()
-	end_dialogue()
+#func _on_skip_btn_pressed():
+#	dialogue_queue.clear()
+#	clear_choices()
+#	end_dialogue()
 
 func _on_hide_btn_pressed():
 	is_hidden = not is_hidden

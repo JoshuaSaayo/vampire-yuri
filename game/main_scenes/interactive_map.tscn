@@ -173,31 +173,6 @@ theme_override_fonts/normal_font = ExtResource("3_qk8mf")
 theme_override_font_sizes/normal_font_size = 25
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
 
-[node name="SkipBtn" type="Button" parent="DialogueBox"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 951.0
-offset_top = 27.04071
-offset_right = 986.0
-offset_bottom = 54.04071
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_qk8mf")
-theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_vri5k")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_acqrm")
-theme_override_styles/hover = SubResource("StyleBoxFlat_6nbi2")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_w88sa")
-theme_override_styles/focus = SubResource("StyleBoxFlat_7tjon")
-text = "Skip"
-
 [node name="HideBtn" type="Button" parent="DialogueBox"]
 layout_mode = 1
 anchors_preset = 6
@@ -205,10 +180,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -260.92773
-offset_top = 27.0
-offset_right = -222.92773
-offset_bottom = 54.0
+offset_left = -270.0
+offset_top = -56.0
+offset_right = -223.0
+offset_bottom = -23.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
@@ -310,6 +285,5 @@ text = "X"
 stream = ExtResource("10_qk8mf")
 autoplay = true
 
-[connection signal="pressed" from="DialogueBox/SkipBtn" to="." method="_on_skip_btn_pressed"]
 [connection signal="pressed" from="DialogueBox/HideBtn" to="." method="_on_hide_btn_pressed"]
 [connection signal="pressed" from="PauseBtn" to="." method="_on_pause_btn_pressed"]

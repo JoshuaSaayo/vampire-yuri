@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Vampire Yuri"
+config/name="Crimson Fate"
 run/main_scene="uid://bfeuis2hv6tkt"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://tbfa7cxqn0tw"
 
 [autoload]
 
@@ -25,3 +25,11 @@ FadeTransition="*res://autoload/fade_transition.tscn"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
