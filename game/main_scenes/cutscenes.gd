@@ -58,7 +58,7 @@ func load_dialogue_json():
 
 func show_current_scene():
 	if scene_idx >= intro_data.scenes.size():
-		get_tree().change_scene_to_file("res://interactive_maps/bedroom_interactive.tscn")
+		get_tree().change_scene_to_file("res://main_scenes/interactive_map.tscn")
 		return
 	
 	clear_all_characters()

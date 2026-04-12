@@ -22,44 +22,45 @@
           ]
         }
       ]
+  },
+  "diary_open": {
+      "affection": 0,
+      "repeatable": true,
+      "dialogues": [
+        { "speaker": "", "text": "Elara carefully opened the diary." },
+        { "speaker": "", "text": "The handwriting was elegant and flowing, with occasional small doodles of flowers and desserts in the margins. As she read, her eyes widened little by little." },
+        { "speaker": "Elara", "text": "(whispering to herself) So… her name is Lilith Voss. Born in the Crimson Palace… She doesn’t remember her real mother..." },
+        { "speaker": "Elara", "text": "Queen Charlotte adopted her and raised her as a commander of the lesser vampires..." },
+        { "speaker": "", "text": "She flipped through more pages, heart beating faster." },
+        { "speaker": "Elara", "text": "She likes strawberry cakes and warm pumpkin pie…? That’s… surprisingly normal for a vampire like her." },
+        { "speaker": "Elara", "text": "I thought she only drank blood and ate human flesh or something." },
+        { "speaker": "", "text": "Elara suddenly froze as she reached a recent entry." },
+        { "speaker": "Elara", "text": "(eyes widening) Wait… these cakes? The pumpkin pie with cinnamon? I made those! This is the same order my mother’s bakery received every full moon…”" },
+        { "speaker": "", "text": "A quiet, almost fond smile tugged at her lips despite everything." },
+        { "speaker": "Elara", "text": "(softly) So that mysterious customer in the black lace dress who always came at night… was her? She’s been eating my baking this whole time…" },
+        {
+          "speaker": "Elara",
+          "text": "She hesitated for a moment, then picked up the quill that lay beside the diary.",
+          "choices": [
+            { "text": "Write a short message in the diary", "next": "diary_write" },
+            { "text": "Close the diary without writing anything", "next": "return" }
+          ]
+        }
+      ]
     },
-    "diary_open": {
-        "affection": 0,
-        "repeatable": true,
-        "dialogues": [
-          { "speaker": "", "text": "Elara carefully opened the diary." },
-          { "speaker": "", "text": "The handwriting was elegant and flowing, with occasional small doodles of flowers and desserts in the margins. As she read, her eyes widened little by little." },
-          { "speaker": "Elara", "text": "(whispering to herself) So… her name is Lilith Voss. Born in the Crimson Palace… She doesn’t remember her real mother..." },
-          { "speaker": "Elara", "text": "Queen Charlotte adopted her and raised her as a commander of the lesser vampires..." },
-          { "speaker": "", "text": "She flipped through more pages, heart beating faster." },
-          { "speaker": "Elara", "text": "She likes strawberry cakes and warm pumpkin pie…? That’s… surprisingly normal for a vampire like her." },
-          { "speaker": "Elara", "text": "I thought she only drank blood and ate human flesh or something." },
-          { "speaker": "", "text": "Elara suddenly froze as she reached a recent entry." },
-          { "speaker": "Elara", "text": "(eyes widening) Wait… these cakes? The pumpkin pie with cinnamon? I made those! This is the same order my mother’s bakery received every full moon…”" },
-          { "speaker": "", "text": "A quiet, almost fond smile tugged at her lips despite everything." },
-          { "speaker": "Elara", "text": "(softly) So that mysterious customer in the black lace dress who always came at night… was her? She’s been eating my baking this whole time…" },
-          {
-            "speaker": "Elara",
-            "text": "She hesitated for a moment, then picked up the quill that lay beside the diary.",
-            "choices": [
-              { "text": "Write a short message in the diary", "next": "diary_write" },
-              { "text": "Close the diary without writing anything", "next": "return" }
-            ]
-          }
-        ]
-      },
-    "diary_write": {
-        "affection": 1,
-        "repeatable": false,
-        "dialogues": [
-          { "speaker": "Elara", "text": "(murmuring while writing) I am glad you enjoyed the bread and cakes I made for everyone…" },
-          { "speaker": "", "text": "She added a small doodle of a strawberry next to her words, then gently closed the book." },
-          { "speaker": "", "text": "A strange warmth bloomed in her chest. Even after everything that happened to Meadowbrook…" },
-          { "speaker": "", "text": "knowing Lilith had secretly enjoyed her baking made the vampire feel a little more human." }
-        ]
-      },
-
-    "wardrobe": {
+  "diary_write": 
+    {
+      "affection": 1,
+      "repeatable": false,
+      "dialogues": [
+        { "speaker": "Elara", "text": "(murmuring while writing) I am glad you enjoyed the bread and cakes I made for everyone…" },
+        { "speaker": "", "text": "She added a small doodle of a strawberry next to her words, then gently closed the book." },
+        { "speaker": "", "text": "A strange warmth bloomed in her chest. Even after everything that happened to Meadowbrook…" },
+        { "speaker": "", "text": "knowing Lilith had secretly enjoyed her baking made the vampire feel a little more human." }
+      ]
+    },
+  "wardrobe": 
+    {
       "affection": 0,
       "repeatable": true,
       "dialogues": [
@@ -77,21 +78,48 @@
         }
       ]
     },
-    "take_dress": {
-        "affection": 1,
-        "repeatable": false,
-        "dialogues": [
-          { "speaker": "", "text": "She turned toward the tall mirror and stared at her reflection, cheeks turning pink." },
-          { "speaker": "Elara", "text": "(softly, amazed) This is… very beautiful. I look so different… almost like I belong here." },
-          { "speaker": "Affection increased +1", "text": "" }
-        ]
-      },
-
-    "door": {
-      "affection": 0,
-      "repeatable": true,
+  "take_dress": {
+      "affection": 1,
+      "repeatable": false,
       "dialogues": [
-        { "speaker": "Elara", "text": "The door is unlocked. The one who captured me didn't bother to keep me here... I wonder why?" }
+        { "speaker": "", "text": "She turned toward the tall mirror and stared at her reflection, cheeks turning pink." },
+        { "speaker": "Elara", "text": "(softly, amazed) This is… very beautiful. I look so different… almost like I belong here." },
+        { "speaker": "Affection increased +1", "text": "" }
       ]
+    },
+  "door": {
+    "affection": 0,
+    "repeatable": true,
+    "dialogues": [
+      {
+        "speaker": "Elara",
+        "text": "The door is unlocked. The one who captured me didn't bother to keep me here... I wonder why?",
+        "choices": [
+          { "text": "Open the door", "next": "door_open" },
+          { "text": "Stay in the room", "next": "stay" }
+        ]
+      }
+    ]
+  },
+  "stay": {
+    "affection": 0,
+    "repeatable": true,
+    "dialogues": [
+      {
+        "speaker": "Elara",
+        "text": "Better to explore the room first."
+      }
+    ]
+  },
+  "door_open": {
+    "affection": 0,
+    "repeatable": true,
+    "dialogues": [
+        { "speaker": "", "text": "Elara's hand trembled as she grasped the cold brass handle." },
+        { "speaker": "", "text": "With a deep breath, she pulled the door open..." },
+        { "speaker": "", "text": "Beyond the threshold lay shadows she couldn't yet understand." },
+        { "speaker": "", "text": "Her journey was only beginning." },
+        { "speaker": "", "text": "[DEMO ENDS HERE]" }
+    ]
   }
 }
