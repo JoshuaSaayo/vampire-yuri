@@ -1,10 +1,10 @@
 extends Control
 
 @onready var background: TextureRect = $Background
+@onready var bgm_player: AudioStreamPlayer = $BGMPlayer
 @onready var dialogue_box: Panel = $DialogueBox
 @onready var speaker_name: Label = $DialogueBox/SpeakerName
 @onready var dialogue_text: RichTextLabel = $DialogueBox/DialogueText
-@onready var bgm_player: AudioStreamPlayer = $BGMPlayer
 
 # Interactive areas
 @onready var diary_area: Area2D = $InteractiveAreas/DiaryArea
@@ -13,9 +13,10 @@ extends Control
 
 # Dialogue data
 var intro_dialogue_shown: bool = false
-var current_interaction: String = ""
 var is_showing_dialogue: bool = false
+var is_typing: bool = false
 var dialogue_queue: Array = []
+var current_full_text: String = ""
 
 # Dialogue JSON data
 var bedroom_data: Dictionary = {}
@@ -72,7 +73,6 @@ func set_interactive_enabled(enabled: bool):
 func show_intro_dialogue():
 	var intro_lines = bedroom_data.get("intro", [])
 	if intro_lines.is_empty():
-		# No intro, enable interactions immediately
 		set_interactive_enabled(true)
 		return
 	
@@ -81,12 +81,10 @@ func show_intro_dialogue():
 
 func show_next_dialogue():
 	if dialogue_queue.is_empty():
-		# Finished all dialogues
 		dialogue_box.visible = false
 		is_showing_dialogue = false
 		
 		if not intro_dialogue_shown:
-			# Intro finished, enable interactions
 			intro_dialogue_shown = true
 			set_interactive_enabled(true)
 		return
@@ -95,23 +93,41 @@ func show_next_dialogue():
 	dialogue_box.visible = true
 	
 	var line = dialogue_queue.pop_front()
-	var text = line.get("text", "")
+	var speaker = line.get("speaker", "")
+	current_full_text = line.get("text", "")
 	
-	# Clear and type out text
+	# Set speaker name
+	speaker_name.text = speaker
+	speaker_name.visible = speaker != ""
+	
+	# Clear and start typing
 	dialogue_text.text = ""
 	dialogue_text.visible_characters = 0
-	
-	if tween:
+	start_typing()
+
+func start_typing():
+	is_typing = true
+	if tween and tween.is_running():
 		tween.kill()
 	
 	tween = create_tween()
-	tween.tween_method(_update_dialogue_text, 0, text.length(), text.length() * typing_speed)
-	await tween.finished
-	
+	tween.tween_method(_update_text, 0, current_full_text.length(), current_full_text.length() * typing_speed)
+	tween.finished.connect(_on_typing_finished)
+
+func _update_text(chars: int):
+	dialogue_text.visible_characters = chars
+	dialogue_text.text = current_full_text
+
+func _on_typing_finished():
+	is_typing = false
 	dialogue_text.visible_characters = -1
 
-func _update_dialogue_text(chars: int):
-	dialogue_text.visible_characters = chars
+func skip_typing():
+	if tween and tween.is_running():
+		tween.kill()
+	dialogue_text.text = current_full_text
+	dialogue_text.visible_characters = -1
+	is_typing = false
 
 func _on_diary_click(viewport: Node, event: InputEvent, shape_idx: int):
 	if not is_showing_dialogue and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -132,31 +148,16 @@ func show_item_dialogue(item: String):
 	if dialogues.is_empty():
 		return
 	
-	# Disable interactions during dialogue
 	set_interactive_enabled(false)
-	
-	# Add all dialogues to queue
 	dialogue_queue = dialogues.duplicate()
-	
-	# Show first dialogue
 	show_next_dialogue()
-	
-	# Wait for dialogue to finish, then re-enable interactions
-	await dialogue_finished()
-	set_interactive_enabled(true)
-
-func dialogue_finished():
-	# Wait until dialogue queue is empty
-	while not dialogue_queue.is_empty() or is_showing_dialogue:
-		await get_tree().process_frame
 
 func _input(event):
-	# Click anywhere to advance dialogue
-	if is_showing_dialogue and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if tween and tween.is_running():
-			# Skip typing
-			tween.kill()
-			dialogue_text.visible_characters = -1
+	if not is_showing_dialogue:
+		return
+	
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if is_typing:
+			skip_typing()
 		else:
-			# Advance to next line
 			show_next_dialogue()
