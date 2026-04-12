@@ -1,35 +1,36 @@
 {
   "intro": [
-    { "speaker": "Elara", "text": "My head throbs as I open my eyes..." },
-    { "speaker": "Elara", "text": "Where... where am I? This looks like someone's bedroom." },
-    { "speaker": "Elara", "text": "The last thing I remember was the vampires cornering me..." },
-    { "speaker": "Elara", "text": "How did I escape? And who brought me here?" },
+    { "speaker": "", "text": "Elara woke slowly, the scent of velvet and night-blooming roses filling her senses. She was not in a cold prison cell." },
+    { "speaker": "", "text": "Instead, she lay in an elegant four-poster bed draped in black lace and deep crimson silk. Moonlight filtered through stained-glass windows patterned with thorny roses." },
+    { "speaker": "", "text": "This was clearly someone’s personal chamber — luxurious, gothic, and unmistakably a vampire’s." },
+    { "speaker": "", "text": "Her hand instinctively went to her neck. The bite mark was still warm… and strangely sensitive." },
     { "speaker": "", "text": "A faint scent of roses lingers in the air." },
-    { "speaker": "Elara", "text": "I should look around for clues." }
+    { "speaker": "", "text": "Where… am I? This isn’t a dungeon… This is her room." },
+    { "speaker": "Elara", "text": "(whispering to herself, voice shaky) Where… am I? This isn’t a dungeon… This is her room." },
+    { "speaker": "", "text": "Heart pounding, she sat up. Escape was her only thought. She scanned the dimly lit chamber." }
   ],
   "diary": {
-    "dialogues": [
-      { "speaker": "Elara", "text": "I open the worn leather diary." },
-      { "speaker": "", "text": "\"Day 47: I saw her again today. The raven-haired beauty with sad eyes.\"" },
-      { "speaker": "", "text": "\"She doesn't know I watch her from the shadows. I must protect her.\"" },
-      { "speaker": "Elara", "text": "My hands tremble. Someone has been watching me..." }
-    ]
-  },
-  "wardrobe": {
-    "dialogues": [
-      { "speaker": "Elara", "text": "I open the creaking wardrobe." },
-      { "speaker": "", "text": "Inside hangs Victorian-style dresses, all in shades of black and deep crimson." },
-      { "speaker": "Elara", "text": "A faint scent of roses and... blood?" },
-      { "speaker": "Elara", "text": "These clothes don't belong to any human." }
-    ]
-  },
-  "door": {
-    "dialogues": [
-      { "speaker": "Elara", "text": "I approach the heavy oak door." },
-      { "speaker": "Elara", "text": "It's locked from the outside. I'm trapped." },
-      { "speaker": "", "text": "A note slides under the door." },
-      { "speaker": "", "text": "'Stay here. You're safe. I'll return at dusk.'" },
-      { "speaker": "Elara", "text": "The handwriting is elegant, old-fashioned..." }
-    ]
+      "affection": 2,
+      "repeatable": false,
+      "dialogues": [
+        { "speaker": "Elara", "text": "I open the worn leather diary." },
+        { "speaker": "", "text": "\"Day 47: I saw her again today.\"" }
+      ]
+    },
+
+    "wardrobe": {
+      "affection": 1,
+      "repeatable": true,
+      "dialogues": [
+        { "speaker": "Elara", "text": "I open the creaking wardrobe." }
+      ]
+    },
+
+    "door": {
+      "affection": 0,
+      "repeatable": true,
+      "dialogues": [
+        { "speaker": "Elara", "text": "It's locked from the outside." }
+      ]
   }
 }

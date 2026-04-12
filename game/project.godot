@@ -15,6 +15,10 @@ run/main_scene="uid://bfeuis2hv6tkt"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PauseManager="*res://autoload/pause_manager.gd"
+
 [display]
 
 window/size/viewport_width=1280

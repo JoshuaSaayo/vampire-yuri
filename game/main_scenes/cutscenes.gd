@@ -5,6 +5,9 @@ extends Control
 @onready var dialogue_text: RichTextLabel = $DialogueLayer/DialogueBox/DialogueText
 @onready var speaker_name: Label = $DialogueLayer/DialogueBox/SpeakerName
 @onready var bgm_player: AudioStreamPlayer = $BGMPlayer
+@onready var skip_btn: Button = $DialogueLayer/SkipBtn
+@onready var hide_btn: Button = $DialogueLayer/HideBtn
+@onready var dialogue_layer: CanvasLayer = $DialogueLayer
 
 
 # Dictionary to store character nodes by position
@@ -23,6 +26,7 @@ var line_idx: int = 0
 var is_typing: bool = false
 var is_transitioning: bool = false
 var current_text: String = ""
+var is_hidden: bool = false
 
 @export var typing_speed: float = 0.03
 @export var fade_duration: float = 0.7
@@ -237,10 +241,19 @@ func _on_typing_finished():
 	dialogue_text.visible_characters = -1
 
 func _input(event):
-	if is_transitioning:
+
+	if is_transitioning or PauseManager.is_paused:
 		return
-	
+		
+
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		
+		# 🔹 If hidden → just unhide (do nothing else)
+		if is_hidden:
+			is_hidden = false
+			$DialogueLayer.visible = true
+			return
+
 		if is_typing:
 			if tween:
 				tween.kill()
@@ -256,3 +269,22 @@ func _input(event):
 				show_current_scene()
 			else:
 				show_current_line()
+
+
+func _on_skip_btn_pressed() -> void:
+	get_tree().change_scene_to_file("res://interactive_maps/bedroom_interactive.tscn")
+
+
+func _on_hide_btn_pressed() -> void:
+	is_hidden = true
+	dialogue_layer.visible = false
+
+
+func _on_pause_btn_pressed() -> void:
+	if PauseManager.is_paused:
+		return
+	
+	PauseManager.toggle_pause()
+	
+	var pause_scene = load("res://UI/pause_menu.tscn").instantiate()
+	add_child(pause_scene)

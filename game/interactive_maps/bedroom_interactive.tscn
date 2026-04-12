@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://6dpvd5cs8a5y"]
 
 [ext_resource type="Texture2D" uid="uid://b70ddf4q7ws8l" path="res://assets/interactive_bg/interactive_background.jpg" id="1_djmdq"]
-[ext_resource type="Script" uid="uid://cy2u1pjvvq3gm" path="res://interactive_maps/bedroom_interactive.gd" id="1_in3xp"]
+[ext_resource type="Script" uid="uid://cy2u1pjvvq3gm" path="res://interactive_maps/interactive_controller.gd" id="1_in3xp"]
 [ext_resource type="Texture2D" uid="uid://cooq15dc2xmx1" path="res://UI/assets/dialogue box.png" id="3_q30bh"]
 [ext_resource type="FontFile" uid="uid://c56hxw3q7m0jq" path="res://UI/fonts/CrimsonText-Regular.ttf" id="4_xquf0"]
 [ext_resource type="FontFile" uid="uid://b0pktas5ei7r6" path="res://UI/fonts/Cinzel-Bold.ttf" id="5_ny8mw"]
@@ -54,6 +54,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_in3xp")
+metadata/key = false
+metadata/value = false
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
@@ -64,18 +66,21 @@ texture = ExtResource("1_djmdq")
 [node name="InteractiveAreas" type="Node2D" parent="."]
 
 [node name="DiaryArea" type="Area2D" parent="InteractiveAreas"]
+metadata/id = "diary"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/DiaryArea"]
 position = Vector2(132, 462)
 shape = SubResource("RectangleShape2D_djmdq")
 
 [node name="WardrobeArea" type="Area2D" parent="InteractiveAreas"]
+metadata/id = "wardrobe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/WardrobeArea"]
 position = Vector2(756, 314)
 shape = SubResource("RectangleShape2D_djmdq")
 
 [node name="DoorArea" type="Area2D" parent="InteractiveAreas"]
+metadata/id = "door"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/DoorArea"]
 position = Vector2(1043, 329)
@@ -191,3 +196,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_36m08")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_bm654")
 theme_override_styles/focus = SubResource("StyleBoxTexture_hu731")
 text = "X"
+
+[connection signal="pressed" from="DialogueBox/SkipBtn" to="." method="_on_skip_btn_pressed"]
+[connection signal="pressed" from="DialogueBox/HideBtn" to="." method="_on_hide_btn_pressed"]
+[connection signal="pressed" from="PauseBtn" to="." method="_on_pause_btn_pressed"]

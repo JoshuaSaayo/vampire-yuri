@@ -7,9 +7,7 @@ extends Control
 @onready var dialogue_text: RichTextLabel = $DialogueBox/DialogueText
 
 # Interactive areas
-@onready var diary_area: Area2D = $InteractiveAreas/DiaryArea
-@onready var wardrobe_area: Area2D = $InteractiveAreas/WardrobeArea
-@onready var door_area: Area2D = $InteractiveAreas/DoorArea
+@onready var interactive_areas = $InteractiveAreas.get_children()
 
 # Dialogue data
 var intro_dialogue_shown: bool = false
@@ -17,6 +15,7 @@ var is_showing_dialogue: bool = false
 var is_typing: bool = false
 var dialogue_queue: Array = []
 var current_full_text: String = ""
+var is_hidden: bool = false
 
 # Dialogue JSON data
 var bedroom_data: Dictionary = {}
@@ -46,29 +45,32 @@ func load_bedroom_dialogue():
 		push_error("JSON Parse Error: " + json.get_error_message())
 
 func setup_interactive_areas():
-	# Connect mouse enter/exit for cursor change
-	diary_area.mouse_entered.connect(func(): Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND))
-	diary_area.mouse_exited.connect(func(): Input.set_default_cursor_shape(Input.CURSOR_ARROW))
-	wardrobe_area.mouse_entered.connect(func(): Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND))
-	wardrobe_area.mouse_exited.connect(func(): Input.set_default_cursor_shape(Input.CURSOR_ARROW))
-	door_area.mouse_entered.connect(func(): Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND))
-	door_area.mouse_exited.connect(func(): Input.set_default_cursor_shape(Input.CURSOR_ARROW))
+	for area in interactive_areas:
+		if not area is Area2D:
+			continue
+		
+		# Cursor behavior
+		area.mouse_entered.connect(func(): Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND))
+		area.mouse_exited.connect(func(): Input.set_default_cursor_shape(Input.CURSOR_ARROW))
+		
+		# Click handling
+		area.input_event.connect(_on_area_clicked.bind(area))
 	
-	# Connect click events
-	diary_area.input_event.connect(_on_diary_click)
-	wardrobe_area.input_event.connect(_on_wardrobe_click)
-	door_area.input_event.connect(_on_door_click)
-	
-	# Disable interactions until intro is done
 	set_interactive_enabled(false)
 
 func set_interactive_enabled(enabled: bool):
-	diary_area.monitoring = enabled
-	diary_area.monitorable = enabled
-	wardrobe_area.monitoring = enabled
-	wardrobe_area.monitorable = enabled
-	door_area.monitoring = enabled
-	door_area.monitorable = enabled
+	for area in interactive_areas:
+		if area is Area2D:
+			area.monitoring = enabled
+			area.monitorable = enabled
+
+func _on_area_clicked(viewport, event, shape_idx, area):
+	if is_showing_dialogue:
+		return
+	
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		var id = area.get_meta("id")
+		show_item_dialogue(id)
 
 func show_intro_dialogue():
 	var intro_lines = bedroom_data.get("intro", [])
@@ -129,18 +131,6 @@ func skip_typing():
 	dialogue_text.visible_characters = -1
 	is_typing = false
 
-func _on_diary_click(viewport: Node, event: InputEvent, shape_idx: int):
-	if not is_showing_dialogue and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		show_item_dialogue("diary")
-
-func _on_wardrobe_click(viewport: Node, event: InputEvent, shape_idx: int):
-	if not is_showing_dialogue and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		show_item_dialogue("wardrobe")
-
-func _on_door_click(viewport: Node, event: InputEvent, shape_idx: int):
-	if not is_showing_dialogue and event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		show_item_dialogue("door")
-
 func show_item_dialogue(item: String):
 	var item_data = bedroom_data.get(item, {})
 	var dialogues = item_data.get("dialogues", [])
@@ -161,3 +151,37 @@ func _input(event):
 			skip_typing()
 		else:
 			show_next_dialogue()
+
+func _on_pause_btn_pressed() -> void:
+	if PauseManager.is_paused:
+		return
+	
+	PauseManager.toggle_pause()
+	
+	var pause_scene = load("res://UI/pause_menu.tscn").instantiate()
+	add_child(pause_scene)
+
+
+func _on_hide_btn_pressed() -> void:
+	is_hidden = true
+	dialogue_box.visible = false
+
+
+func _on_skip_btn_pressed() -> void:
+	# Stop typing if currently typing
+	if is_typing:
+		skip_typing()
+
+	# Clear all remaining dialogue
+	dialogue_queue.clear()
+
+	# Reset states
+	is_showing_dialogue = false
+	is_typing = false
+	intro_dialogue_shown = true
+
+	# Hide dialogue UI
+	dialogue_box.visible = false
+
+	# Enable player interaction (this is the important part)
+	set_interactive_enabled(true)
