@@ -1,8 +1,8 @@
 {
   "intro": [
     { "speaker": "", "text": "Elara woke slowly, the scent of velvet and night-blooming roses filling her senses. She was not in a cold prison cell." },
-    { "speaker": "", "text": "Instead, she lay in an elegant four-poster bed draped in black lace and deep crimson silk. Moonlight filtered through stained-glass windows patterned with thorny roses." },
-    { "speaker": "", "text": "This was clearly someone’s personal chamber — luxurious, gothic, and unmistakably a vampire’s." },
+    { "speaker": "", "text": "Instead, she lay in an elegant four-poster bed draped in deep pink silk." },
+    { "speaker": "", "text": "This was clearly someone’s personal chamber of a luxurious, and unmistakably a vampire’s." },
     { "speaker": "", "text": "Her hand instinctively went to her neck. The bite mark was still warm… and strangely sensitive." },
     { "speaker": "", "text": "A faint scent of roses lingers in the air." },
     { "speaker": "", "text": "Where… am I? This isn’t a dungeon… This is her room." },
@@ -42,8 +42,8 @@
           "speaker": "Elara",
           "text": "She hesitated for a moment, then picked up the quill that lay beside the diary.",
           "choices": [
-            { "text": "Write a short message in the diary", "next": "diary_write" },
-            { "text": "Close the diary without writing anything", "next": "return" }
+            { "text": "Write a short message", "next": "diary_write" },
+            { "text": "Close the diary", "next": "return" }
           ]
         }
       ]

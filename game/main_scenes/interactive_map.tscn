@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cy2u1pjvvq3gm" path="res://main_scenes/interactive_map.gd" id="1_0ugao"]
 [ext_resource type="Theme" uid="uid://qovicfi2fibs" path="res://UI/button_theme.tres" id="2_lfluy"]
-[ext_resource type="Texture2D" uid="uid://b70ddf4q7ws8l" path="res://assets/interactive_bg/interactive_background.jpg" id="2_qk8mf"]
 [ext_resource type="Texture2D" uid="uid://cooq15dc2xmx1" path="res://UI/assets/dialogue box.png" id="2_tw5dm"]
+[ext_resource type="Texture2D" uid="uid://cg0vbnc4cnxa3" path="res://assets/interactive_bg/interactive_background.png" id="3_3ildx"]
 [ext_resource type="FontFile" uid="uid://c56hxw3q7m0jq" path="res://UI/fonts/CrimsonText-Regular.ttf" id="3_qk8mf"]
 [ext_resource type="Texture2D" uid="uid://px2sj578v5iy" path="res://UI/assets/spark.png" id="4_3ildx"]
 [ext_resource type="Texture2D" uid="uid://b5i3pf8w4fy0m" path="res://UI/assets/button.png" id="4_lfluy"]
@@ -90,7 +90,7 @@ button_theme = ExtResource("2_lfluy")
 layout_mode = 0
 offset_right = 1291.0
 offset_bottom = 741.0
-texture = ExtResource("2_qk8mf")
+texture = ExtResource("3_3ildx")
 
 [node name="InteractiveAreas" type="Node2D" parent="."]
 
@@ -98,11 +98,11 @@ texture = ExtResource("2_qk8mf")
 metadata/id = "diary"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/DiaryArea"]
-position = Vector2(132, 462)
+position = Vector2(928, 652)
 shape = SubResource("RectangleShape2D_lfluy")
 
 [node name="SparkleEffect" type="GPUParticles2D" parent="InteractiveAreas/DiaryArea"]
-position = Vector2(136, 461)
+position = Vector2(932, 651)
 amount = 2
 amount_ratio = 0.5
 texture = ExtResource("4_3ildx")
@@ -112,11 +112,11 @@ process_material = SubResource("ParticleProcessMaterial_bb4a0")
 metadata/id = "wardrobe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/WardrobeArea"]
-position = Vector2(756, 314)
+position = Vector2(239, 441)
 shape = SubResource("RectangleShape2D_lfluy")
 
 [node name="SparkleEffect2" type="GPUParticles2D" parent="InteractiveAreas/WardrobeArea"]
-position = Vector2(756, 313)
+position = Vector2(239, 440)
 amount = 2
 amount_ratio = 0.5
 texture = ExtResource("4_3ildx")
@@ -126,11 +126,11 @@ process_material = SubResource("ParticleProcessMaterial_bb4a0")
 metadata/id = "door"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/DoorArea"]
-position = Vector2(1043, 329)
+position = Vector2(1003, 369)
 shape = SubResource("RectangleShape2D_lfluy")
 
 [node name="SparkleEffect3" type="GPUParticles2D" parent="InteractiveAreas/DoorArea"]
-position = Vector2(1043, 332)
+position = Vector2(1003, 372)
 amount = 2
 amount_ratio = 0.5
 texture = ExtResource("4_3ildx")
@@ -260,9 +260,9 @@ text = "No"
 
 [node name="ChoiceContainer" type="VBoxContainer" parent="DialogueBox"]
 layout_mode = 0
-offset_left = 1048.0
+offset_left = 977.0
 offset_top = -146.0
-offset_right = 1088.0
+offset_right = 1017.0
 offset_bottom = -106.0
 mouse_filter = 0
 

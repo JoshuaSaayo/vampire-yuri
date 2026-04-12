@@ -170,7 +170,7 @@ func show_choices(choices: Array):
 		button.add_theme_constant_override("padding_top", 12)
 		button.add_theme_constant_override("padding_bottom", 12)
 		
-		button.custom_minimum_size = Vector2(250, 70)
+		button.custom_minimum_size = Vector2(300, 70)
 		
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		button.pressed.connect(_on_choice_selected.bind(choice.next))

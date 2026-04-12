@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://cbgkrnpa2ypg8"]
 
 [ext_resource type="Script" uid="uid://db1dmqu8a4aoq" path="res://UI/menu.gd" id="1_wfiwe"]
-[ext_resource type="Texture2D" uid="uid://bf1dpkowvy7cm" path="res://assets/cutscenes/cutscene_4.png" id="2_kfjwn"]
+[ext_resource type="Texture2D" uid="uid://6hijrcbxgfh4" path="res://anim/lewd_assets/main_menu/main_menu.png" id="2_wcfn6"]
 [ext_resource type="FontFile" uid="uid://c56hxw3q7m0jq" path="res://UI/fonts/CrimsonText-Regular.ttf" id="3_dte3n"]
 [ext_resource type="Texture2D" uid="uid://lx542obkab8k" path="res://UI/assets/pause button.png" id="4_1qvof"]
 [ext_resource type="Texture2D" uid="uid://b5i3pf8w4fy0m" path="res://UI/assets/button.png" id="4_dhncy"]
@@ -72,7 +72,7 @@ script = ExtResource("1_wfiwe")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_kfjwn")
+texture = ExtResource("2_wcfn6")
 
 [node name="StartBtn" type="Button" parent="."]
 layout_mode = 1
