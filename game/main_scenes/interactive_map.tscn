@@ -253,9 +253,9 @@ text = "No"
 [node name="ChoiceContainer" type="VBoxContainer" parent="DialogueBox"]
 layout_mode = 0
 offset_left = 1048.0
-offset_top = -65.0
+offset_top = -146.0
 offset_right = 1088.0
-offset_bottom = -25.0
+offset_bottom = -106.0
 mouse_filter = 0
 
 [node name="PauseBtn" type="Button" parent="."]

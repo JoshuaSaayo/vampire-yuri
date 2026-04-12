@@ -163,6 +163,15 @@ func show_choices(choices: Array):
 		var button = Button.new()
 		button.text = choice.text
 		button.theme = button_theme
+		
+			   # Add padding to make the button larger
+		button.add_theme_constant_override("padding_left", 20)
+		button.add_theme_constant_override("padding_right", 20)
+		button.add_theme_constant_override("padding_top", 12)
+		button.add_theme_constant_override("padding_bottom", 12)
+		
+		button.custom_minimum_size = Vector2(220, 70)
+		
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		button.pressed.connect(_on_choice_selected.bind(choice.next))
 		choice_container.add_child(button)
