@@ -272,7 +272,7 @@ func _input(event):
 
 
 func _on_skip_btn_pressed() -> void:
-	get_tree().change_scene_to_file("res://interactive_maps/bedroom_interactive.tscn")
+	get_tree().change_scene_to_file("res://main_scenes/interactive_map.tscn")
 
 
 func _on_hide_btn_pressed() -> void:

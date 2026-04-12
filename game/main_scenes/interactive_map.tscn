@@ -1,0 +1,277 @@
+[gd_scene load_steps=28 format=3 uid="uid://d2kmi6wsycxkx"]
+
+[ext_resource type="Script" uid="uid://cy2u1pjvvq3gm" path="res://main_scenes/interactive_map.gd" id="1_0ugao"]
+[ext_resource type="Texture2D" uid="uid://b70ddf4q7ws8l" path="res://assets/interactive_bg/interactive_background.jpg" id="2_qk8mf"]
+[ext_resource type="Texture2D" uid="uid://cooq15dc2xmx1" path="res://UI/assets/dialogue box.png" id="2_tw5dm"]
+[ext_resource type="FontFile" uid="uid://c56hxw3q7m0jq" path="res://UI/fonts/CrimsonText-Regular.ttf" id="3_qk8mf"]
+[ext_resource type="Texture2D" uid="uid://b5i3pf8w4fy0m" path="res://UI/assets/button.png" id="4_lfluy"]
+[ext_resource type="Texture2D" uid="uid://c3qo5ocntnem1" path="res://UI/assets/button hover.png" id="5_3ildx"]
+[ext_resource type="FontFile" uid="uid://b0pktas5ei7r6" path="res://UI/fonts/Cinzel-Bold.ttf" id="6_bb4a0"]
+[ext_resource type="Texture2D" uid="uid://lx542obkab8k" path="res://UI/assets/pause button.png" id="7_v344s"]
+[ext_resource type="Texture2D" uid="uid://5q7u21vhh3uy" path="res://UI/assets/pause button hover.png" id="8_gycnr"]
+[ext_resource type="AudioStream" uid="uid://daq6mklmp7tcx" path="res://UI/sounds/bedroom_background.mp3" id="10_qk8mf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfluy"]
+size = Vector2(146, 119)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lrhcr"]
+texture = ExtResource("2_tw5dm")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vri5k"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acqrm"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nbi2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w88sa"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tjon"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_34yx3"]
+texture = ExtResource("4_lfluy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_efups"]
+texture = ExtResource("5_3ildx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c1unr"]
+texture = ExtResource("5_3ildx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b058x"]
+texture = ExtResource("4_lfluy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fdkk6"]
+texture = ExtResource("4_lfluy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_60t6y"]
+texture = ExtResource("7_v344s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vdsml"]
+texture = ExtResource("8_gycnr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vel0e"]
+texture = ExtResource("8_gycnr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rfmsg"]
+texture = ExtResource("7_v344s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dcjhh"]
+texture = ExtResource("7_v344s")
+
+[node name="interactive_map" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_0ugao")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1291.0
+offset_bottom = 741.0
+texture = ExtResource("2_qk8mf")
+
+[node name="InteractiveAreas" type="Node2D" parent="."]
+
+[node name="DiaryArea" type="Area2D" parent="InteractiveAreas"]
+metadata/id = "diary"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/DiaryArea"]
+position = Vector2(132, 462)
+shape = SubResource("RectangleShape2D_lfluy")
+
+[node name="WardrobeArea" type="Area2D" parent="InteractiveAreas"]
+metadata/id = "wardrobe"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/WardrobeArea"]
+position = Vector2(756, 314)
+shape = SubResource("RectangleShape2D_lfluy")
+
+[node name="DoorArea" type="Area2D" parent="InteractiveAreas"]
+metadata/id = "door"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveAreas/DoorArea"]
+position = Vector2(1043, 329)
+shape = SubResource("RectangleShape2D_lfluy")
+
+[node name="DialogueBox" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -192.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_lrhcr")
+
+[node name="SpeakerName" type="Label" parent="DialogueBox"]
+layout_mode = 1
+offset_left = 61.0
+offset_top = 28.0
+offset_right = 130.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("3_qk8mf")
+theme_override_font_sizes/font_size = 30
+text = "lorem"
+
+[node name="DialogueText" type="RichTextLabel" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 55.0
+offset_top = -115.0
+offset_right = -124.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("3_qk8mf")
+theme_override_font_sizes/normal_font_size = 25
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+
+[node name="SkipBtn" type="Button" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 951.0
+offset_top = 27.04071
+offset_right = 986.0
+offset_bottom = 54.04071
+grow_vertical = 2
+scale = Vector2(1.47649, 1.47649)
+theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_qk8mf")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_vri5k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_acqrm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6nbi2")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_w88sa")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7tjon")
+text = "Skip"
+
+[node name="HideBtn" type="Button" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -260.92773
+offset_top = 27.0
+offset_right = -222.92773
+offset_bottom = 54.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(1.47649, 1.47649)
+theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_qk8mf")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_vri5k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_acqrm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6nbi2")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_w88sa")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7tjon")
+text = "Hide"
+
+[node name="ChoiceA" type="Button" parent="DialogueBox"]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1063.0001
+offset_top = -246.00003
+offset_right = 1183.0001
+offset_bottom = -196.00003
+grow_vertical = 2
+scale = Vector2(1.47649, 1.47649)
+theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_qk8mf")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_34yx3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_efups")
+theme_override_styles/hover = SubResource("StyleBoxTexture_c1unr")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_b058x")
+theme_override_styles/focus = SubResource("StyleBoxTexture_fdkk6")
+text = "Yes"
+
+[node name="ChoiceB" type="Button" parent="DialogueBox"]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -217.00012
+offset_top = -166.00002
+offset_right = -97.00012
+offset_bottom = -116.000015
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(1.47649, 1.47649)
+theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0.6666667)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_qk8mf")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxTexture_34yx3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_efups")
+theme_override_styles/hover = SubResource("StyleBoxTexture_c1unr")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_b058x")
+theme_override_styles/focus = SubResource("StyleBoxTexture_fdkk6")
+text = "No"
+
+[node name="ChoiceContainer" type="VBoxContainer" parent="DialogueBox"]
+layout_mode = 0
+offset_left = 1190.0
+offset_top = -71.0
+offset_right = 1230.0
+offset_bottom = -31.0
+
+[node name="PauseBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 27.0
+offset_right = 123.0
+offset_bottom = 127.0
+theme_override_fonts/font = ExtResource("6_bb4a0")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_60t6y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_vdsml")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vel0e")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_rfmsg")
+theme_override_styles/focus = SubResource("StyleBoxTexture_dcjhh")
+text = "X"
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_qk8mf")
+autoplay = true

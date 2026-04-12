@@ -13,8 +13,7 @@
       "affection": 2,
       "repeatable": false,
       "dialogues": [
-        { "speaker": "Elara", "text": "I open the worn leather diary." },
-        { "speaker": "", "text": "\"Day 47: I saw her again today.\"" }
+        { "speaker": "Elara", "text": "lorem ipsunm" },
       ]
     },
 
@@ -22,7 +21,7 @@
       "affection": 1,
       "repeatable": true,
       "dialogues": [
-        { "speaker": "Elara", "text": "I open the creaking wardrobe." }
+        { "speaker": "Elara", "text": "lorem ipsunm" },
       ]
     },
 
@@ -30,7 +29,7 @@
       "affection": 0,
       "repeatable": true,
       "dialogues": [
-        { "speaker": "Elara", "text": "It's locked from the outside." }
+        { "speaker": "Elara", "text": "lorem ipsunm" }
       ]
   }
 }

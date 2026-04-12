@@ -33,7 +33,7 @@ func _ready():
 	show_intro_dialogue()
 
 func load_bedroom_dialogue():
-	var file = FileAccess.open("res://dialogues/bedroom_dialogues.json", FileAccess.READ)
+	var file = FileAccess.open("res://dialogues/interactive_dialogues.json", FileAccess.READ)
 	if not file:
 		push_error("Bedroom dialogue JSON not found")
 		return
