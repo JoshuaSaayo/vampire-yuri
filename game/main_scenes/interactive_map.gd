@@ -107,15 +107,23 @@ func show_next_dialogue():
 	dialogue_text.visible_characters = 0
 	
 	clear_choices()
+	choice_container.visible = false  # Make sure it's hidden initially
 	waiting_for_choice = false
 	
+	# Store choices for this line
+	var has_choices = line.has("choices") and line.choices.size() > 0
+	
+	# Start typing
 	start_typing()
 	
-	# Show choices only after typing is done
-	if line.has("choices") and line.choices.size() > 0:
-		await get_tree().create_timer(current_full_text.length() * typing_speed + 0.5).timeout
-		if dialogue_queue.size() > 0:   # safety
-			show_choices(line.choices)
+	# If this line has choices, wait for typing to finish then show them
+	if has_choices:
+		# Wait for typing to complete
+		while is_typing:
+			await get_tree().process_frame
+		# Small delay for readability
+		await get_tree().create_timer(0.2).timeout
+		show_choices(line.choices)
 
 func start_typing():
 	is_typing = true
@@ -124,7 +132,8 @@ func start_typing():
 	
 	tween = create_tween()
 	tween.tween_method(_update_text, 0, current_full_text.length(), current_full_text.length() * typing_speed)
-	tween.finished.connect(_on_typing_finished)
+	# Connect to finished signal properly
+	tween.finished.connect(_on_typing_finished, CONNECT_ONE_SHOT)
 
 func _update_text(chars: int):
 	dialogue_text.visible_characters = chars
@@ -143,6 +152,9 @@ func skip_typing():
 
 # ====================== CHOICES ======================
 func show_choices(choices: Array):
+	if choices.is_empty():
+		return
+	
 	waiting_for_choice = true
 	choice_container.visible = true
 	
@@ -153,15 +165,33 @@ func show_choices(choices: Array):
 		button.pressed.connect(_on_choice_selected.bind(choice.next))
 		choice_container.add_child(button)
 
+
 func _on_choice_selected(next_key: String):
 	waiting_for_choice = false
 	clear_choices()
 	choice_container.visible = false
 	
+	print("Selected choice leading to: ", next_key)  # Debug
+	
+	if next_key == "return":
+		end_dialogue()
+		return
+	
 	if bedroom_data.has(next_key):
-		dialogue_queue = bedroom_data[next_key].get("dialogues", []).duplicate()
+		# Get the next dialogue data
+		var next_data = bedroom_data[next_key]
+		var next_dialogues = next_data.get("dialogues", [])
+		
+		if next_dialogues.is_empty():
+			end_dialogue()
+			return
+		
+		# Add all dialogues to queue
+		dialogue_queue = next_dialogues.duplicate()
+		print("Added ", dialogue_queue.size(), " dialogues to queue")  # Debug
 		show_next_dialogue()
 	else:
+		print("ERROR: Next key not found: ", next_key)
 		end_dialogue()
 
 func clear_choices():
@@ -188,7 +218,7 @@ func _input(event):
 		if is_showing_dialogue:
 			if is_typing:
 				skip_typing()
-			else:
+			elif not waiting_for_choice:  # Only advance if not waiting for choice
 				show_next_dialogue()
 
 # ====================== BUTTONS ======================
