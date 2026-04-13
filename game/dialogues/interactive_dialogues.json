@@ -56,7 +56,8 @@
         { "speaker": "Elara", "text": "(murmuring while writing) I am glad you enjoyed the bread and cakes I made for everyone…" },
         { "speaker": "", "text": "She added a small doodle of a strawberry next to her words, then gently closed the book." },
         { "speaker": "", "text": "A strange warmth bloomed in her chest. Even after everything that happened to Meadowbrook…" },
-        { "speaker": "", "text": "knowing Lilith had secretly enjoyed her baking made the vampire feel a little more human." }
+        { "speaker": "", "text": "knowing Lilith had secretly enjoyed her baking made the vampire feel a little more human." },
+        { "speaker": "Affection increased +1", "text": "" }
       ]
     },
   "wardrobe": 
