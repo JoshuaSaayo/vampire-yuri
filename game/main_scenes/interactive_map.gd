@@ -19,6 +19,7 @@ var is_typing: bool = false
 var is_hidden: bool = false
 var intro_dialogue_shown: bool = false
 var waiting_for_choice: bool = false
+var input_locked: bool = false
 
 @export var typing_speed: float = 0.03
 
@@ -117,14 +118,14 @@ func show_next_dialogue():
 	# Start typing
 	start_typing()
 	
-	# If this line has choices, wait for typing to finish then show them
 	if has_choices:
-		# Wait for typing to complete
-		while is_typing:
-			await get_tree().process_frame
-		# Small delay for readability
+		input_locked = true  # 🔒 LOCK INPUT
+		
+		await tween.finished
 		await get_tree().create_timer(0.2).timeout
+		
 		show_choices(line.choices)
+		input_locked = false  # 🔓 UNLOCK AFTER CHOICES SHOW
 
 func start_typing():
 	is_typing = true
@@ -226,13 +227,14 @@ func end_dialogue():
 
 # ====================== INPUT ======================
 func _input(event):
-	if is_hidden or waiting_for_choice:
+	if is_hidden or waiting_for_choice or input_locked:
 		return
 	
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if is_showing_dialogue:
 			if is_typing:
 				skip_typing()
+				return
 			elif not waiting_for_choice:  # Only advance if not waiting for choice
 				show_next_dialogue()
 
