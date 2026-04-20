@@ -1,147 +1,568 @@
 {
-  "scenes": [
-    {
-      "id": "1",
-      "background": "res://assets/cutscenes/cutscene_1.png",
-      "ost": "res://UI/sounds/cutscene_sound_1.mp3",
-      "lines": [
-        { "speaker": "", "text": "The ancient Vampire Queen’s voice was ice-cold over the enchanted mirror." },
-        { "speaker": "Queen Charlotte", "text": "Lead the raid on Meadowbrook tonight. The court is starving." },
-        { "speaker": "Queen Charlotte", "text": "Bring back enough warm bodies to sate us… or you will be the one drained instead, my dear Lilith." },
-        { "speaker": "", "text": "Lilith lowered her head, black lace frills trembling slightly." },
-        { "speaker": "Lilith", "text": "…Yes, Your Majesty. As you command." }
-      ]
-    },
-    {
-      "id": "2",
-      "background": "res://assets/cutscenes/cutscene_2.png",
-      "lines": [
-        { "speaker": "", "text": "The night air reeked of smoke and blood. Lesser vampires swarmed the once-peaceful village of Meadowbrook like locusts." },
-        { "speaker": "", "text": "Screams echoed between burning cottages and trampled flower fields. Lilith watched from above, jaw tight, hating every second of it." },
-        { "speaker": "Lilith", "text": "(inner thought) I hate this…" },
-        { "speaker": "Lilith", "text": "But if I disobey Queen Charlotte… everyone under my command will suffer." }
-      ]
-    },
-    {
-      "id": "3",
-      "background": "res://assets/cutscenes/cutscene_3.png",
-      "lines": [
-        { "speaker": "", "text": "In the chaos, a young woman with flower ribbons in her braided hair stumbled out of her small bakery, eyes wide with terror." },
-        { "speaker": "Elara", "text": "(panicked, breathless) No… no no no! Mama? Papa?!" },
-        { "speaker": "Elara", "text": "My home… everything is burning… This can’t be real!" }
-      ]
-    },
-    {
-      "id": "4",
-      "background": "res://assets/backgrounds/background_1.png",
-      "lines": [
-        {
-          "speaker": "",
-          "text": "She ran toward the cave, but it was too late. Two lesser vampires cornered her against an old stone wall, fangs bared, eyes glowing with hunger.",
-          "left": "elara_sad",
-          "center": null,
-          "right": null
-        },
-        {
-          "speaker": "Lesser Vampire 1",
-          "text": "Look at this soft one… so full of warm blood.",
-          "left": "elara_sad",
-          "center": null,
-          "right": {"character": "Lesser Vampire 1", "expression": "lesser_vampire"}
-        },
-        {
-          "speaker": "Lesser Vampire 2",
-          "text": "She’s mine! I get the first taste!",
-          "left": "elara_sad",
-          "center": {"character": "Lesser Vampire 2", "expression": "lesser_vampire"},
-          "right": "lesser_vampire"
-        },
-        {
-          "speaker": "Elara",
-          "text": "Please… I don’t want to die…",
-          "left": {"character": "Elara", "expression": "elara_sad"},
-          "center": "lesser_vampire",
-          "right": "lesser_vampire"
-        },
-         {
-          "speaker": "",
-          "text": "Suddenly, a strong voice cuts through the night.",
-          "left": "elara_sad",
-          "center": "lesser_vampire",
-          "right": "lesser_vampire"
-        },
-        {
-          "speaker": "Lilith",
-          "text": "HALT!",
-          "left": "elara_sad",
-          "center": "lesser_vampire",
-          "right": {"character": "Lilith", "expression": "lilith_unamused"}
-        },
-        {
-          "speaker": "",
-          "text": "The lesser vampires froze instantly. Lilith descended gracefully, her goth-lolita dress fluttering in the night wind, crimson ribbons trailing behind her.",
-          "left": "elara_sad",
-          "center": "lesser_vampire",
-          "right": "lilith_unamused"
-        },
-        {
-          "speaker": "",
-          "text": "She stepped between her minions and the trembling human.",
-          "left": "elara_sad",
-          "center": "lilith_unamused",
-          "right": "lesser_vampire"
-        },
-        {
-          "speaker": "",
-          "text": "Elara pressed herself against the cold stone, tears streaking her cheeks, already accepting death.",
-          "left": "elara_sad",
-          "center": "lilith_default",
-          "right": null
-        },
-        {
-          "speaker": "",
-          "text": "Yet when Lilith approached, there was no violence in her steps — only intent.",
-          "left": "elara_sad",
-          "center": "lilith_happy",
-          "right": null
-        },
-        {
-          "speaker": "",
-          "text": "Lilith gently tilted Elara’s chin upward with a gloved hand. Their eyes met.",
-          "left": "elara_sad",
-          "center": "lilith_happy",
-          "right": null
-        },
-        {
-          "speaker": "",
-          "text": "Then Lilith leaned in slowly.",
-          "left": "elara_sad",
-          "center": "lilith_happy",
-          "right": null
-        }
-      ]
-    },
-    {
-      "id": "5",
-      "background": "res://assets/cutscenes/cutscene_4.png",
-      "ost": "res://UI/sounds/main_menu_ost.mp3",
-      "lines": [
-        { "speaker": "", "text": "Her fangs sank into the soft skin of Elara’s neck with deliberate, sensual care — a deep, lingering bite." },
-        { "speaker": "Elara", "text": "Nngh…! Ahh…" },
-        { "speaker": "", "text": "A shaky moan escaped her as a strange warmth spread through her body." },
-        { "speaker": "", "text": "Lilith’s free hand slid to Elara’s waist, pulling her closer." },
-        { "speaker": "Lilith", "text": "(soft, almost moaning)" },
-        { "speaker": "Lilith", "text": "…You’re different." },
-        { "speaker": "", "text": "Elara’s knees weakened. Pain and unexpected pleasure twisted together." },
-        { "speaker": "", "text": "When Lilith finally pulled back, a thin trail of blood ran down Elara’s collarbone." }
-      ]
-    },
-    {
-      "id": "6",
-      "background": "res://assets/cutscenes/blackscreen.png",
-      "lines": [
-        { "speaker": "", "text": "Elara’s vision blurred. Her body went limp in Lilith’s arms as consciousness slipped away." }
-      ]
-    }
-  ]
+  "intro": {
+    "scenes": [
+      {
+        "id": "1",
+        "background": "res://assets/cutscenes/cutscene_1.png",
+        "ost": "res://UI/sounds/cutscene_sound_1.mp3",
+        "lines": [
+          { "speaker": "", "text": "The ancient Vampire Queen’s voice was ice-cold over the enchanted mirror." },
+          { "speaker": "Queen Charlotte", "text": "Lead the raid on Meadowbrook tonight. The court is starving." },
+          { "speaker": "Queen Charlotte", "text": "Bring back enough warm bodies to sate us… or you will be the one drained instead, my dear Lilith." },
+          { "speaker": "", "text": "Lilith lowered her head, black lace frills trembling slightly." },
+          { "speaker": "Lilith", "text": "…Yes, Your Majesty. As you command." }
+        ]
+      },
+      {
+        "id": "2",
+        "background": "res://assets/cutscenes/cutscene_2.png",
+        "lines": [
+          { "speaker": "", "text": "The night air reeked of smoke and blood. Lesser vampires swarmed the once-peaceful village of Meadowbrook like locusts." },
+          { "speaker": "", "text": "Screams echoed between burning cottages and trampled flower fields. Lilith watched from above, jaw tight, hating every second of it." },
+          { "speaker": "Lilith", "text": "(inner thought) I hate this…" },
+          { "speaker": "Lilith", "text": "But if I disobey Queen Charlotte… everyone under my command will suffer." }
+        ]
+      },
+      {
+        "id": "3",
+        "background": "res://assets/cutscenes/cutscene_3.png",
+        "lines": [
+          { "speaker": "", "text": "In the chaos, a young woman with flower ribbons in her braided hair stumbled out of her small bakery, eyes wide with terror." },
+          { "speaker": "Elara", "text": "(panicked, breathless) No… no no no! Mama? Papa?!" },
+          { "speaker": "Elara", "text": "My home… everything is burning… This can’t be real!" }
+        ]
+      },
+      {
+        "id": "4",
+        "background": "res://assets/backgrounds/background_1.png",
+        "lines": [
+          {
+            "speaker": "",
+            "text": "She ran toward the cave, but it was too late. Two lesser vampires cornered her against an old stone wall, fangs bared, eyes glowing with hunger.",
+            "left": "elara_sad",
+            "center": null,
+            "right": null
+          },
+          {
+            "speaker": "Lesser Vampire 1",
+            "text": "Look at this soft one… so full of warm blood.",
+            "left": "elara_sad",
+            "center": null,
+            "right": {"character": "Lesser Vampire 1", "expression": "lesser_vampire"}
+          },
+          {
+            "speaker": "Lesser Vampire 2",
+            "text": "She’s mine! I get the first taste!",
+            "left": "elara_sad",
+            "center": {"character": "Lesser Vampire 2", "expression": "lesser_vampire"},
+            "right": "lesser_vampire"
+          },
+          {
+            "speaker": "Elara",
+            "text": "Please… I don’t want to die…",
+            "left": {"character": "Elara", "expression": "elara_sad"},
+            "center": "lesser_vampire",
+            "right": "lesser_vampire"
+          },
+          {
+            "speaker": "",
+            "text": "Suddenly, a strong voice cuts through the night.",
+            "left": "elara_sad",
+            "center": "lesser_vampire",
+            "right": "lesser_vampire"
+          },
+          {
+            "speaker": "Lilith",
+            "text": "HALT!",
+            "left": "elara_sad",
+            "center": "lesser_vampire",
+            "right": {"character": "Lilith", "expression": "lilith_unamused"}
+          },
+          {
+            "speaker": "",
+            "text": "The lesser vampires froze instantly. Lilith descended gracefully, her goth-lolita dress fluttering in the night wind, crimson ribbons trailing behind her.",
+            "left": "elara_sad",
+            "center": "lesser_vampire",
+            "right": "lilith_unamused"
+          },
+          {
+            "speaker": "",
+            "text": "She stepped between her minions and the trembling human.",
+            "left": "elara_sad",
+            "center": "lilith_unamused",
+            "right": "lesser_vampire"
+          },
+          {
+            "speaker": "",
+            "text": "Elara pressed herself against the cold stone, tears streaking her cheeks, already accepting death.",
+            "left": "elara_sad",
+            "center": "lilith_default",
+            "right": null
+          },
+          {
+            "speaker": "",
+            "text": "Yet when Lilith approached, there was no violence in her steps — only intent.",
+            "left": "elara_sad",
+            "center": "lilith_happy",
+            "right": null
+          },
+          {
+            "speaker": "",
+            "text": "Lilith gently tilted Elara’s chin upward with a gloved hand. Their eyes met.",
+            "left": "elara_sad",
+            "center": "lilith_happy",
+            "right": null
+          },
+          {
+            "speaker": "",
+            "text": "Then Lilith leaned in slowly.",
+            "left": "elara_sad",
+            "center": "lilith_happy",
+            "right": null
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "background": "res://assets/cutscenes/cutscene_4.png",
+        "ost": "res://UI/sounds/main_menu_ost.mp3",
+        "lines": [
+          { "speaker": "", "text": "Her fangs sank into the soft skin of Elara’s neck with deliberate, sensual care — a deep, lingering bite." },
+          { "speaker": "Elara", "text": "Nngh…! Ahh…" },
+          { "speaker": "", "text": "A shaky moan escaped her as a strange warmth spread through her body." },
+          { "speaker": "", "text": "Lilith’s free hand slid to Elara’s waist, pulling her closer." },
+          { "speaker": "Lilith", "text": "(soft, almost moaning)" },
+          { "speaker": "Lilith", "text": "…You’re different." },
+          { "speaker": "", "text": "Elara’s knees weakened. Pain and unexpected pleasure twisted together." },
+          { "speaker": "", "text": "When Lilith finally pulled back, a thin trail of blood ran down Elara’s collarbone." }
+        ]
+      },
+      {
+        "id": "6",
+        "background": "res://assets/cutscenes/blackscreen.png",
+        "lines": [
+          { "speaker": "", "text": "Elara’s vision blurred. Her body went limp in Lilith’s arms as consciousness slipped away." }
+        ]
+      }
+    ]
+  },
+  "chapter_1": {
+    "scenes": [
+      {
+        "id": "7",
+        "background": "res://assets/backgrounds/background_2.png",
+        "ost": "res://UI/sounds/cutscene_sound_2.mp3",
+        "lines": [
+          {
+            "speaker": "",
+            "text": "Elara slipped out of the lavish bedchamber and stepped into the vast, shadowy hallway of the vampire palace. ",
+            "left": "null",
+            "center": null,
+            "right": null
+          },
+          {
+            "speaker": "",
+            "text": "The corridor stretched endlessly in both directions, lit only by flickering crimson candles that cast long, dancing shadows on the stone walls. The air felt heavy and cold. Every footstep echoed far too loudly.",
+            "left": "null",
+            "center": null,
+            "right": null
+          },
+          {
+            "speaker": "Elara",
+            "text": "Oh no… Where am I? Where am I supposed to go…? Leaving the room was a terrible idea. If she finds out I’m trying to escape…",
+            "left": null,
+            "center": {"character": "Elara", "expression": "elara_sad"},
+            "right": null
+          },
+          {
+            "speaker": "",
+            "text": "Her heart pounded in her chest. The hallway felt alive... As if the darkness itself could reach out and drag her into the void.",
+            "left": null,
+            "center": {"character": "Elara", "expression": "elara_sad"},
+            "right": null
+          },
+          {
+            "speaker": "",
+            "text": "Suddenly, she heard the soft click of heels approaching from around the corner. Panicking, Elara quickly scanned her surroundings for a place to hide.",
+            "left": null,
+            "center": {"character": "Elara", "expression": "elara_shocked"},
+            "right": null
+          },
+          {
+            "speaker": "",
+            "text": "She spotted a dark, behind the tall velvet curtain in the alcove partially hidden behind a tall velvet curtain and a large decorative suit of armor.",
+            "left": null,
+            "center": {"character": "Elara", "expression": "elara_shocked"},
+            "right": null
+          },
+          {
+            "speaker": "",
+            "text": "It looked just deep enough to conceal her small frame.",
+            "left": null,
+            "center": {"character": "Elara", "expression": "elara_shocked"},
+            "right": null
+          },
+          {
+            "speaker": "",
+            "text": "Without thinking twice, she darted into the alcove and pressed herself against the cold stone wall, pulling the heavy curtain slightly in front of her.",
+            "left": null,
+            "center": null,
+            "right": null
+          },
+          {
+            "speaker": "",
+            "text": "Just in time.",
+            "left": null,
+            "center": null,
+            "right": null
+          },
+          {
+            "speaker": "",
+            "text": "The sound of footsteps grew louder. It was Lilith, which is the vampire who had bitten her. ",
+            "left": null,
+            "center": null,
+            "right": null
+          },
+          {
+            "speaker": "",
+            "text": "She was walking slowly down the hallway while speaking in a low voice to another figure.",
+            "left": null,
+            "center": null,
+            "right": null
+          },
+          {
+            "speaker": "",
+            "text": "Elara held her breath inside the velvet alcove, heart hammering against her ribs.",
+            "left": null,
+            "center": null,
+            "right": null
+          },
+          {
+            "speaker": "Lilith",
+            "text": "(irritated, voice sharp) Quiet, Heinrich! I am not in the mood today. Leave me alone.",
+            "left": {"character": "Lilith", "expression": "lilith_unamused"},
+            "center": null,
+            "right": {"character": "Heinrich", "expression": "heinrich_default"}
+          },
+          {
+            "speaker": "Heinrich",
+            "text": "But Madam Lilith, the village closest to Meadowbrook — Brookshaven — still has many healthy human citizens.",
+            "left": {"character": "Lilith", "expression": "lilith_unamused"},
+            "center": null,
+            "right": {"character": "Heinrich", "expression": "heinrich_default"}
+          },
+          {
+            "speaker": "Heinrich",
+            "text": "We could raid it tonight. Don’t you want to be promoted to General of the vampire legions?",
+            "left": {"character": "Lilith", "expression": "lilith_unamused"},
+            "center": null,
+            "right": {"character": "Heinrich", "expression": "heinrich_default"}
+          },
+          {
+            "speaker": "Lilith",
+            "text": "I have no interest in that shit! I just want to be left alone in my room. Do not bother me anymore!",
+            "left": {"character": "Lilith", "expression": "lilith_angry"},
+            "center": null,
+            "right": {"character": "Heinrich", "expression": "heinrich_default"}
+          },
+          {
+            "speaker": "Lilith",
+            "text": "As you wish, Madam…",
+            "left": {"character": "Lilith", "expression": "lilith_angry"},
+            "center": null,
+            "right": {"character": "Heinrich", "expression": "heinrich_default"}
+          },
+          {
+            "speaker": "",
+            "text": "The sound of retreating footsteps echoed down the hall. Elara stayed perfectly still",
+            "left": null,
+            "center": null,
+            "right": null
+          },
+          {
+            "speaker": "",
+            "text": "Elara tried to move as quietly as possible, but her foot accidentally brushed against the edge of the armor stand.",
+            "left": null,
+            "center": null,
+            "right": null
+          },
+          {
+            "speaker": "Heinrich",
+            "text": "Who’s there?! Bloody hell… a human?!",
+            "left": {"character": "Lilith", "expression": "lilith_angry"},
+            "center": null,
+            "right": {"character": "Heinrich", "expression": "heinrich_angry"}
+          },
+          {
+            "speaker": "Lilith",
+            "text": "What the—?",
+            "left": {"character": "Lilith", "expression": "lilith_angry"},
+            "center": null,
+            "right": {"character": "Heinrich", "expression": "heinrich_angry"}
+          },
+          {
+            "speaker": "Heinrich",
+            "text": "Capture her—!",
+            "left": {"character": "Lilith", "expression": "lilith_angry"},
+            "center": null,
+            "right": {"character": "Heinrich", "expression": "heinrich_angry"}
+          },
+          {
+            "speaker": "",
+            "text": "Before Heinrich could finish, Lilith moved like lightning. She grabbed the vampire and brutally bashed his head against the stone wall.",
+            "left": null,
+            "center": {"character": "Lilith", "expression": "lilith_angry"},
+            "right": {"character": "Heinrich", "expression": "heinrich_angry"}
+          },
+          {
+            "speaker": "",
+            "text": "Heinrich slumped unconscious to the floor with a heavy thud.",
+            "left": null,
+            "center": {"character": "Lilith", "expression": "lilith_angry"},
+            "right": {"character": "Heinrich", "expression": "heinrich_angry"}
+          },
+          {
+            "speaker": "",
+            "text": "Lilith whipped around, crimson eyes flashing with a dangerous mix of anger and something far softer.",
+            "left": null,
+            "center": null,
+            "right": {"character": "Lilith", "expression": "lilith_angry"}
+          },
+          {
+            "speaker": "Lilith",
+            "text": "Goddamn it… I should have locked the door! ",
+            "left": null,
+            "center": null,
+            "right": {"character": "Lilith", "expression": "lilith_angry"}
+          },
+          {
+            "speaker": "Lilith",
+            "text": "Miss Elara, don’t move. If the guards find you, they won’t be as gentle as I am. Just come with me and behave.",
+            "left": {"character": "Elara", "expression": "elara_sad"},
+            "center": null,
+            "right": {"character": "Lilith", "expression": "lilith_unamused"}
+          },
+          {
+            "speaker": "Elara",
+            "text": "(frozen, stunned) Huh…?",
+            "left": {"character": "Elara", "expression": "elara_sad"},
+            "center": null,
+            "right": {"character": "Lilith", "expression": "lilith_unamused"}
+          },
+          {
+            "speaker": "",
+            "text": "Elara stood paralyzed, unable to speak or run. Her mind raced and wondering how does she know my name?",
+            "left": {"character": "Elara", "expression": "elara_sad"},
+            "center": null,
+            "right": {"character": "Lilith", "expression": "lilith_unamused"}
+          },
+          {
+            "speaker": "",
+            "text": "Lilith strode forward and firmly grabbed Elara’s wrist, pulling her back toward the bedchamber.",
+            "left": {"character": "Elara", "expression": "elara_shock"},
+            "center": null,
+            "right": {"character": "Lilith", "expression": "lilith_default"}
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "background": "res://assets/interactive_bg/interactive_background.png",
+        "ost": "res://UI/sounds/bedroom_background.mp3",
+        "lines": [
+          {
+            "speaker": "",
+            "text": "Lilith firmly guided Elara back onto the elegant four-poster bed draped in black lace and deep crimson silk.",
+            "left": {"character": "Elara", "expression": "elara_sad"},
+            "center": null,
+            "right": {"character": "Lilith", "expression": "lilith_default"}
+          },
+          {
+            "speaker": "",
+            "text": " She kept her expression cold and stern, trying to look every bit the intimidating Commander of the vampire fleet.",
+            "left": {"character": "Elara", "expression": "elara_sad"},
+            "center": null,
+            "right": {"character": "Lilith", "expression": "lilith_default"}
+          },
+          {
+            "speaker": "",
+            "text": "Elara’s heart sank as she stared up at the woman who had led the destruction of Meadowbrook.",
+            "left": {"character": "Elara", "expression": "elara_sad"},
+            "center": null,
+            "right": {"character": "Lilith", "expression": "lilith_default"}
+          },
+          {
+            "speaker": "",
+            "text": "Fear gripped her tightly once again.",
+            "left": {"character": "Elara", "expression": "elara_sad"},
+            "center": null,
+            "right": {"character": "Lilith", "expression": "lilith_default"}
+          },
+          {
+            "speaker": "",
+            "text": "Lilith locked the heavy bedroom door with a sharp click, then approached the bed.",
+            "left": {"character": "Elara", "expression": "elara_sad"},
+            "center": null,
+            "right": {"character": "Lilith", "expression": "lilith_happy"}
+          },
+          {
+            "speaker": "",
+            "text": "She grabbed Elara’s chin with a gloved hand, tilting her face up.",
+            "left": {"character": "Elara", "expression": "elara_sad"},
+            "center": {"character": "Lilith", "expression": "lilith_happy"},
+            "right": null
+          },
+          {
+            "speaker": "Elara",
+            "text": "Please… don’t kill me…",
+            "left": {"character": "Elara", "expression": "elara_sad"},
+            "center": {"character": "Lilith", "expression": "lilith_happy"},
+            "right": null
+          },
+          {
+            "speaker": "Lilith",
+            "text": "Stay quiet and don’t cause trouble. That’s all you need to do if you want to live.",
+            "left": {"character": "Elara", "expression": "elara_sad"},
+            "center": {"character": "Lilith", "expression": "lilith_happy"},
+            "right": null
+          }
+        ]
+      },
+      {
+        "id": "8",
+        "background": "res://assets/cutscenes/cutscene_5.png",
+        "ost": "res://UI/sounds/main_menu_ost.mp3",
+        "lines": [
+          { "speaker": "", "text": "Lilith leaned down and bit into Elara’s neck. Firm and efficient." },
+          { "speaker": "", "text": "She drank quickly, taking what she needed without lingering." },
+          { "speaker": "", "text": "Elara winced, enduring the sharp sting in silence." },
+          { "speaker": "Elara", "text": "Auugg!" },
+          { "speaker": "Lilith", "text": "Hmm, quiet please..." },
+          { "speaker": "Elara", "text": "I... Think I will faint..." },
+          { "speaker": "Lilith", "text": "I apologize..." },
+          { "speaker": "", "text": "After a few moments, Lilith pulled back and licked the bite mark closed with a quick swipe of her tongue." },
+          { "speaker": "", "text": "She released Elara’s chin and straightened up, keeping her distance." }
+        ]
+      },
+      {
+        "id": "9",
+        "background": "res://assets/interactive_bg/interactive_background.png",
+        "ost": "res://UI/sounds/bedroom_background.mp3",
+        "lines": [
+          {
+            "speaker": "Lilith",
+            "text": "Don’t worry. I don’t plan to kill you yet.",
+            "left": {"character": "Elara", "expression": "elara_sad"},
+            "center": {"character": "Lilith", "expression": "lilith_default"},
+            "right": null
+          },
+          {
+            "speaker": "Elara",
+            "text": "…Why are you keeping me here?",
+            "left": {"character": "Elara", "expression": "elara_sad"},
+            "center": {"character": "Lilith", "expression": "lilith_default"},
+            "right": null
+          },
+          {
+            "speaker": "",
+            "text": "Lilith paused for a moment, her usual commanding mask cracking slightly.",
+            "left": {"character": "Elara", "expression": "elara_sad"},
+            "center": {"character": "Lilith", "expression": "lilith_default"},
+            "right": null
+          },
+          {
+            "speaker": "Lilith",
+            "text": "If I wanted you dead, I would have already thrown you to the lesser vampires. ",
+            "left": {"character": "Elara", "expression": "elara_default"},
+            "center": {"character": "Lilith", "expression": "lilith_default"},
+            "right": null
+          },
+          {
+            "speaker": "Lilith",
+            "text": "he truth is… I had no choice but to attack Meadowbrook. Queen Charlotte gave the order directly. I couldn’t refuse.",
+            "left": {"character": "Elara", "expression": "elara_default"},
+            "center": {"character": "Lilith", "expression": "lilith_default"},
+            "right": null
+          },
+          {
+            "speaker": "Elara",
+            "text": "So… destroying my village wasn’t your own decision?",
+            "left": {"character": "Elara", "expression": "elara_shock"},
+            "center": {"character": "Lilith", "expression": "lilith_default"},
+            "right": null
+          },
+          {
+            "speaker": "Lilith",
+            "text": "I have no love for chaos or destruction. All I want is a quiet life… and maybe some strawberry cakes once in a while.",
+            "left": {"character": "Elara", "expression": "elara_default"},
+            "center": {"character": "Lilith", "expression": "lilith_unamused"},
+            "right": null
+          },
+          {
+            "speaker": "Lilith",
+            "text": "Pathetic for a fleet commander, isn’t it?",
+            "left": {"character": "Elara", "expression": "elara_default"},
+            "center": {"character": "Lilith", "expression": "lilith_unamused"},
+            "right": null
+          },
+          {
+            "speaker": "",
+            "text": "She looked away, clearly uncomfortable showing even this much.",
+            "left": {"character": "Elara", "expression": "elara_default"},
+            "center": {"character": "Lilith", "expression": "lilith_unamused"},
+            "right": null
+          },
+          {
+            "speaker": "Lilith",
+            "text": "But I’m supposed to be strong. I’m the commander of the fleet. I can’t appear weak in front of anyone.",
+            "left": {"character": "Elara", "expression": "elara_default"},
+            "center": {"character": "Lilith", "expression": "lilith_unamused"},
+            "right": null
+          },
+          {
+            "speaker": "Elara",
+            "text": "So… you actually felt some pity for the people in Meadowbrook?",
+            "left": {"character": "Elara", "expression": "elara_default"},
+            "center": {"character": "Lilith", "expression": "lilith_unamused"},
+            "right": null
+          },
+          {
+            "speaker": "Lilith",
+            "text": "It was selfish to only save you… but I did it anyway.",
+            "left": {"character": "Elara", "expression": "elara_default"},
+            "center": {"character": "Lilith", "expression": "lilith_default"},
+            "right": null
+          },
+          {
+            "speaker": "Elara",
+            "text": "I… understand. You were just following orders.",
+            "left": {"character": "Elara", "expression": "elara_default"},
+            "center": {"character": "Lilith", "expression": "lilith_default"},
+            "right": null
+          },
+          {
+            "speaker": "",
+            "text": "Lilith crossed her arms, regaining some of her composure.",
+            "left": {"character": "Elara", "expression": "elara_default"},
+            "center": {"character": "Lilith", "expression": "lilith_default"},
+            "right": null
+          },
+          {
+            "speaker": "Lilith",
+            "text": "That’s exactly why you need to stay here for now. If Queen Charlotte finds out I’m hiding a human, it won’t end well for either of us.",
+            "left": {"character": "Elara", "expression": "elara_shock"},
+            "center": {"character": "Lilith", "expression": "lilith_default"},
+            "right": null
+          },
+          {
+            "speaker": "Lilith",
+            "text": "Tomorrow, I’ll take you to my witch friend. She can create something to keep you safe.",
+            "left": {"character": "Elara", "expression": "elara_shock"},
+            "center": {"character": "Lilith", "expression": "lilith_default"},
+            "right": null
+          }   
+        ]
+      }
+    ]
+  }
 }

@@ -27,6 +27,7 @@ var is_typing: bool = false
 var is_transitioning: bool = false
 var current_text: String = ""
 var is_hidden: bool = false
+var story_block = "intro"
 
 @export var typing_speed: float = 0.03
 @export var fade_duration: float = 0.7
@@ -41,6 +42,9 @@ func _ready():
 	character_positions["right"] = $RightCharacter
 	
 	fade_rect.modulate.a = 0.0
+
+	story_block = CutsceneState.story_block
+	
 	load_dialogue_json()
 	show_current_scene()
 
@@ -50,9 +54,9 @@ func load_dialogue_json():
 		push_error("JSON file not found")
 		return
 	
-	var json = JSON.new() 
+	var json = JSON.new()
 	if json.parse(file.get_as_text()) == OK:
-		intro_data = json.data
+		intro_data = json.data[story_block]
 	else:
 		push_error("JSON Parse Error: " + json.get_error_message())
 
@@ -216,12 +220,24 @@ func highlight_speaker(speaker: String):
 			dim_character(char_data.node)
 
 func brighten_character(char_node: Node2D):
-	var brightness_tween = create_tween()
-	brightness_tween.tween_property(char_node, "modulate:a", 1.0, 0.1)
+	var t = create_tween()
+	t.tween_property(
+		char_node,
+		"modulate",
+		Color(1, 1, 1, 1), # full brightness
+		0.1
+	)
 
 func dim_character(char_node: Node2D):
-	var brightness_tween = create_tween()
-	brightness_tween.tween_property(char_node, "modulate:a", dim_brightness, 0.1)
+	var t = create_tween()
+	var d = dim_brightness # like 0.5
+
+	t.tween_property(
+		char_node,
+		"modulate",
+		Color(d, d, d, 1), # darker, but fully opaque
+		0.1
+	)
 
 func start_typing():
 	is_typing = true
@@ -277,9 +293,9 @@ func _on_skip_btn_pressed() -> void:
 	await FadeTransition.fade_to_scene("res://main_scenes/interactive_map.tscn")
 
 
-func _on_hide_btn_pressed() -> void:
-	is_hidden = true
-	dialogue_layer.visible = false
+# func _on_hide_btn_pressed() -> void:
+# 	is_hidden = true
+# 	dialogue_layer.visible = false
 
 
 func _on_pause_btn_pressed() -> void:

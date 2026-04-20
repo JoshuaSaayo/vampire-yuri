@@ -20,6 +20,7 @@ config/icon="uid://tbfa7cxqn0tw"
 PauseManager="*res://autoload/pause_manager.gd"
 ChoiceManager="*res://autoload/choice_manager.gd"
 FadeTransition="*res://autoload/fade_transition.tscn"
+CutsceneState="*res://autoload/cutscene_state.gd"
 
 [display]
 

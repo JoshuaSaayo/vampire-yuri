@@ -217,13 +217,15 @@ func end_dialogue():
 	is_typing = false
 	waiting_for_choice = false
 	
-	if current_full_text == "[DEMO ENDS HERE]":
-		await FadeTransition.fade_to_scene("res://UI/end_transition.tscn")
+	if current_full_text == "Her journey was only beginning beyond the door.":
+		CutsceneState.story_block = "chapter_1"
+		await FadeTransition.fade_to_scene("res://main_scenes/cutscenes.tscn")
 		return
 		
 	if not intro_dialogue_shown:
 		intro_dialogue_shown = true
 		set_interactive_enabled(true)
+
 
 # ====================== INPUT ======================
 func _input(event):
