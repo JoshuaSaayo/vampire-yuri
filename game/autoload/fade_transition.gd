@@ -26,3 +26,6 @@ func fade_to_scene(scene_path: String):
 	get_tree().change_scene_to_file(scene_path)
 	await get_tree().process_frame
 	await fade_out()
+
+func show_chapter_end():
+	await fade_to_scene("res://UI/end_transition.tscn")

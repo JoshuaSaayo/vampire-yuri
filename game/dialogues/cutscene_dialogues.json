@@ -557,6 +557,7 @@
           {
             "speaker": "Lilith",
             "text": "Tomorrow, I’ll take you to my witch friend. She can create something to keep you safe.",
+            "action": "chapter1_end",
             "left": {"character": "Elara", "expression": "elara_shock"},
             "center": {"character": "Lilith", "expression": "lilith_default"},
             "right": null
