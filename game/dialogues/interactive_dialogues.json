@@ -13,9 +13,10 @@
       "affection": 0,
       "repeatable": true,
       "dialogues": [
+        { "speaker": "Elara", "text": "Hmm? There is a diary book? I am curious what's inside... " },
         {
           "speaker": "Elara",
-          "text": "Hmm? There is a diary book? I am curious what's inside... Maybe I'll take a peek.",
+          "text": "Maybe I'll take a peek.",
           "choices": [
             { "text": "Open the diary", "next": "diary_open" },
             { "text": "Close the book", "next": "return" }
@@ -38,11 +39,12 @@
         { "speaker": "Elara", "text": "(eyes widening) Wait… these cakes? The pumpkin pie with cinnamon? I made those! This is the same order my mother’s bakery received every full moon…”" },
         { "speaker": "", "text": "A quiet, almost fond smile tugged at her lips despite everything." },
         { "speaker": "Elara", "text": "(softly) So that mysterious customer in the black lace dress who always came at night… was her? She’s been eating my baking this whole time…" },
+        { "speaker": "", "text": "She hesitated for a moment, then picked up the quill that lay beside the diary." },
         {
           "speaker": "Elara",
-          "text": "She hesitated for a moment, then picked up the quill that lay beside the diary.",
+          "text": "Should I write something?",
           "choices": [
-            { "text": "Write a short message", "next": "diary_write" },
+            { "text": "Write a short message", "next": "diary_write", "affection_changes": { "Lilith": 1 } },
             { "text": "Close the diary", "next": "return" }
           ]
         }
@@ -69,11 +71,12 @@
         { "speaker": "", "text": "She reached out and gently touched the fabric. It felt incredibly soft despite its dramatic appearance." },
         { "speaker": "", "text": "For a brief moment, she forgot the danger she was in." },
         { "speaker": "Elara", "text": "(talking to herself, flustered) I wonder if this would even fit me… Wait—no! What am I thinking? There’s no time for this. I need to find a way out!" },
+        { "speaker": "", "text": "Still, her fingers lingered on one particularly elegant black-and-crimson dress with delicate lace trims and soft velvet accents." },
         {
           "speaker": "",
-          "text": "Still, her fingers lingered on one particularly elegant black-and-crimson dress with delicate lace trims and soft velvet accents.",
+          "text": "She starred with curiousity.",
           "choices": [
-            { "text": "Take the gothic dress", "next": "take_dress" },
+            { "text": "Take the gothic dress", "next": "take_dress", "affection_changes": { "Lilith": 1 }},
             { "text": "Close the wardrobe", "next": "return" }
           ]
         }
@@ -92,9 +95,10 @@
     "affection": 0,
     "repeatable": true,
     "dialogues": [
+      { "speaker": "", "text": "The door is unlocked. The one who captured me didn't bother to keep me here... I wonder why?" },
       {
         "speaker": "Elara",
-        "text": "The door is unlocked. The one who captured me didn't bother to keep me here... I wonder why?",
+        "text": "I feel nervous leaving this room...",
         "choices": [
           { "text": "Open the door", "next": "door_open" },
           { "text": "Stay in the room", "next": "stay" }

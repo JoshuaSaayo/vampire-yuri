@@ -1,6 +1,5 @@
 extends Control
 
-# ====================== NODES ======================
 @onready var background: TextureRect = $Background
 @onready var fade_rect: ColorRect = $FadeRect
 @onready var dialogue_text: RichTextLabel = $DialogueLayer/DialogueBox/DialogueText
@@ -55,16 +54,38 @@ func load_dialogue_json():
 	
 	var json = JSON.new()
 	if json.parse(file.get_as_text()) == OK:
-		intro_data = json.data[story_block]
+		var full_data = json.data
+		print("📖 Full JSON loaded. Available keys: ", full_data.keys())
+		
+		if full_data.has(story_block):
+			intro_data = full_data[story_block]
+			print("✅ Loaded story block: ", story_block)
+			print("📋 Has scenes: ", intro_data.has("scenes"))
+			print("📋 Has endings: ", intro_data.has("endings"))
+			if intro_data.has("endings"):
+				print("🏆 Endings available: ", intro_data.endings.keys())
+		else:
+			push_error("Story block '", story_block, "' not found in JSON!")
 	else:
 		push_error("JSON Parse Error: " + json.get_error_message())
 
 # ====================== SCENE MANAGEMENT ======================
 func show_current_scene():
+	print("📺 show_current_scene called - scene_idx: ", scene_idx, " / total scenes: ", intro_data.scenes.size())
+	
 	if scene_idx >= intro_data.scenes.size():
-		await FadeTransition.fade_to_scene("res://main_scenes/interactive_map.tscn")
+		print("🏁 Cutscene finished. story_block = ", story_block)
+		
+		# Check if this is chapter_1 and we have endings
+		if story_block == "chapter_1" and intro_data.has("endings"):
+			print("🎬 Determining ending for chapter_1...")
+			await determine_and_play_ending()
+		else:
+			print("🚪 No endings found or not chapter_1. Fading to interactive map...")
+			await FadeTransition.fade_to_scene("res://main_scenes/interactive_map.tscn")
 		return
 	
+	# Safety check - ensure scene exists
 	if scene_idx < 0 or scene_idx >= intro_data.scenes.size():
 		push_error("Invalid scene index: ", scene_idx)
 		await FadeTransition.fade_to_scene("res://main_scenes/interactive_map.tscn")
@@ -87,6 +108,56 @@ func show_current_scene():
 		if needs_music_change:
 			change_bgm(scene.ost)
 		show_current_line()
+
+func determine_and_play_ending():
+	print("🔍 Starting determine_and_play_ending()")
+	
+	# Get the appropriate ending based on affection
+	var ending = ChoiceManager.get_ending()
+	print("🏆 Selected ending: ", ending)
+	
+	# Make sure intro_data has endings
+	if not intro_data.has("endings"):
+		print("❌ No 'endings' key in intro_data!")
+		await FadeTransition.fade_to_scene("res://main_scenes/interactive_map.tscn")
+		return
+	
+	var endings_data = intro_data["endings"]
+	print("📚 Available endings: ", endings_data.keys())
+	
+	if not endings_data.has(ending):
+		print("⚠️ Ending '", ending, "' not found! Available: ", endings_data.keys())
+		# Fallback to neutral_ending
+		if endings_data.has("neutral_ending"):
+			ending = "neutral_ending"
+			print("🔄 Falling back to neutral_ending")
+		else:
+			print("❌ No fallback ending found!")
+			await FadeTransition.fade_to_scene("res://main_scenes/interactive_map.tscn")
+			return
+	
+	var ending_data = endings_data[ending]
+	var ending_scenes = ending_data.get("scenes", [])
+	print("🎬 Ending scenes count for '", ending, "': ", ending_scenes.size())
+	
+	if ending_scenes.is_empty():
+		print("❌ No scenes found in ending!")
+		await FadeTransition.fade_to_scene("res://main_scenes/interactive_map.tscn")
+		return
+	
+	# Update CutsceneState
+	CutsceneState.set_ending(ending)
+	CutsceneState.play_ending(ending)
+	print("✅ Updated CutsceneState with ending: ", ending)
+	
+	# Replace current cutscene data with ending
+	intro_data.scenes = ending_scenes
+	scene_idx = 0
+	line_idx = 0
+	
+	clear_all_characters()
+	print("🎬 Playing ending cutscene now...")
+	show_current_scene()
 
 func change_bgm(music_path: String):
 	if not bgm_player:
@@ -293,7 +364,12 @@ func end_cutscene():
 
 # ====================== BUTTONS ======================
 func _on_skip_btn_pressed():
-	await FadeTransition.fade_to_scene("res://main_scenes/interactive_map.tscn")
+	# Skip to appropriate destination based on context
+	if story_block == "chapter_1":
+		# When skipping during chapter_1, still determine ending
+		await determine_and_play_ending()
+	else:
+		await FadeTransition.fade_to_scene("res://main_scenes/interactive_map.tscn")
 
 func _on_hide_btn_pressed():
 	is_hidden = true

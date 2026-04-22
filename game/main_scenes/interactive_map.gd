@@ -161,19 +161,49 @@ func show_choices(choices: Array):
 		var button = Button.new()
 		button.text = choice.text
 		button.theme = button_theme
+		
+			   # Add padding to make the button larger
 		button.add_theme_constant_override("padding_left", 20)
 		button.add_theme_constant_override("padding_right", 20)
 		button.add_theme_constant_override("padding_top", 12)
 		button.add_theme_constant_override("padding_bottom", 12)
+		
 		button.custom_minimum_size = Vector2(300, 70)
-		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		button.pressed.connect(_on_choice_selected.bind(choice.next))
+		
+		# Store choice data including affection changes
+		var choice_data = {
+			"next": choice.next,
+			"affection": choice.get("affection_changes", {}),
+			"flags": choice.get("flags_to_set", {})
+		}
+		
+		button.pressed.connect(_on_choice_selected.bind(choice_data))
 		choice_container.add_child(button)
 
-func _on_choice_selected(next_key: String):
+func _on_choice_selected(choice_data: Dictionary):
 	waiting_for_choice = false
 	clear_choices()
 	choice_container.visible = false
+	
+	print("🎮 Choice selected with data: ", choice_data)
+	
+	# Apply affection changes
+	if choice_data.has("affection"):
+		var affection_dict = choice_data["affection"]
+		for character in affection_dict:
+			var amount = affection_dict[character]
+			print("💖 Applying affection change: ", character, " +", amount)
+			ChoiceManager.add_affection(character, amount)
+	
+	# Apply flags
+	if choice_data.has("flags"):
+		var flags_dict = choice_data["flags"]
+		for flag_name in flags_dict:
+			var value = flags_dict[flag_name]
+			ChoiceManager.set_flag(flag_name, value)
+	
+	var next_key = choice_data.get("next", "return")
+	print("➡️ Moving to next key: ", next_key)
 	
 	if next_key == "return":
 		end_dialogue()
@@ -187,7 +217,7 @@ func _on_choice_selected(next_key: String):
 	else:
 		dialogue_queue = next_dialogues.duplicate()
 		show_next_line()
-
+		
 func clear_choices():
 	for child in choice_container.get_children():
 		child.queue_free()
