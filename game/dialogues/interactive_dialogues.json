@@ -98,7 +98,7 @@
       { "speaker": "", "text": "The door is unlocked. The one who captured me didn't bother to keep me here... I wonder why?" },
       {
         "speaker": "Elara",
-        "text": "I feel nervous leaving this room...",
+        "text": "I feel nervous...",
         "choices": [
           { "text": "Open the door", "next": "door_open" },
           { "text": "Stay in the room", "next": "stay" }

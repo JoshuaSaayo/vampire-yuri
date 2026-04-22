@@ -205,7 +205,7 @@
                 "left": null,
                 "center": {
                   "character": "Elara",
-                  "expression": "elara_shocked"
+                  "expression": "elara_shock"
                 },
                 "right": null
               },
@@ -215,7 +215,7 @@
                 "left": null,
                 "center": {
                   "character": "Elara",
-                  "expression": "elara_shocked"
+                  "expression": "elara_shock"
                 },
                 "right": null
               },
@@ -225,7 +225,7 @@
                 "left": null,
                 "center": {
                   "character": "Elara",
-                  "expression": "elara_shocked"
+                  "expression": "elara_shock"
                 },
                 "right": null
               },
@@ -864,7 +864,7 @@
             "lines": [
               {
                 "speaker": "",
-                "text": "lewd_ending The corridor stretched endlessly in both directions, lit only by flickering crimson candles that cast long, dancing shadows on the stone walls. The air felt heavy and cold. Every footstep echoed far too loudly.",
+                "text": "The corridor stretched endlessly in both directions, lit only by flickering crimson candles that cast long, dancing shadows on the stone walls. The air felt heavy and cold. Every footstep echoed far too loudly.",
                 "left": "null",
                 "center": null,
                 "right": null
