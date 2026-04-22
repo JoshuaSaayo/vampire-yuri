@@ -849,6 +849,10 @@
                   "expression": "lilith_default"
                 },
                 "right": null
+              },
+              {
+                "action": "end_cutscene",
+                "text": ""
               }
             ]
           }
@@ -1119,19 +1123,6 @@
                 }
               },
               {
-                "speaker": "Lilith",
-                "text": "Goddamn it… I should have locked the door! Miss Elara, don’t move or the guards will—",
-                "left": {
-                  "character": "Elara",
-                  "expression": "elara_sad_goth"
-                },
-                "center": null,
-                "right": {
-                  "character": "Lilith",
-                  "expression": "lilith_unamused"
-                }
-              },
-              {
                 "speaker": "",
                 "text": "She stopped mid-sentence, eyes widening as she took in the full sight.",
                 "left": {
@@ -1185,7 +1176,7 @@
               },
               {
                 "speaker": "Lilith",
-                "text": "(muttering, half to herself, voice quieter and more vulnerable) …Wait. You’re wearing my dress? How…? It suits you far better than it ever did on me.",
+                "text": "(muttering, half to herself, voice quieter and more vulnerable) …Wait. You’re wearing my dress? How…? ",
                 "left": {
                   "character": "Elara",
                   "expression": "elara_sad_goth"
@@ -1198,7 +1189,7 @@
               },
               {
                 "speaker": "Lilith",
-                "text": "Damn it… why do you have to look like that right now?",
+                "text": "It suits you far better than it ever did on me. Damn it… why do you have to look like that right now?",
                 "left": {
                   "character": "Elara",
                   "expression": "elara_default_goth"
@@ -1633,6 +1624,10 @@
                   "expression": "lilith_default"
                 },
                 "right": null
+              },
+              {
+                "action": "end_cutscene",
+                "text": ""
               }
             ]
           }

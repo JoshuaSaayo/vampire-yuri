@@ -81,8 +81,8 @@ func show_current_scene():
 			print("🎬 Determining ending for chapter_1...")
 			await determine_and_play_ending()
 		else:
-			print("🚪 No endings found or not chapter_1. Fading to interactive map...")
-			await FadeTransition.fade_to_scene("res://main_scenes/interactive_map.tscn")
+			# After endings are done, show "to be continued"
+			await show_to_be_continued()
 		return
 	
 	# Safety check - ensure scene exists
@@ -119,7 +119,7 @@ func determine_and_play_ending():
 	# Make sure intro_data has endings
 	if not intro_data.has("endings"):
 		print("❌ No 'endings' key in intro_data!")
-		await FadeTransition.fade_to_scene("res://main_scenes/interactive_map.tscn")
+		await show_to_be_continued()
 		return
 	
 	var endings_data = intro_data["endings"]
@@ -127,13 +127,12 @@ func determine_and_play_ending():
 	
 	if not endings_data.has(ending):
 		print("⚠️ Ending '", ending, "' not found! Available: ", endings_data.keys())
-		# Fallback to neutral_ending
 		if endings_data.has("neutral_ending"):
 			ending = "neutral_ending"
 			print("🔄 Falling back to neutral_ending")
 		else:
 			print("❌ No fallback ending found!")
-			await FadeTransition.fade_to_scene("res://main_scenes/interactive_map.tscn")
+			await show_to_be_continued()
 			return
 	
 	var ending_data = endings_data[ending]
@@ -142,7 +141,7 @@ func determine_and_play_ending():
 	
 	if ending_scenes.is_empty():
 		print("❌ No scenes found in ending!")
-		await FadeTransition.fade_to_scene("res://main_scenes/interactive_map.tscn")
+		await show_to_be_continued()
 		return
 	
 	# Update CutsceneState
@@ -200,6 +199,37 @@ func fade_out_and_change_scene(needs_music_change: bool = false):
 	is_transitioning = false
 	line_idx = 0
 	show_current_line()
+
+# ====================== TRANSITION ======================
+func show_to_be_continued():
+	print("📖 Showing 'To Be Continued' screen...")
+	
+	# Save game progress
+	save_game_progress()
+	
+	# Fade to black
+	if tween:
+		tween.kill()
+	
+	tween = create_tween()
+	tween.tween_property(fade_rect, "modulate:a", 1.0, fade_duration)
+	await tween.finished
+	
+	# Change to end transition scene
+	print("🚪 Transitioning to end_transition.tscn")
+	get_tree().change_scene_to_file("res://UI/end_transition.tscn")
+
+
+func save_game_progress():
+	# Save which ending was seen
+	ChoiceManager.set_flag("game_completed", true)
+	ChoiceManager.set_flag("last_ending", CutsceneState.last_ending)
+	
+	# Save affection values for future chapters
+	var lilith_affection = ChoiceManager.get_affection("Lilith")
+	ChoiceManager.set_flag("lilith_affection_chapter1", lilith_affection)
+	
+	print("💾 Game progress saved - Ending: ", CutsceneState.last_ending, " | Lilith Affection: ", lilith_affection)
 
 # ====================== CHARACTER MANAGEMENT ======================
 func clear_all_characters():
@@ -289,6 +319,13 @@ func show_current_line():
 		return
 	
 	var line = current_scene.lines[line_idx]
+	
+	# Check for action commands FIRST
+	if line.has("action"):
+		print("🎬 Action detected: ", line.action)
+		handle_action(line.action)
+		return
+	
 	speaker_name.text = line.speaker
 	speaker_name.visible = line.speaker != ""
 	current_text = line.text
@@ -303,6 +340,17 @@ func show_current_line():
 	
 	highlight_speaker(line.speaker)
 	start_typing()
+
+func handle_action(action: String):
+	print("🎬 Handling action: ", action)
+	
+	match action:
+		"end_cutscene", "chapter1_end":
+			print("🏁 Ending cutscene detected!")
+			end_cutscene()
+		_:
+			print("Unknown action: ", action)
+
 
 # ====================== TYPING SYSTEM ======================
 func start_typing():
@@ -335,7 +383,6 @@ func _input(event):
 		return
 	
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		# If hidden, just unhide and stop (don't advance dialogue)
 		if is_hidden:
 			is_hidden = false
 			dialogue_layer.visible = true
@@ -344,11 +391,13 @@ func _input(event):
 		if is_typing:
 			skip_typing()
 		else:
-			if scene_idx >= intro_data.scenes.size():
-				end_cutscene()
-				return
-			
+			# Check if current line has an action before advancing
 			var current_scene = intro_data.scenes[scene_idx]
+			var current_line = current_scene.lines[line_idx]
+			
+			# If line has action, don't auto-advance, let the action handle it
+			if current_line.has("action"):
+				return
 			
 			if line_idx + 1 >= current_scene.lines.size():
 				scene_idx += 1
@@ -360,7 +409,15 @@ func _input(event):
 
 # ====================== UTILITIES ======================
 func end_cutscene():
-	await FadeTransition.fade_to_scene("res://main_scenes/interactive_map.tscn")
+	print("🏁 Ending cutscene and showing transition...")
+	
+	# Stop any ongoing tweens
+	if tween:
+		tween.kill()
+
+	
+	# Show to be continued screen
+	await show_to_be_continued()
 
 # ====================== BUTTONS ======================
 func _on_skip_btn_pressed():
