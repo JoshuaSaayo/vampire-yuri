@@ -11,7 +11,7 @@
   ],
   "diary": {
       "affection": 0,
-      "repeatable": true,
+      "repeatable": false,
       "dialogues": [
         { "speaker": "Elara", "text": "Hmm? There is a diary book? I am curious what's inside... " },
         {
@@ -26,7 +26,7 @@
   },
   "diary_open": {
       "affection": 0,
-      "repeatable": true,
+      "repeatable": false,
       "dialogues": [
         { "speaker": "", "text": "Elara carefully opened the diary." },
         { "speaker": "", "text": "The handwriting was elegant and flowing, with occasional small doodles of flowers and desserts in the margins. As she read, her eyes widened little by little." },
@@ -65,7 +65,7 @@
   "wardrobe": 
     {
       "affection": 0,
-      "repeatable": true,
+      "repeatable": false,
       "dialogues": [
         { "speaker": "Elara", "text": "These are… so beautiful. I’ve never seen dresses like this before. They look like something from a dark fairy tale…" },
         { "speaker": "", "text": "She reached out and gently touched the fabric. It felt incredibly soft despite its dramatic appearance." },

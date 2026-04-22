@@ -10,6 +10,8 @@ extends Control
 @export var button_theme: Theme
 @export var typing_speed: float = 0.03
 
+var current_item_id: String = ""
+var current_item_data: Dictionary = {}
 var bedroom_data: Dictionary = {}
 var dialogue_queue: Array = []
 var current_text: String = ""
@@ -80,13 +82,26 @@ func show_intro():
 
 func show_dialogue(item_id: String):
 	var item = bedroom_data.get(item_id, {})
+	var is_repeatable = item.get("repeatable", true)
+	
+	# Check if this item has been marked as used
+	if not is_repeatable and ChoiceManager.get_flag(item_id + "_used"):
+		print("⚠️ Item already used: ", item_id)
+		var empty_dialogue = [{ "speaker": "", "text": "I've already done everything I can here." }]
+		start_dialogue(empty_dialogue)
+		return
+	
 	var dialogues = item.get("dialogues", [])
 	
 	if dialogues.is_empty():
 		return
 	
+	current_item_id = item_id
+	current_item_data = item
+	
 	set_interactive_enabled(false)
 	start_dialogue(dialogues)
+
 
 func start_dialogue(lines: Array):
 	dialogue_queue = lines.duplicate()
@@ -116,12 +131,11 @@ func show_next_line():
 	
 	# Check if this line has choices
 	if line.has("choices") and not line.choices.is_empty():
-		input_locked = true  # LOCK INPUT while waiting for typing to finish
-		# Wait for typing to complete before showing choices
+		input_locked = true
 		await tween.finished
 		await get_tree().create_timer(0.1).timeout
 		show_choices(line.choices)
-		input_locked = false  # UNLOCK after choices are shown
+		input_locked = false
 
 # ====================== TYPING SYSTEM ======================
 func start_typing():
@@ -169,7 +183,16 @@ func show_choices(choices: Array):
 		button.add_theme_constant_override("padding_bottom", 12)
 		
 		button.custom_minimum_size = Vector2(300, 70)
+
+		# Check if choice has conditions
+		var should_show = true
+		if choice.has("condition"):
+			var condition = choice.get("condition", {})
+			should_show = check_condition(condition)
 		
+		if not should_show:
+			continue
+			
 		# Store choice data including affection changes
 		var choice_data = {
 			"next": choice.next,
@@ -179,21 +202,40 @@ func show_choices(choices: Array):
 		
 		button.pressed.connect(_on_choice_selected.bind(choice_data))
 		choice_container.add_child(button)
-
+		
+	if choice_container.get_child_count() == 0:
+		# No valid choices, end dialogue
+		end_dialogue()
+		
+func check_condition(condition: Dictionary) -> bool:
+	# Check if choice should be shown based on flags
+	if condition.has("flag"):
+		for flag_name in condition["flag"]:
+			var required_value = condition["flag"][flag_name]
+			if ChoiceManager.get_flag(flag_name) != required_value:
+				return false
+	return true
+		
 func _on_choice_selected(choice_data: Dictionary):
 	waiting_for_choice = false
 	clear_choices()
 	choice_container.visible = false
 	
-	print("🎮 Choice selected with data: ", choice_data)
+	print("🎮 Choice selected: ", choice_data)
 	
 	# Apply affection changes
 	if choice_data.has("affection"):
 		var affection_dict = choice_data["affection"]
 		for character in affection_dict:
 			var amount = affection_dict[character]
-			print("💖 Applying affection change: ", character, " +", amount)
 			ChoiceManager.add_affection(character, amount)
+			
+			# ONLY mark as used if affection was given (meaningful choice)
+			if amount > 0 and current_item_id != "":
+				var is_repeatable = current_item_data.get("repeatable", true)
+				if not is_repeatable and not ChoiceManager.get_flag(current_item_id + "_used"):
+					ChoiceManager.set_flag(current_item_id + "_used", true)
+					print("🔒 Item marked as used: ", current_item_id)
 	
 	# Apply flags
 	if choice_data.has("flags"):
@@ -203,20 +245,21 @@ func _on_choice_selected(choice_data: Dictionary):
 			ChoiceManager.set_flag(flag_name, value)
 	
 	var next_key = choice_data.get("next", "return")
-	print("➡️ Moving to next key: ", next_key)
 	
 	if next_key == "return":
 		end_dialogue()
 		return
 	
-	var next_data = bedroom_data.get(next_key, {})
-	var next_dialogues = next_data.get("dialogues", [])
+	# Check if next_key points to a new item or dialogue
+	if bedroom_data.has(next_key):
+		var next_data = bedroom_data[next_key]
+		var next_dialogues = next_data.get("dialogues", [])
+		if not next_dialogues.is_empty():
+			dialogue_queue = next_dialogues.duplicate()
+			show_next_line()
+			return
 	
-	if next_dialogues.is_empty():
-		end_dialogue()
-	else:
-		dialogue_queue = next_dialogues.duplicate()
-		show_next_line()
+	end_dialogue()
 		
 func clear_choices():
 	for child in choice_container.get_children():
