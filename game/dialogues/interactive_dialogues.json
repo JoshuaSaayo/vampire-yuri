@@ -71,12 +71,12 @@
         { "speaker": "", "text": "She reached out and gently touched the fabric. It felt incredibly soft despite its dramatic appearance." },
         { "speaker": "", "text": "For a brief moment, she forgot the danger she was in." },
         { "speaker": "Elara", "text": "(talking to herself, flustered) I wonder if this would even fit me… Wait—no! What am I thinking? There’s no time for this. I need to find a way out!" },
-        { "speaker": "", "text": "Still, her fingers lingered on one particularly elegant black-and-crimson dress with delicate lace trims and soft velvet accents." },
+        { "speaker": "", "text": "Still, her fingers lingered on one particularly elegant black-and-burnt orange dress with delicate lace trims and soft velvet accents." },
         {
           "speaker": "",
           "text": "She starred with curiousity.",
           "choices": [
-            { "text": "Take the gothic dress", "next": "take_dress", "affection_changes": { "Lilith": 1 }},
+            { "text": "Take the dress", "next": "take_dress", "affection_changes": { "Lilith": 1 }},
             { "text": "Close the wardrobe", "next": "return" }
           ]
         }

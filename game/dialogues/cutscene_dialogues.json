@@ -174,7 +174,7 @@
             "lines": [
               {
                 "speaker": "",
-                "text": "The corridor stretched endlessly in both directions, lit only by flickering crimson candles that cast long, dancing shadows on the stone walls. The air felt heavy and cold. Every footstep echoed far too loudly.",
+                "text": "The corridor stretched endlessly in both directions, lit only by gigantic windows and its purple sky that cast long, dancing shadows on the stone walls. The air felt heavy and cold. Every footstep echoed far too loudly.",
                 "left": "null",
                 "center": null,
                 "right": null
@@ -425,7 +425,7 @@
                 "center": null,
                 "right": {
                   "character": "Lilith",
-                  "expression": "lilith_angry"
+                  "expression": "lilith_shock"
                 }
               },
               {
@@ -868,7 +868,7 @@
             "lines": [
               {
                 "speaker": "",
-                "text": "The corridor stretched endlessly in both directions, lit only by flickering crimson candles that cast long, dancing shadows on the stone walls. The air felt heavy and cold. Every footstep echoed far too loudly.",
+                "text": "The corridor stretched endlessly in both directions, lit only by gigantic windows and its purple sky that cast long, dancing shadows on the stone walls. The air felt heavy and cold. Every footstep echoed far too loudly.",
                 "left": "null",
                 "center": null,
                 "right": null
@@ -1119,7 +1119,7 @@
                 "center": null,
                 "right": {
                   "character": "Lilith",
-                  "expression": "lilith_angry"
+                  "expression": "lilith_shock"
                 }
               },
               {
@@ -1132,7 +1132,7 @@
                 "center": null,
                 "right": {
                   "character": "Lilith",
-                  "expression": "lilith_unamused"
+                  "expression": "lilith_shock"
                 }
               },
               {
@@ -1145,7 +1145,7 @@
                 "center": null,
                 "right": {
                   "character": "Lilith",
-                  "expression": "lilith_unamused"
+                  "expression": "lilith_shock"
                 }
               },
               {
@@ -1158,33 +1158,7 @@
                 "center": null,
                 "right": {
                   "character": "Lilith",
-                  "expression": "lilith_default"
-                }
-              },
-              {
-                "speaker": "",
-                "text": "But beneath that anger was something warmer, deeper, and far more dangerous.",
-                "left": {
-                  "character": "Elara",
-                  "expression": "elara_shock_dress"
-                },
-                "center": null,
-                "right": {
-                  "character": "Lilith",
-                  "expression": "lilith_default"
-                }
-              },
-              {
-                "speaker": "Lilith",
-                "text": "(muttering, half to herself, voice quieter and more vulnerable) …Wait. You’re wearing my dress? How…? ",
-                "left": {
-                  "character": "Elara",
-                  "expression": "elara_sad_dress"
-                },
-                "center": null,
-                "right": {
-                  "character": "Lilith",
-                  "expression": "lilith_default"
+                  "expression": "lilith_shock"
                 }
               },
               {
@@ -1297,6 +1271,58 @@
                   "expression": "lilith_happy"
                 },
                 "right": null
+              },
+              {
+                "speaker": "Lilith",
+                "text": "You took my dress, how dare you...",
+                "left": {
+                  "character": "Elara",
+                  "expression": "elara_sad_dress"
+                },
+                "center": {
+                  "character": "Lilith",
+                  "expression": "lilith_unamused"
+                },
+                "right": null
+              },
+              {
+                "speaker": "Elara",
+                "text": "I apologize, your dress looks amazing I couldn't help myself but to wear it.",
+                "left": {
+                  "character": "Elara",
+                  "expression": "elara_sad_dress"
+                },
+                "center": {
+                  "character": "Lilith",
+                  "expression": "lilith_unamused"
+                },
+                "right": null
+              },
+              {
+                "speaker": "Lilith",
+                "text": "Tsk, you have audacity to take my dress and look more cute, I have to take that from you now!",
+                "left": {
+                  "character": "Elara",
+                  "expression": "elara_sad_dress"
+                },
+                "center": {
+                  "character": "Lilith",
+                  "expression": "lilith_happy"
+                },
+                "right": null
+              },
+              {
+                "speaker": "Lilith",
+                "text": "Don't run away cute girl, give me back my dress.",
+                "left": {
+                  "character": "Elara",
+                  "expression": "elara_sad_dress"
+                },
+                "center": {
+                  "character": "Lilith",
+                  "expression": "lilith_happy"
+                },
+                "right": null
               }
             ]
           },
@@ -1307,7 +1333,7 @@
             "lines": [
               {
                 "speaker": "",
-                "text": "Lilith gently removes her clothes."
+                "text": "Lilith pins Elara down and gently removes her clothes."
               },
               {
                 "speaker": "",

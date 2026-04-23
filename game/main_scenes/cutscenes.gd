@@ -421,11 +421,32 @@ func end_cutscene():
 
 # ====================== BUTTONS ======================
 func _on_skip_btn_pressed():
-	# Skip to appropriate destination based on context
+	print("⏭️ Skip button pressed!")
+	
+	# Kill any ongoing tweens
+	if tween:
+		tween.kill()
+	
+	# Check if we're in chapter_1
 	if story_block == "chapter_1":
-		# When skipping during chapter_1, still determine ending
-		await determine_and_play_ending()
+		print("📖 Skipping chapter_1 directly to end transition...")
+		
+		# Get the ending based on current affection (for save data)
+		var ending = ChoiceManager.get_ending()
+		print("🏆 Ending selected for save: ", ending)
+		
+		# Save which ending was achieved
+		CutsceneState.set_ending(ending)
+		CutsceneState.play_ending(ending)
+		
+		# Save game progress
+		save_game_progress()
+		
+		# Go directly to end transition (skip playing the ending cutscene)
+		await show_to_be_continued()
 	else:
+		# For other story blocks, just go to interactive map
+		print("🚪 Skipping to interactive map...")
 		await FadeTransition.fade_to_scene("res://main_scenes/interactive_map.tscn")
 
 func _on_hide_btn_pressed():
