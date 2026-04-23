@@ -4,29 +4,28 @@ extends Control
 @onready var end_credits: Control = $EndCredits
 @onready var sound_resources: Control = $SoundResources
 @onready var fade_rect: ColorRect = $FadeRect
-# @onready var main_menu: Node2D = $main_menu
 
 enum State { END_CREDITS, SOUND_CREDITS, DONE }
 var current_state: State = State.END_CREDITS
 
-
-
 func _ready():
-#	play_menu_animation()
+	# Reset game state before showing credits
+	reset_game_state()
+	
 	end_credits.visible = true
 	sound_resources.visible = false
 	fade_rect.modulate.a = 0
 	
 	timer.wait_time = 5.0
 	timer.one_shot = true
-	
-	# Connect ONCE
 	timer.timeout.connect(_on_timer_timeout)
-	
 	timer.start()
 
-# func play_menu_animation():
-#	main_menu.get_animation_state().set_animation("animation", true, 0)
+func reset_game_state():
+	print("🔄 Resetting game state for new game...")
+	CutsceneState.reset_game()
+	ChoiceManager.reset_all()
+	print("✅ Game state reset complete")
 
 func _on_timer_timeout():
 	match current_state:
@@ -34,7 +33,7 @@ func _on_timer_timeout():
 			end_credits.visible = false
 			sound_resources.visible = true
 			current_state = State.SOUND_CREDITS
-			timer.start()  # Restart for next phase
+			timer.start()
 			
 		State.SOUND_CREDITS:
 			current_state = State.DONE

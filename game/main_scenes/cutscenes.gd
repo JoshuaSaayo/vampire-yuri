@@ -65,7 +65,14 @@ func load_dialogue_json():
 			if intro_data.has("endings"):
 				print("🏆 Endings available: ", intro_data.endings.keys())
 		else:
-			push_error("Story block '", story_block, "' not found in JSON!")
+			push_error("Story block '", story_block, "' not found in JSON! Resetting to intro.")
+			# Reset to intro if story_block doesn't exist
+			story_block = "intro"
+			if full_data.has("intro"):
+				intro_data = full_data["intro"]
+				print("✅ Reset to intro block")
+			else:
+				push_error("Intro block also not found!")
 	else:
 		push_error("JSON Parse Error: " + json.get_error_message())
 

@@ -9,4 +9,10 @@ func set_ending(ending: String):
 
 func play_ending(ending_name: String):
 	last_ending = ending_name
-	story_block = "chapter_1_ending"
+	print("Ending played: ", ending_name)
+
+func reset_game():
+	story_block = "intro"
+	pending_ending = ""
+	last_ending = ""
+	print("🔄 Game state reset to intro")
