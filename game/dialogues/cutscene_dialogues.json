@@ -879,7 +879,7 @@
                 "left": null,
                 "center": {
                   "character": "Elara",
-                  "expression": "elara_sad_goth"
+                  "expression": "elara_sad_dress"
                 },
                 "right": null
               },
@@ -889,7 +889,7 @@
                 "left": null,
                 "center": {
                   "character": "Elara",
-                  "expression": "elara_sad_goth"
+                  "expression": "elara_sad_dress"
                 },
                 "right": null
               },
@@ -899,7 +899,7 @@
                 "left": null,
                 "center": {
                   "character": "Elara",
-                  "expression": "elara_shock_goth"
+                  "expression": "elara_shock_dress"
                 },
                 "right": null
               },
@@ -909,7 +909,7 @@
                 "left": null,
                 "center": {
                   "character": "Elara",
-                  "expression": "elara_shock_goth"
+                  "expression": "elara_shock_dress"
                 },
                 "right": null
               },
@@ -919,7 +919,7 @@
                 "left": null,
                 "center": {
                   "character": "Elara",
-                  "expression": "elara_shock_goth"
+                  "expression": "elara_shock_dress"
                 },
                 "right": null
               },
@@ -1127,7 +1127,7 @@
                 "text": "She stopped mid-sentence, eyes widening as she took in the full sight.",
                 "left": {
                   "character": "Elara",
-                  "expression": "elara_sad_goth"
+                  "expression": "elara_sad_dress"
                 },
                 "center": null,
                 "right": {
@@ -1140,7 +1140,7 @@
                 "text": "(softer, almost breathless, a mix of irritation and longing) …Wait. You’re wearing my dress? How…?",
                 "left": {
                   "character": "Elara",
-                  "expression": "elara_sad_goth"
+                  "expression": "elara_sad_dress"
                 },
                 "center": null,
                 "right": {
@@ -1153,7 +1153,7 @@
                 "text": "Anger still simmered beneath the surface — at herself for being careless, at the situation, at how easily this human was unraveling her composure.",
                 "left": {
                   "character": "Elara",
-                  "expression": "elara_shock_goth"
+                  "expression": "elara_shock_dress"
                 },
                 "center": null,
                 "right": {
@@ -1166,7 +1166,7 @@
                 "text": "But beneath that anger was something warmer, deeper, and far more dangerous.",
                 "left": {
                   "character": "Elara",
-                  "expression": "elara_shock_goth"
+                  "expression": "elara_shock_dress"
                 },
                 "center": null,
                 "right": {
@@ -1179,7 +1179,7 @@
                 "text": "(muttering, half to herself, voice quieter and more vulnerable) …Wait. You’re wearing my dress? How…? ",
                 "left": {
                   "character": "Elara",
-                  "expression": "elara_sad_goth"
+                  "expression": "elara_sad_dress"
                 },
                 "center": null,
                 "right": {
@@ -1192,7 +1192,7 @@
                 "text": "It suits you far better than it ever did on me. Damn it… why do you have to look like that right now?",
                 "left": {
                   "character": "Elara",
-                  "expression": "elara_default_goth"
+                  "expression": "elara_default_dress"
                 },
                 "center": null,
                 "right": {
@@ -1212,7 +1212,7 @@
                 "text": "Lilith firmly guided Elara back onto the elegant four-poster bed draped in black lace and deep crimson silk. She tried to look stern and intimidating, ",
                 "left": {
                   "character": "Elara",
-                  "expression": "elara_sad"
+                  "expression": "elara_sad_dress"
                 },
                 "center": null,
                 "right": {
@@ -1225,7 +1225,7 @@
                 "text": "  She tried to look stern and intimidating, but her crimson eyes kept softening whenever they landed on the human.",
                 "left": {
                   "character": "Elara",
-                  "expression": "elara_sad"
+                  "expression": "elara_sad_dress"
                 },
                 "center": null,
                 "right": {
@@ -1238,7 +1238,7 @@
                 "text": "Elara’s heart pounded as she stared up at the vampire commander who had led the attack on her village. Fear and confusion swirled inside her.",
                 "left": {
                   "character": "Elara",
-                  "expression": "elara_sad"
+                  "expression": "elara_sad_dress"
                 },
                 "center": null,
                 "right": {
@@ -1251,7 +1251,7 @@
                 "text": "Lilith locked the heavy bedroom door with a loud click, then approached the bed. ",
                 "left": {
                   "character": "Elara",
-                  "expression": "elara_sad"
+                  "expression": "elara_sad_dress"
                 },
                 "center": null,
                 "right": {
@@ -1264,7 +1264,7 @@
                 "text": "She gently cupped Elara’s face with a gloved hand, tilting her chin upward.",
                 "left": {
                   "character": "Elara",
-                  "expression": "elara_sad"
+                  "expression": "elara_sad_dress"
                 },
                 "center": null,
                 "right": {
@@ -1277,7 +1277,7 @@
                 "text": "Please… don’t kill me…",
                 "left": {
                   "character": "Elara",
-                  "expression": "elara_sad"
+                  "expression": "elara_sad_dress"
                 },
                 "center": {
                   "character": "Lilith",
@@ -1290,7 +1290,7 @@
                 "text": "(softly) Shh… If you stay quiet and behave, nothing bad will happen to you.",
                 "left": {
                   "character": "Elara",
-                  "expression": "elara_sad"
+                  "expression": "elara_sad_dress"
                 },
                 "center": {
                   "character": "Lilith",
