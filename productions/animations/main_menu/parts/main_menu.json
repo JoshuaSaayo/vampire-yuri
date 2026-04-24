@@ -1,0 +1,85 @@
+{ "skeleton": { "images": "C:/Users/Joshua PC/OneDrive/Desktop/parts/" },
+"PhotoshopToSpine": { "scale": 1, "padding": 1, "trim": true },
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "BG", "bone": "root", "attachment": "BG" },
+	{ "name": "bg", "bone": "root", "attachment": "bg" },
+	{ "name": "l_head", "bone": "root", "attachment": "l_head" },
+	{ "name": "neck", "bone": "root", "attachment": "neck" },
+	{ "name": "l_back_hair", "bone": "root", "attachment": "l_back_hair" },
+	{ "name": "l_bangs", "bone": "root", "attachment": "l_bangs" },
+	{ "name": "l_fingers", "bone": "root", "attachment": "l_fingers" },
+	{ "name": "e_back_hair", "bone": "root", "attachment": "e_back_hair" },
+	{ "name": "e_torso", "bone": "root", "attachment": "e_torso" },
+	{ "name": "l_torso", "bone": "root", "attachment": "l_torso" },
+	{ "name": "e_head", "bone": "root", "attachment": "e_head" },
+	{ "name": "e_shoukder", "bone": "root", "attachment": "e_shoukder" },
+	{ "name": "l_shoulder", "bone": "root", "attachment": "l_shoulder" },
+	{ "name": "l_arm", "bone": "root", "attachment": "l_arm" },
+	{ "name": "l_hand", "bone": "root", "attachment": "l_hand" },
+	{ "name": "l_sleeve", "bone": "root", "attachment": "l_sleeve" },
+	{ "name": "e_bangs", "bone": "root", "attachment": "e_bangs" },
+	{ "name": "icon", "bone": "root", "attachment": "icon" }
+],
+"skins": {
+	"default": {
+		"BG": {
+			"BG": { "x": 640, "y": -360, "width": 1282, "height": 722 }
+		},
+		"bg": {
+			"bg": { "x": 640, "y": -360, "width": 1282, "height": 722 }
+		},
+		"l_head": {
+			"l_head": { "x": 805.5, "y": -90, "width": 251, "height": 182 }
+		},
+		"neck": {
+			"neck": { "x": 850.5, "y": -165, "width": 131, "height": 140 }
+		},
+		"l_back_hair": {
+			"l_back_hair": { "x": 979.5, "y": -360, "width": 603, "height": 722 }
+		},
+		"l_bangs": {
+			"l_bangs": { "x": 775, "y": -105, "width": 80, "height": 212 }
+		},
+		"l_fingers": {
+			"l_fingers": { "x": 511, "y": -41, "width": 48, "height": 84 }
+		},
+		"e_back_hair": {
+			"e_back_hair": { "x": 540.5, "y": -283, "width": 231, "height": 568 }
+		},
+		"e_torso": {
+			"e_torso": { "x": 770.5, "y": -375, "width": 357, "height": 692 }
+		},
+		"l_torso": {
+			"l_torso": { "x": 911.5, "y": -437.5, "width": 641, "height": 567 }
+		},
+		"e_head": {
+			"e_head": { "x": 695.5, "y": -56, "width": 451, "height": 114 }
+		},
+		"e_shoukder": {
+			"e_shoukder": { "x": 644, "y": -430, "width": 250, "height": 582 }
+		},
+		"l_shoulder": {
+			"l_shoulder": { "x": 627.5, "y": -470.5, "width": 217, "height": 161 }
+		},
+		"l_arm": {
+			"l_arm": { "x": 541.5, "y": -329, "width": 113, "height": 446 }
+		},
+		"l_hand": {
+			"l_hand": { "x": 537, "y": -67, "width": 94, "height": 124 }
+		},
+		"l_sleeve": {
+			"l_sleeve": { "x": 872, "y": -276, "width": 498, "height": 504 }
+		},
+		"e_bangs": {
+			"e_bangs": { "x": 628.5, "y": -48.5, "width": 137, "height": 99 }
+		},
+		"icon": {
+			"icon": { "x": 290.5, "y": -152, "width": 527, "height": 234 }
+		}
+	}
+},
+"animations": { "animation": {} }
+}
