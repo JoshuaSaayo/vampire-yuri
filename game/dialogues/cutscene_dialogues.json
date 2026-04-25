@@ -1183,7 +1183,7 @@
             "lines": [
               {
                 "speaker": "",
-                "text": "Lilith firmly guided Elara back onto the elegant four-poster bed draped in black lace and deep crimson silk. She tried to look stern and intimidating, ",
+                "text": "Lilith firmly guided Elara back onto the elegant four-poster bed draped in black lace and deep pink silk. She tried to look stern and intimidating, ",
                 "left": {
                   "character": "Elara",
                   "expression": "elara_sad_dress"
@@ -1359,6 +1359,7 @@
           },
           {
             "id": "9",
+            "background_animation": "res://anim/lewdscenes/lilith_ls_1.tscn",
             "background": "res://assets/cutscenes/cutscene_5.png",
             "ost": "res://UI/sounds/main_menu_ost.mp3",
             "lines": [

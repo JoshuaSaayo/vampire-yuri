@@ -60,6 +60,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_pltv3")
 
+[node name="SpineBackground" type="Node2D" parent="."]
+
 [node name="DialogueLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogueBox" type="Panel" parent="DialogueLayer"]

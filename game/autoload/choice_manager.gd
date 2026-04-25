@@ -36,7 +36,7 @@ func get_ending() -> String:
 	
 	if lilith_affection >= 2:
 		print("✨ GOOD ENDING triggered (affection: ", lilith_affection, " >= 2)")
-		return "good_ending"
+		return "lewd_ending"
 	else:
 		print("⚠️ NEUTRAL ENDING triggered (affection: ", lilith_affection, " < 2)")
 		return "neutral_ending"
