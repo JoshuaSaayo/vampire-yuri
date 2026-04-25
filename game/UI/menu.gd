@@ -7,11 +7,16 @@ extends Control
 @onready var credits_btn: Button = $CreditsBtn
 @onready var exit_btn: Button = $ExitBtn
 @onready var logo: Sprite2D = $Logo
+@onready var main_menu: Node2D = $MainMenu
 
 func _ready() -> void:
+	play_menu_animation()
 	exit.visible = false
 	credits.visible = false
 	_set_ui_visible(true, [start_btn, settings_btn, credits_btn, exit_btn, logo])
+
+func play_menu_animation():
+	main_menu.get_animation_state().set_animation("animation", true, 0)
 
 func _on_button_pressed() -> void:
 	await FadeTransition.fade_to_scene("res://main_scenes/cutscenes.tscn")

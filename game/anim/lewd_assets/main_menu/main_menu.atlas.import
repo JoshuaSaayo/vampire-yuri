@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://uo1t2m7teb56"
+path="res://.godot/imported/main_menu.atlas-9dffab7c816baf625d2741c2670dee2e.spatlas"
+
+[deps]
+
+source_file="res://anim/lewd_assets/main_menu/main_menu.atlas"
+dest_files=["res://.godot/imported/main_menu.atlas-9dffab7c816baf625d2741c2670dee2e.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

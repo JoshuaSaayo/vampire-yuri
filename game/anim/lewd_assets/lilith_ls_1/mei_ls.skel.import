@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://cq3i4bk4gwvj1"
+path="res://.godot/imported/mei_ls.skel-b38da853fcd607f1813147a16dad443e.spskel"
+
+[deps]
+
+source_file="res://anim/lewd_assets/lilith_ls_1/mei_ls.skel"
+dest_files=["res://.godot/imported/mei_ls.skel-b38da853fcd607f1813147a16dad443e.spskel"]
+
+[params]
+

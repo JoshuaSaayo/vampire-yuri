@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4o7dlttukovq"
-path="res://.godot/imported/main_menu.png-5bcc63aaccde5c8d9b96b20fdeee234d.ctex"
+uid="uid://dt7nrpvobnl3a"
+path="res://.godot/imported/mei_ls.png-7eabdbb856b3b80d787b66db06b865bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://anim/lewd_assets/main_menu/main_menu.png"
-dest_files=["res://.godot/imported/main_menu.png-5bcc63aaccde5c8d9b96b20fdeee234d.ctex"]
+source_file="res://anim/lewd_assets/lilith_ls_1/mei_ls.png"
+dest_files=["res://.godot/imported/mei_ls.png-7eabdbb856b3b80d787b66db06b865bc.ctex"]
 
 [params]
 

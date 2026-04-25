@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://cbgkrnpa2ypg8"]
+[gd_scene load_steps=28 format=3 uid="uid://cbgkrnpa2ypg8"]
 
 [ext_resource type="Script" uid="uid://db1dmqu8a4aoq" path="res://UI/menu.gd" id="1_wfiwe"]
-[ext_resource type="Texture2D" uid="uid://6hijrcbxgfh4" path="res://anim/lewd_assets/main_menu/main_menu.png" id="2_wcfn6"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://dts374ac8jh31" path="res://anim/lewd_assets/main_menu/main_menu.tres" id="2_vso1l"]
+[ext_resource type="Texture2D" uid="uid://6hijrcbxgfh4" path="res://UI/assets/main_menu.png" id="2_wcfn6"]
 [ext_resource type="FontFile" uid="uid://c56hxw3q7m0jq" path="res://UI/fonts/CrimsonText-Regular.ttf" id="3_dte3n"]
 [ext_resource type="Texture2D" uid="uid://lx542obkab8k" path="res://UI/assets/pause button.png" id="4_1qvof"]
 [ext_resource type="Texture2D" uid="uid://b5i3pf8w4fy0m" path="res://UI/assets/button.png" id="4_dhncy"]
@@ -68,7 +69,15 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_wfiwe")
 
+[node name="MainMenu" type="SpineSprite" parent="."]
+skeleton_data_res = ExtResource("2_vso1l")
+preview_skin = "Default"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
