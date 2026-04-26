@@ -13,3 +13,5 @@ script = ExtResource("2_4vkhr")
 
 [node name="sfx_moan" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"
+
+[connection signal="animation_event" from="." to="." method="_on_animation_event"]

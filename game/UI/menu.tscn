@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cbgkrnpa2ypg8"]
+[gd_scene load_steps=41 format=3 uid="uid://cbgkrnpa2ypg8"]
 
 [ext_resource type="Script" uid="uid://db1dmqu8a4aoq" path="res://UI/menu.gd" id="1_wfiwe"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://dts374ac8jh31" path="res://anim/lewd_assets/main_menu/main_menu.tres" id="2_vso1l"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://brnvmbcxdv5lc" path="res://UI/display_panel.gd" id="13_e3ygf"]
 [ext_resource type="Texture2D" uid="uid://yqkdu5rgxblp" path="res://UI/assets/icon_droppdown.png" id="13_xbecv"]
 [ext_resource type="Texture2D" uid="uid://blro8acumuuwk" path="res://UI/assets/Grabber.png" id="14_22gd7"]
+[ext_resource type="Script" uid="uid://dh4ngqb040uam" path="res://UI/menu_button.gd" id="17_yecwb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1qvof"]
 texture = ExtResource("4_dhncy")
@@ -555,6 +556,7 @@ popup/item_2/text = "800×450"
 popup/item_2/id = 2
 popup/item_3/text = "640×360"
 popup/item_3/id = 3
+script = ExtResource("17_yecwb")
 
 [node name="RestoreBtn" type="Button" parent="Settings/DisplayPanel"]
 layout_mode = 1
