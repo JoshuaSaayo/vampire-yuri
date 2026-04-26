@@ -285,6 +285,7 @@ text = "X"
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_qk8mf")
 autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="DialogueBox/HideBtn" to="." method="_on_hide_btn_pressed"]
 [connection signal="pressed" from="PauseBtn" to="." method="_on_pause_btn_pressed"]

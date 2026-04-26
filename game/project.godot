@@ -21,6 +21,7 @@ PauseManager="*res://autoload/pause_manager.gd"
 ChoiceManager="*res://autoload/choice_manager.gd"
 FadeTransition="*res://autoload/fade_transition.tscn"
 CutsceneState="*res://autoload/cutscene_state.gd"
+AudioManager="*res://autoload/audio_manager.gd"
 
 [display]
 

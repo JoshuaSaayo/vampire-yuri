@@ -10,3 +10,6 @@ preview_animation = "-- Empty --"
 preview_frame = false
 preview_time = 0.0
 script = ExtResource("2_4vkhr")
+
+[node name="moan" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

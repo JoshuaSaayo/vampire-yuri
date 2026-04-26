@@ -8,11 +8,13 @@ extends Control
 @onready var exit_btn: Button = $ExitBtn
 @onready var logo: Sprite2D = $Logo
 @onready var main_menu: Node2D = $MainMenu
+@onready var settings: Control = $Settings
 
 func _ready() -> void:
 	play_menu_animation()
 	exit.visible = false
 	credits.visible = false
+	settings.visible = false
 	_set_ui_visible(true, [start_btn, settings_btn, credits_btn, exit_btn, logo])
 
 func play_menu_animation():
@@ -34,7 +36,7 @@ func _on_credits_btn_pressed() -> void:
 	_set_ui_visible(false, [start_btn, settings_btn, credits_btn, exit_btn, logo, exit])
 	credits.visible = true
 
-func _on_close_btn_pressed() -> void:
+func _on_credit_close_btn_pressed() -> void:
 	credits.visible = false
 	exit.visible = false
 	_set_ui_visible(true, [start_btn, settings_btn, credits_btn, exit_btn, logo])
@@ -42,3 +44,14 @@ func _on_close_btn_pressed() -> void:
 func _set_ui_visible(visible: bool, nodes: Array) -> void:
 	for node in nodes:
 		node.visible = visible
+
+
+func _on_settings_btn_pressed() -> void:
+	settings.visible = true
+	_set_ui_visible(false, [start_btn, settings_btn, credits_btn, exit_btn, logo, exit])
+
+
+func _on_settings_close_btn_pressed() -> void:
+	settings.visible = false
+	exit.visible = false
+	_set_ui_visible(true, [start_btn, settings_btn, credits_btn, exit_btn, logo])
