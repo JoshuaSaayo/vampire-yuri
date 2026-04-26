@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://c4cge44ge3805"]
+
+[node name="GlobalModulate" type="CanvasModulate"]

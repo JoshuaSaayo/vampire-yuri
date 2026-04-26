@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cbgkrnpa2ypg8"]
+[gd_scene load_steps=40 format=3 uid="uid://cbgkrnpa2ypg8"]
 
 [ext_resource type="Script" uid="uid://db1dmqu8a4aoq" path="res://UI/menu.gd" id="1_wfiwe"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://dts374ac8jh31" path="res://anim/lewd_assets/main_menu/main_menu.tres" id="2_vso1l"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://dq83lxjn1dpon" path="res://UI/audio_panel.gd" id="10_l308b"]
 [ext_resource type="Texture2D" uid="uid://c1jmyi4o5i37m" path="res://UI/assets/checkbox.png" id="11_k0tp0"]
 [ext_resource type="Texture2D" uid="uid://beyu2u64lfyyy" path="res://UI/assets/unchecked.png" id="12_xbecv"]
+[ext_resource type="Script" uid="uid://brnvmbcxdv5lc" path="res://UI/display_panel.gd" id="13_e3ygf"]
 [ext_resource type="Texture2D" uid="uid://yqkdu5rgxblp" path="res://UI/assets/icon_droppdown.png" id="13_xbecv"]
 [ext_resource type="Texture2D" uid="uid://blro8acumuuwk" path="res://UI/assets/Grabber.png" id="14_22gd7"]
 
@@ -258,6 +259,7 @@ grow_vertical = 2
 script = ExtResource("8_emkvv")
 
 [node name="AudioPanel" type="Panel" parent="Settings"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -388,7 +390,6 @@ text = "Restore
 "
 
 [node name="DisplayPanel" type="Panel" parent="Settings"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -400,6 +401,7 @@ offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_gkf6b")
+script = ExtResource("13_e3ygf")
 
 [node name="DisplayLabel" type="Label" parent="Settings/DisplayPanel"]
 layout_mode = 1
@@ -460,7 +462,7 @@ theme_override_fonts/font = ExtResource("3_dte3n")
 theme_override_font_sizes/font_size = 35
 text = "Borderless"
 
-[node name="FullscreenCheck" type="CheckBox" parent="Settings/DisplayPanel/Borderless"]
+[node name="BorderlessCheck" type="CheckBox" parent="Settings/DisplayPanel/Borderless"]
 layout_mode = 0
 offset_left = 169.0
 offset_top = -7.0
@@ -485,7 +487,7 @@ theme_override_fonts/font = ExtResource("3_dte3n")
 theme_override_font_sizes/font_size = 35
 text = "Windowed"
 
-[node name="FullscreenCheck" type="CheckBox" parent="Settings/DisplayPanel/Windowed"]
+[node name="WindowedCheck" type="CheckBox" parent="Settings/DisplayPanel/Windowed"]
 layout_mode = 0
 offset_left = 169.0
 offset_top = -7.0
@@ -523,6 +525,9 @@ theme_override_icons/tick = ExtResource("14_22gd7")
 theme_override_styles/slider = SubResource("StyleBoxFlat_22gd7")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_k0tp0")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_60j7a")
+max_value = 2.0
+step = 0.1
+page = 0.1
 
 [node name="Resolution" type="Label" parent="Settings/DisplayPanel"]
 layout_mode = 0
@@ -541,6 +546,15 @@ offset_top = 1.0
 offset_right = 234.0
 offset_bottom = 60.0
 theme_override_icons/icon = ExtResource("13_xbecv")
+item_count = 4
+popup/item_0/text = "1280x720"
+popup/item_0/id = 0
+popup/item_1/text = "1152×648"
+popup/item_1/id = 1
+popup/item_2/text = "800×450"
+popup/item_2/id = 2
+popup/item_3/text = "640×360"
+popup/item_3/id = 3
 
 [node name="RestoreBtn" type="Button" parent="Settings/DisplayPanel"]
 layout_mode = 1

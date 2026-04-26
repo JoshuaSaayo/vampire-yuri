@@ -22,6 +22,7 @@ ChoiceManager="*res://autoload/choice_manager.gd"
 FadeTransition="*res://autoload/fade_transition.tscn"
 CutsceneState="*res://autoload/cutscene_state.gd"
 AudioManager="*res://autoload/audio_manager.gd"
+GlobalModulate="*res://autoload/global_modulate.tscn"
 
 [display]
 
