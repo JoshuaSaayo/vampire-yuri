@@ -230,7 +230,6 @@ func show_current_line():
 		return
 	
 	var line = scene.lines[line_idx]
-	print("🎬 Showing line ", line_idx, " of scene ", scene_idx, " | Total lines: ", scene.lines.size())
 	
 	if line.has("action"):
 		handle_action(line.action)
