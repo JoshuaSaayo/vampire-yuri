@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://j1bon4n6m5xr" path="res://anim/lewdscenes/animation_player.gd" id="2_4vkhr"]
 
 [node name="lilith_ls_1" type="SpineSprite"]
+position = Vector2(0, -194)
 skeleton_data_res = ExtResource("1_x326y")
 preview_skin = "Default"
 preview_animation = "-- Empty --"

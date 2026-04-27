@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://b22uvja0vyjan"
+path="res://.godot/imported/lilith_ls_1.atlas-fd73aa49738c0f98bda98dcbd2b8a648.spatlas"
+
+[deps]
+
+source_file="res://anim/lewd_assets/lilith_ls_1/lilith_ls_1.atlas"
+dest_files=["res://.godot/imported/lilith_ls_1.atlas-fd73aa49738c0f98bda98dcbd2b8a648.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

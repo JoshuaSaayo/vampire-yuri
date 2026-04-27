@@ -14,7 +14,7 @@ var character_moans: Dictionary = {
 @export var preview_mode: bool = false
 
 func _ready() -> void:
-	get_animation_state().set_animation("lewdscene", true, 0)
+	get_animation_state().set_animation("animation", true, 0)
 	
 	# Connect to the Sprite's signal, not the AnimationState's
 	self.animation_event.connect(_on_animation_event)

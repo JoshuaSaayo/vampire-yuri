@@ -1123,6 +1123,19 @@
                 }
               },
               {
+                "speaker": "Lilith",
+                "text": "Miss Elara, don’t move. If the guards find you—",
+                "left": {
+                  "character": "Elara",
+                  "expression": "elara_sad_dress"
+                },
+                "center": null,
+                "right": {
+                  "character": "Lilith",
+                  "expression": "lilith_unamused"
+                }
+              },
+              {
                 "speaker": "",
                 "text": "She stopped mid-sentence, eyes widening as she took in the full sight.",
                 "left": {
@@ -1173,6 +1186,45 @@
                   "character": "Lilith",
                   "expression": "lilith_unamused"
                 }
+              },
+              {
+                "speaker": "Elara",
+                "text": "(frozen, stunned) Huh…?",
+                "left": {
+                  "character": "Elara",
+                  "expression": "elara_shock_dress"
+                },
+                "center": null,
+                "right": {
+                  "character": "Lilith",
+                  "expression": "lilith_unamused"
+                }
+              },
+              {
+                "speaker": "",
+                "text": "Elara stood paralyzed, unable to speak or run. Her mind raced and wondering how does she know my name?",
+                "left": {
+                  "character": "Elara",
+                  "expression": "elara_shock_dress"
+                },
+                "center": null,
+                "right": {
+                  "character": "Lilith",
+                  "expression": "lilith_unamused"
+                }
+              },
+              {
+                "speaker": "",
+                "text": "Lilith strode forward and firmly grabbed Elara’s wrist, pulling her back toward the bedchamber.",
+                "left": {
+                  "character": "Elara",
+                  "expression": "elara_shock_dress"
+                },
+                "center": null,
+                "right": {
+                  "character": "Lilith",
+                  "expression": "lilith_default"
+                }
               }
             ]
           },
@@ -1196,7 +1248,7 @@
               },
               {
                 "speaker": "",
-                "text": "  She tried to look stern and intimidating, but her crimson eyes kept softening whenever they landed on the human.",
+                "text": "She tried to look stern and intimidating, but her crimson eyes kept softening whenever they landed on the human.",
                 "left": {
                   "character": "Elara",
                   "expression": "elara_sad_dress"
@@ -1363,19 +1415,25 @@
             "background": "res://assets/cutscenes/cutscene_5.png",
             "ost": "res://UI/sounds/main_menu_ost.mp3",
             "lines": [
-              { "speaker": "", "text": "Lilith leaned down and sank her fangs slowly into Elara’s back with a deep, sensual bite" },
-              { "speaker": "", "text": "She drank quickly, taking what she needed without lingering." },
-              { "speaker": "", "text": "As she drank, her free hand slid down over the her back and cupped Elara’s boobs, squeezing it gently but possessively." },
-              { "speaker": "Elara", "text": "(gasping, body tensing) Nngh…! Ahh…" },
-              { "speaker": "Lilith", "text": "I will make you cum, beautiful!" },
-              { "speaker": "Elara", "text": "Miss Lilith... Keep going! Ahh ahh" },
-              { "speaker": "Lilith", "text": "Your pussy is incredibly wet now, goddamn!" },
-              { "speaker": "Elara", "text": "Ahh ahhh Miss Lilith!!" },
-              { "speaker": "Elara", "text": "I never feel so good like this! Ahh ahh!" },
-              { "speaker": "Lilith", "text": "Hmm! hmmm you are fucking delicious!" },
-              { "speaker": "Elara", "text": "Ahh I think I will cum now aahhh!!" },
-              { "speaker": "", "text": "After a few moments, Lilith withdrew her fangs and licked the bite mark closed with slow, lingering strokes of her tongue." },
-              { "speaker": "", "text": "She kept her hand on Elara’s chest a little longer, giving one final gentle squeeze before reluctantly pulling away." }
+              { "speaker": "", "text": "Lilith leaned down, pressing her body against Elara’s back." },
+              { "speaker": "", "text": "Her fangs sank slowly into the soft skin of Elara’s shoulder with a deep, sensual bite." },
+              { "speaker": "Elara", "text": "Nngh…! Ahh…!" },
+              { "speaker": "", "text": "As Lilith drank, her free hand slid down, cupping Elara’s breast possessively, thumb teasing the hardened nipple." },
+              { "speaker": "Lilith", "text": "(husky whisper) You’re so sensitive… I can feel how wet you’re getting for me." },
+              { "speaker": "Elara", "text": "Miss Lilith… ahh… it feels too good…" },
+              { "speaker": "Lilith", "text": "That’s it… let me hear you. I want to ruin you with pleasure." },
+              { "speaker": "Elara", "text": "Ahh! Keep going… please don’t stop!" },
+              { "speaker": "Lilith", "text": "Your pussy is dripping for me already… such a good girl." },
+              { "speaker": "Elara", "text": "I-I’m close… Miss Lilith… I’m going to—!" },
+              { "speaker": "Lilith", "text": "(growling softly) Cum for me, Elara. Let me feel you fall apart!" },
+              { "speaker": "Elara", "text": "Ahhhhh!!" },
+              { "speaker": "", "text": "Elara’s body tensed violently as she came hard, her juices soaking the crimson silk sheets beneath them." },
+              { "speaker": "", "text": "The bed was a mess of slick arousal and thin trails of blood from the bite." },
+              { "speaker": "", "text": "Lilith slowly withdrew her fangs and licked the wound closed with long, tender strokes of her tongue." },
+              { "speaker": "Lilith", "text": "(softly, almost gently) You were incredible…" },
+              { "speaker": "", "text": "She kept her hand on Elara’s breast for a moment longer, giving one final gentle squeeze before reluctantly pulling away." },
+              { "speaker": "Elara", "text": "(panting, dazed) I… I never felt anything like that before…" },
+              { "speaker": "", "text": "In that moment, Elara realized her virginity had been taken by the vampire who once destroyed her home." }
             ]
           },
           {
@@ -1579,19 +1637,6 @@
                 "left": {
                   "character": "Elara",
                   "expression": "elara_happy"
-                },
-                "center": {
-                  "character": "Lilith",
-                  "expression": "lilith_default"
-                },
-                "right": null
-              },
-              {
-                "speaker": "",
-                "text": "Elara reached out and took Lilith’s gloved hand, giving it a comforting squeeze.",
-                "left": {
-                  "character": "Elara",
-                  "expression": "elara_default"
                 },
                 "center": {
                   "character": "Lilith",

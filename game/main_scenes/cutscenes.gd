@@ -62,10 +62,23 @@ func load_dialogue_json():
 # ====================== SCENE MANAGEMENT ======================
 func show_current_scene():
 	if scene_idx >= intro_data.get("scenes", []).size():
+		print("🏁 Cutscene finished. story_block = ", story_block)
+		
+		# If this is chapter_1 with endings, play the ending
 		if story_block == "chapter_1" and intro_data.has("endings"):
+			print("🎬 Determining ending for chapter_1...")
 			await determine_and_play_ending()
-		else:
+			return
+		
+		# If this is an ending scene for chapter_1, go to credits
+		if story_block == "chapter_1" and CutsceneState.last_ending != "":
+			print("🏁 Ending finished, showing credits...")
 			await show_to_be_continued()
+			return
+		
+		# For intro or any other story block, go to interactive map
+		print("🚪 Cutscene finished, going to interactive map...")
+		await FadeTransition.fade_to_scene("res://main_scenes/interactive_map.tscn")
 		return
 	
 	clear_all_characters()
@@ -85,16 +98,21 @@ func determine_and_play_ending():
 	var ending = ChoiceManager.get_ending()
 	var endings = intro_data.get("endings", {})
 	
+	print("🎯 Determined ending: ", ending)
+	
 	if not endings.has(ending):
 		ending = "neutral_ending" if endings.has("neutral_ending") else ""
 	
 	if ending == "":
-		await show_to_be_continued()
+		print("⚠️ No valid ending found, going to interactive map")
+		await FadeTransition.fade_to_scene("res://main_scenes/interactive_map.tscn")
 		return
 	
 	CutsceneState.set_ending(ending)
 	CutsceneState.play_ending(ending)
+	print("🏆 Playing ending: ", ending)
 	
+	# Replace scenes with ending scenes
 	intro_data.scenes = endings[ending].get("scenes", [])
 	scene_idx = 0
 	line_idx = 0
@@ -191,18 +209,28 @@ func highlight_speaker(speaker: String):
 # ====================== DIALOGUE DISPLAY ======================
 func show_current_line():
 	var scenes = intro_data.get("scenes", [])
+	
+	if scenes.is_empty():
+		print("⚠️ No scenes found!")
+		end_cutscene()
+		return
+	
 	if scene_idx >= scenes.size():
+		print("⚠️ Scene index out of bounds: ", scene_idx)
 		end_cutscene()
 		return
 	
 	var scene = scenes[scene_idx]
+	
 	if line_idx >= scene.lines.size():
+		print("⚠️ Line index out of bounds: ", line_idx, " / ", scene.lines.size(), " for scene ", scene_idx)
 		scene_idx += 1
 		line_idx = 0
 		show_current_scene()
 		return
 	
 	var line = scene.lines[line_idx]
+	print("🎬 Showing line ", line_idx, " of scene ", scene_idx, " | Total lines: ", scene.lines.size())
 	
 	if line.has("action"):
 		handle_action(line.action)
@@ -223,6 +251,7 @@ func show_current_line():
 	highlight_speaker(line.speaker)
 	start_typing()
 
+	
 func handle_action(action: String):
 	if action in ["end_cutscene", "chapter1_end"]:
 		end_cutscene()
@@ -248,9 +277,11 @@ func skip_typing():
 
 # ====================== INPUT ======================
 func _input(event):
-	if is_transitioning or PauseManager.is_paused: return
+	if is_transitioning or PauseManager.is_paused:
+		return
 	
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		
 		if is_hidden:
 			is_hidden = false
 			dialogue_layer.visible = true
@@ -260,10 +291,24 @@ func _input(event):
 			skip_typing()
 			return
 		
-		var scene = intro_data.scenes[scene_idx]
-		var line = scene.lines[line_idx]
-		if line.has("action"): return
+		# SAFETY CHECK: Ensure scene_idx is valid
+		var scenes = intro_data.get("scenes", [])
+		if scenes.is_empty() or scene_idx >= scenes.size():
+			print("⚠️ Invalid scene_idx: ", scene_idx, " / scenes size: ", scenes.size())
+			end_cutscene()
+			return
 		
+		var scene = scenes[scene_idx]
+		
+		# Check if we're at the last line of current scene
+		if line_idx + 1 >= scene.lines.size():
+			# Move to next scene
+			scene_idx += 1
+			line_idx = 0
+			show_current_scene()
+			return
+		
+		# Move to next line in current scene
 		line_idx += 1
 		show_current_line()
 
